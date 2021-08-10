@@ -40,6 +40,8 @@ public class FileManager extends AppCompatActivity {
 
 
     public void hideImages() {
+        //coment
+
         //TODO
     }
 
