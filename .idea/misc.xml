@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/jedominguez/AndroidStudioProjects/dbt/app/src/main/res/layout/activity_main.xml" value="0.3" />
+        <entry key="..\:/Users/jedominguez/AndroidStudioProjects/dbt/app/src/main/res/layout/game_over.xml" value="0.24909420289855072" />
+        <entry key="..\:/Users/jedominguez/AndroidStudioProjects/dbt/app/src/main/res/layout/memory_game.xml" value="0.268" />
+        <entry key="..\:/Users/jedominguez/AndroidStudioProjects/dbt/app/src/main/res/layout/player_info.xml" value="0.2" />
+        <entry key="..\:/Users/jedominguez/AndroidStudioProjects/dbt/app/src/main/res/layout/riddle_screen.xml" value="0.24909420289855072" />
+        <entry key="..\:/Users/jedominguez/AndroidStudioProjects/dbt/app/src/main/res/layout/titlescreen.xml" value="0.2" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
