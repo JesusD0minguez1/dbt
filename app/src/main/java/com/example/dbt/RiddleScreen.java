@@ -12,8 +12,8 @@ import java.util.HashMap;
 public class RiddleScreen extends AppCompatActivity {
 
 
-    private ArrayList<String> riddles = new ArrayList<String>();
-    private HashMap<Integer, String> questions = new HashMap<Integer, String>();
+    private HashMap<Integer, String> riddles = new HashMap<Integer, String>(3);
+    private HashMap<Integer, String> questions = new HashMap<Integer, String>(9);
     private ProgressBar progBar = (ProgressBar) findViewById(R.id.progressBar);
 
 
@@ -25,26 +25,44 @@ public class RiddleScreen extends AppCompatActivity {
 
 
     private void populateRiddles() {
-        riddles.add("Test Riddle 1");
-        riddles.add("Test Riddle 2");
-        riddles.add("test Riddle 3");
+        try {
+            riddles.put(1, "Test Riddle 1");
+            riddles.put(2, "Test Riddle 2");
+            riddles.put(3, "test Riddle 3");
+        }
+        catch (Exception pr) {
+            pr.printStackTrace();
+        }
     }
 
 
     private void populateQuestions() {
-        questions.put(0,"Riddle 1 : Question 1");
-        questions.put(0, "Riddle 2 : Question 1");
-        questions.put(0, "Riddle 3 : Question 1");
-        questions.put(1,"Riddle 1 : Question 2");
-        questions.put(1, "Riddle 2 : Question 2");
-        questions.put(1, "Riddle 3 : Question 2");
-        questions.put(2,"Riddle 1 : Question 3");
-        questions.put(2, "Riddle 2 : Question 3");
-        questions.put(2, "Riddle 3 : Question 3");
+        try {
+            questions.put(0,"Riddle 1 : Question 1");
+            questions.put(0, "Riddle 2 : Question 1");
+            questions.put(0, "Riddle 3 : Question 1");
+            questions.put(1,"Riddle 1 : Question 2");
+            questions.put(1, "Riddle 2 : Question 2");
+            questions.put(1, "Riddle 3 : Question 2");
+            questions.put(2,"Riddle 1 : Question 3");
+            questions.put(2, "Riddle 2 : Question 3");
+            questions.put(2, "Riddle 3 : Question 3");
+        }
+        catch (Exception pq) {
+            pq.printStackTrace();
+        }
     }
 
 
-    private void trackProgress() {
-        progBar.setMax(riddles.size());
+    private void trackProgress(int newProgress) {
+        try {
+            progBar.setMax(riddles.size());
+            if(newProgress <= riddles.size()) {
+                progBar.setProgress(newProgress);
+            }
+        }
+        catch (Exception tp) {
+            tp.printStackTrace();
+        }
     }
 }
