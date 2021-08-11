@@ -4,7 +4,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class FileManager extends AppCompatActivity {
+public class FileManager extends MainActivity {
 
 
     private String userName;

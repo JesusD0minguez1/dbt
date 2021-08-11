@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MemoryGame extends AppCompatActivity {
+public class MemoryGame extends FileManager {
 
     @Override
     protected void onCreate(Bundle savedInstanceState){

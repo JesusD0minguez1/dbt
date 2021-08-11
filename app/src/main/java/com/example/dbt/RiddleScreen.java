@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class RiddleScreen extends AppCompatActivity {
+public class RiddleScreen extends FileManager {
 
 
     private HashMap<Integer, String> riddles = new HashMap<Integer, String>(3);
@@ -21,6 +21,8 @@ public class RiddleScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.riddle_screen);
+        populateRiddles();
+        populateQuestions();
     }
 
 
@@ -51,6 +53,13 @@ public class RiddleScreen extends AppCompatActivity {
         catch (Exception pq) {
             pq.printStackTrace();
         }
+    }
+
+
+    private void updateUserScore() {
+        //TODO:
+        //if statement for true or false from the checkCorrect() method
+        //increase or decrease score based on the if statement
     }
 
 
