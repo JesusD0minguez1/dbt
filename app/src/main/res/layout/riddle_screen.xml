@@ -66,35 +66,35 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/op1"
+            android:id="@+id/radioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="RadioButton"
             android:textColor="#FFC107" />
 
         <RadioButton
-            android:id="@+id/op2"
+            android:id="@+id/radioButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="RadioButton"
             android:textColor="#FFC107" />
 
         <RadioButton
-            android:id="@+id/op3"
+            android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="RadioButton"
             android:textColor="#FFC107" />
 
         <RadioButton
-            android:id="@+id/op4"
+            android:id="@+id/radioButton4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="RadioButton"
             android:textColor="#FFC107" />
 
         <RadioButton
-            android:id="@+id/op5"
+            android:id="@+id/radioButton5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="RadioButton"
