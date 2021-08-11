@@ -1,9 +1,9 @@
 package com.example.dbt;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +15,7 @@ public class RiddleScreen extends FileManager {
     private HashMap<Integer, String> riddles = new HashMap<Integer, String>(3);
     private HashMap<Integer, String> questions = new HashMap<Integer, String>(9);
     private ProgressBar progBar = (ProgressBar) findViewById(R.id.progressBar);
+
 
 
     @Override
@@ -40,15 +41,15 @@ public class RiddleScreen extends FileManager {
 
     private void populateQuestions() {
         try {
-            questions.put(0,"Riddle 1 : Question 1");
-            questions.put(0, "Riddle 2 : Question 1");
-            questions.put(0, "Riddle 3 : Question 1");
-            questions.put(1,"Riddle 1 : Question 2");
-            questions.put(1, "Riddle 2 : Question 2");
-            questions.put(1, "Riddle 3 : Question 2");
-            questions.put(2,"Riddle 1 : Question 3");
-            questions.put(2, "Riddle 2 : Question 3");
-            questions.put(2, "Riddle 3 : Question 3");
+            questions.put(1,"Riddle 1 : Question 1");
+            questions.put(2, "Riddle 2 : Question 1");
+            questions.put(3, "Riddle 3 : Question 1");
+            questions.put(4,"Riddle 1 : Question 2");
+            questions.put(5, "Riddle 2 : Question 2");
+            questions.put(6, "Riddle 3 : Question 2");
+            questions.put(7,"Riddle 1 : Question 3");
+            questions.put(8, "Riddle 2 : Question 3");
+            questions.put(9, "Riddle 3 : Question 3");
         }
         catch (Exception pq) {
             pq.printStackTrace();
@@ -77,7 +78,14 @@ public class RiddleScreen extends FileManager {
             uus.printStackTrace();
         }
     }
-
+   /* private void displayRiddles()
+    {
+        TextView riddleDisplay = findViewById(R.id.riddleInfotxt);
+        for(int i; i < questions.size(); i++)
+        {
+            riddleDisplay.setText(questions.keySet(i)
+        }
+    }*/
 
     private boolean trackProgress(int newProgress) {
         try {

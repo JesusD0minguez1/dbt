@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupWindow;
 
 public class PlayerInfo extends FileManager {
 
@@ -20,6 +21,14 @@ public class PlayerInfo extends FileManager {
     {
         Intent action2 = new Intent(getApplicationContext(), RiddleScreen.class);
         startActivity(action2);
+    }
+
+
+    public void CreatePopUp(View v)
+    {
+        PopupWindow popUp = new PopupWindow();
+        popUp.setWidth(500);
+        popUp.setHeight(500);
     }
 
 }

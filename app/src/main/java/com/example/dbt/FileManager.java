@@ -40,9 +40,7 @@ public class FileManager extends MainActivity {
     }
 
 
-    public void displayImages() {
-        //TODO
-    }
+    public void displayImages() {}
 
 
     public void hideImages() {
