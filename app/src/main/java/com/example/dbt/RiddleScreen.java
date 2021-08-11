@@ -25,6 +25,7 @@ public class RiddleScreen extends FileManager {
         populateRiddles();
         populateQuestions();
         progBar = findViewById(R.id.progressBar);
+        progBar.setMax(0);
     }
 
 
@@ -88,20 +89,17 @@ public class RiddleScreen extends FileManager {
         }
     }*/
 
-    private boolean trackProgress(int newProgress) {
+    private void trackProgress(int newProgress) {
         try {
-            progBar.setMax(riddles.size());
+            if(progBar.getMax() == 0) {
+                progBar.setMax(riddles.size());
+            }
             if(newProgress <= riddles.size()) {
                 progBar.setProgress(newProgress);
-                return false;
-            }
-            else {
-                return true;
             }
         }
         catch (Exception tp) {
             tp.printStackTrace();
-            return false;
         }
     }
 }
