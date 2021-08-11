@@ -14,7 +14,7 @@ public class RiddleScreen extends FileManager {
 
     private HashMap<Integer, String> riddles = new HashMap<Integer, String>(3);
     private HashMap<Integer, String> questions = new HashMap<Integer, String>(9);
-    private ProgressBar progBar = (ProgressBar) findViewById(R.id.progressBar);
+    private ProgressBar progBar;
 
 
 
@@ -24,6 +24,7 @@ public class RiddleScreen extends FileManager {
         setContentView(R.layout.riddle_screen);
         populateRiddles();
         populateQuestions();
+        progBar = findViewById(R.id.progressBar);
     }
 
 
