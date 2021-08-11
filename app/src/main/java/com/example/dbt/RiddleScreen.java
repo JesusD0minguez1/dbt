@@ -54,15 +54,20 @@ public class RiddleScreen extends AppCompatActivity {
     }
 
 
-    private void trackProgress(int newProgress) {
+    private boolean trackProgress(int newProgress) {
         try {
             progBar.setMax(riddles.size());
             if(newProgress <= riddles.size()) {
                 progBar.setProgress(newProgress);
+                return false;
+            }
+            else {
+                return true;
             }
         }
         catch (Exception tp) {
             tp.printStackTrace();
+            return false;
         }
     }
 }
