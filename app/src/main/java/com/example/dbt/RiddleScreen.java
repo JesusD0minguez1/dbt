@@ -56,10 +56,26 @@ public class RiddleScreen extends FileManager {
     }
 
 
+    @Override
+    public boolean checkCorrect() {
+        return true;
+    }
+
+
     private void updateUserScore() {
-        //TODO:
-        //if statement for true or false from the checkCorrect() method
-        //increase or decrease score based on the if statement
+        try {
+            if(checkCorrect() == true) {
+                setUserScore(getUserScore() + 5);
+            }
+            else {
+                if(getUserScore() != 0) {
+                    setUserScore(getUserScore() - 5);
+                }
+            }
+        }
+        catch (Exception uus) {
+            uus.printStackTrace();
+        }
     }
 
 

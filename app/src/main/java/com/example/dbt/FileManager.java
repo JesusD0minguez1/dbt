@@ -8,7 +8,7 @@ public class FileManager extends MainActivity {
 
 
     private String userName;
-    private int userScore;
+    private int userScore = 0;
     private int time;
     public  int click = 0;
 
@@ -27,6 +27,12 @@ public class FileManager extends MainActivity {
     public void setUserName(String newName) {
         userName = newName;
     }
+
+
+    public int getUserScore() { return userScore; }
+
+
+    public void setUserScore(int newScore) { userScore = newScore; }
 
 
     public boolean checkCorrect() {
