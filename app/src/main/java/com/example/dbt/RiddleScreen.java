@@ -26,9 +26,9 @@ public class RiddleScreen extends AppCompatActivity {
 
     private void populateRiddles() {
         try {
-            riddles.put(1, "Test Riddle 1");
-            riddles.put(2, "Test Riddle 2");
-            riddles.put(3, "test Riddle 3");
+            riddles.put(0, "Test Riddle 1");
+            riddles.put(1, "Test Riddle 2");
+            riddles.put(2, "test Riddle 3");
         }
         catch (Exception pr) {
             pr.printStackTrace();
