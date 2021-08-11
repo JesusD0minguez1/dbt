@@ -2,6 +2,7 @@ package com.example.dbt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void nextGUI(View v)
     {
-        //FileManager f = new FileManager();
-        //f.changeGUI(v);
+        Intent action1 = new Intent(getApplicationContext(), PlayerInfo.class);
+        startActivity(action1);
     }
 }

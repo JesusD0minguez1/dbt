@@ -45,33 +45,33 @@ public class FileManager extends AppCompatActivity {
         //TODO
     }
 
-//    public void changeGUI(View v)
-//    {
-//        switch (click)
-//        {
-//            case  0:
-//                Intent action1 = new Intent(getApplicationContext(), PlayerInfo.class);
-//                startActivity(action1);
-//                click +=1;
-//                break;
-//            case 1:
-//                Intent action2 = new Intent(getApplicationContext(), RiddleScreen.class);
-//                startActivity(action2);
-//                click +=1;
-//                break;
-//            case 2:
-//                Intent action3 = new Intent(getApplicationContext(), MemoryGame.class);
-//                startActivity(action3);
-//                click +=1;
-//                break;
-//            case 3:
-//                Intent action4 = new Intent(getApplicationContext(), GameOver.class);
-//                startActivity(action4);
-//                click +=1;
-//                break;
-//        }
-//
-//    }
+    public void changeGUI(View v)
+    {
+        switch (click)
+        {
+            case  0:
+                Intent action1 = new Intent(getApplicationContext(), PlayerInfo.class);
+                startActivity(action1);
+                click +=1;
+                break;
+            case 1:
+                Intent action2 = new Intent(getApplicationContext(), RiddleScreen.class);
+                startActivity(action2);
+                click +=1;
+                break;
+            case 2:
+                Intent action3 = new Intent(getApplicationContext(), MemoryGame.class);
+                startActivity(action3);
+                click +=1;
+                break;
+            case 3:
+                Intent action4 = new Intent(getApplicationContext(), GameOver.class);
+                startActivity(action4);
+                click +=1;
+                break;
+        }
+
+    }
 
 
 
