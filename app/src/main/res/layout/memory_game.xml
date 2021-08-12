@@ -44,7 +44,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.666"
-        tools:srcCompat="@drawable/squareCard" />
+        tools:srcCompat="@drawable/square_card" />
 
     <ImageView
         android:id="@+id/imageView23"
@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/triangleCard" />
+        tools:srcCompat="@drawable/triangle_card" />
 
     <ImageView
         android:id="@+id/imageView24"
@@ -70,7 +70,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.666"
-        tools:srcCompat="@drawable/circleCard" />
+        tools:srcCompat="@drawable/circle_card" />
 
     <TextView
         android:id="@+id/ttMemoryGame"
@@ -151,7 +151,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/underLineMem"
-        tools:srcCompat="@drawable/triangleCard" />
+        tools:srcCompat="@drawable/triangle_card" />
 
     <ImageView
         android:id="@+id/imageView18"
@@ -166,7 +166,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.118"
-        tools:srcCompat="@drawable/squareCard" />
+        tools:srcCompat="@drawable/square_card" />
 
     <ImageView
         android:id="@+id/imageView17"
@@ -179,7 +179,7 @@
         app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/underLineMem"
-        tools:srcCompat="@drawable/circleCard" />
+        tools:srcCompat="@drawable/circle_card" />
 
     <Button
         android:id="@+id/nxtBtnMemory"
