@@ -8,12 +8,17 @@
 
     <ImageView
         android:id="@+id/tbg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="410dp"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/titlescreen" />
 
     <Button
@@ -27,9 +32,12 @@
         android:shadowDy="3.0"
         android:shadowRadius="3.0"
         android:text="Lets go"
+        android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.752" />
 </androidx.constraintlayout.widget.ConstraintLayout>
