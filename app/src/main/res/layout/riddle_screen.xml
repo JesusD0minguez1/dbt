@@ -22,50 +22,65 @@
         android:layout_height="wrap_content"
         android:capitalize="characters"
         android:fontFamily="@font/agencyb"
+        android:shadowColor="#000000"
+        android:shadowDx="1.6"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
         android:text="Riddle ME This!"
-        android:textColor="#FFEB3B"
-        android:textSize="34sp"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintVertical_bias="0.063" />
 
     <TextView
         android:id="@+id/riddleScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/agencyb"
+        android:shadowColor="#000000"
+        android:shadowDx="1.6"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
         android:text="riddleScore"
-        android:textColor="#FFEB3B"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintVertical_bias="0.727" />
 
     <TextView
         android:id="@+id/riddleInfotxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/agencyb"
-        android:text="Insert rules here"
-        android:textColor="#FFEB3B"
+        android:shadowColor="#000000"
+        android:shadowDx="1.6"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:text="Riddle Here"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.195" />
+        app:layout_constraintVertical_bias="0.142" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="233dp"
-        android:layout_height="240dp"
+        android:layout_width="337dp"
+        android:layout_height="311dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,8 +91,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/agencyb"
+            android:shadowColor="#000000"
+            android:shadowDx="1.6"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"
             android:text="RadioButton"
-            android:textColor="#FFC107"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <RadioButton
@@ -86,11 +107,13 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/agencyb"
             android:shadowColor="#000000"
-            android:shadowDx="3.0"
-            android:shadowDy="3.0"
-            android:shadowRadius="3.0"
+            android:shadowDx="1.6"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"
             android:text="RadioButton"
-            android:textColor="#FFC107"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <RadioButton
@@ -98,8 +121,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/agencyb"
+            android:shadowColor="#000000"
+            android:shadowDx="1.6"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"
             android:text="RadioButton"
-            android:textColor="#FFC107"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <RadioButton
@@ -107,8 +136,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/agencyb"
+            android:shadowColor="#000000"
+            android:shadowDx="1.6"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"
             android:text="RadioButton"
-            android:textColor="#FFC107"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <RadioButton
@@ -116,8 +151,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/agencyb"
+            android:shadowColor="#000000"
+            android:shadowDx="1.6"
+            android:shadowDy="1.3"
+            android:shadowRadius="1.6"
             android:text="RadioButton"
-            android:textColor="#FFC107"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
     </RadioGroup>
@@ -128,22 +169,23 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/agencyb"
         android:shadowColor="#000000"
-        android:shadowDx="3.0"
-        android:shadowDy="3.0"
-        android:shadowRadius="0"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="5"
         android:text="Check answer"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.836" />
+        app:layout_constraintVertical_bias="0.834" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="303dp"
-        android:layout_height="26dp"
+        android:layout_width="340dp"
+        android:layout_height="52dp"
         android:background="#FF9800"
         android:indeterminate="false"
         android:progressBackgroundTint="#FF9800"
@@ -151,6 +193,7 @@
         android:progressTint="#4CAF50"
         android:progressTintMode="src_over"
         android:scrollbarSize="4dp"
+        android:tooltipText="Progress"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -166,10 +209,10 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.923"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/settings" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
