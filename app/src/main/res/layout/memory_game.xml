@@ -7,7 +7,7 @@
     tools:context=".MemoryGame">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/bgMem"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
@@ -34,46 +34,8 @@
         app:layout_constraintTop_toTopOf="@+id/imageView2"
         app:layout_constraintVertical_bias="0.211" />
 
-    <ImageView
-        android:id="@+id/imageView22"
-        android:layout_width="107dp"
-        android:layout_height="110dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.128"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666"
-        tools:srcCompat="@drawable/square_card" />
-
-    <ImageView
-        android:id="@+id/imageView23"
-        android:layout_width="107dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="414dp"
-        android:layout_marginEnd="152dp"
-        android:layout_marginBottom="207dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/triangle_card" />
-
-    <ImageView
-        android:id="@+id/imageView24"
-        android:layout_width="107dp"
-        android:layout_height="110dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.878"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666"
-        tools:srcCompat="@drawable/circle_card" />
-
     <TextView
-        android:id="@+id/ttMemoryGame"
+        android:id="@+id/titleMemGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
@@ -103,20 +65,20 @@
         android:layout_height="2dp"
         android:background="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView6"
+        app:layout_constraintEnd_toStartOf="@+id/settingsMem"
         app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/bgMem"
         app:layout_constraintVertical_bias="0.171" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/scoreView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="179dp"
-        android:layout_marginTop="204dp"
-        android:layout_marginEnd="180dp"
-        android:layout_marginBottom="498dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="205dp"
+        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="497dp"
         android:fontFamily="@font/agencyb"
         android:shadowColor="#000000"
         android:shadowDx="1.5"
@@ -124,7 +86,30 @@
         android:shadowRadius="1.6"
         android:text="Score"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/timerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="199dp"
+        android:layout_marginEnd="265dp"
+        android:layout_marginBottom="491dp"
+        android:fontFamily="@font/agencyb"
+        android:inputType="number"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:text="Timer"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -132,19 +117,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="59dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="352dp"
-        android:layout_marginBottom="674dp"
+        android:id="@+id/card1"
+        android:layout_width="107dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginBottom="327dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/card2"
+        app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/settings" />
+        app:layout_constraintTop_toBottomOf="@+id/underLineMem"
+        tools:srcCompat="@drawable/circle_card" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/card2"
         android:layout_width="107dp"
         android:layout_height="110dp"
         android:layout_marginTop="168dp"
@@ -154,7 +140,7 @@
         tools:srcCompat="@drawable/triangle_card" />
 
     <ImageView
-        android:id="@+id/imageView18"
+        android:id="@+id/card3"
         android:layout_width="107dp"
         android:layout_height="110dp"
         android:layout_marginStart="264dp"
@@ -169,17 +155,54 @@
         tools:srcCompat="@drawable/square_card" />
 
     <ImageView
-        android:id="@+id/imageView17"
+        android:id="@+id/card4"
         android:layout_width="107dp"
         android:layout_height="110dp"
-        android:layout_marginTop="168dp"
-        android:layout_marginBottom="327dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView9"
-        app:layout_constraintHorizontal_bias="0.866"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/underLineMem"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666"
+        tools:srcCompat="@drawable/square_card" />
+
+    <ImageView
+        android:id="@+id/card5"
+        android:layout_width="107dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="414dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="207dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/triangle_card" />
+
+    <ImageView
+        android:id="@+id/card6"
+        android:layout_width="107dp"
+        android:layout_height="110dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.878"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666"
         tools:srcCompat="@drawable/circle_card" />
+
+    <ImageView
+        android:id="@+id/settingsMem"
+        android:layout_width="59dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="352dp"
+        android:layout_marginBottom="674dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/settings" />
 
     <Button
         android:id="@+id/nxtBtnMemory"
