@@ -21,9 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:capitalize="characters"
+        android:fontFamily="@font/agencyb"
         android:text="Riddle ME This!"
         android:textColor="#FFEB3B"
         android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,8 +36,10 @@
         android:id="@+id/riddleScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/agencyb"
         android:text="riddleScore"
         android:textColor="#FFEB3B"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
@@ -47,8 +51,10 @@
         android:id="@+id/riddleInfotxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/agencyb"
         android:text="Insert rules here"
         android:textColor="#FFEB3B"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -69,36 +75,50 @@
             android:id="@+id/radioButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/agencyb"
             android:text="RadioButton"
-            android:textColor="#FFC107" />
+            android:textColor="#FFC107"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/agencyb"
+            android:shadowColor="#000000"
+            android:shadowDx="3.0"
+            android:shadowDy="3.0"
+            android:shadowRadius="3.0"
             android:text="RadioButton"
-            android:textColor="#FFC107" />
+            android:textColor="#FFC107"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/agencyb"
             android:text="RadioButton"
-            android:textColor="#FFC107" />
+            android:textColor="#FFC107"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/radioButton4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/agencyb"
             android:text="RadioButton"
-            android:textColor="#FFC107" />
+            android:textColor="#FFC107"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/radioButton5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/agencyb"
             android:text="RadioButton"
-            android:textColor="#FFC107" />
+            android:textColor="#FFC107"
+            android:textStyle="bold" />
 
     </RadioGroup>
 
@@ -106,7 +126,13 @@
         android:id="@+id/riddleCA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/agencyb"
+        android:shadowColor="#000000"
+        android:shadowDx="3.0"
+        android:shadowDy="3.0"
+        android:shadowRadius="0"
         android:text="Check answer"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
