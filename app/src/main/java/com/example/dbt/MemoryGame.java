@@ -3,27 +3,27 @@ package com.example.dbt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class MemoryGame extends FileManager {
 
-    private TextView timer;
-    private TextView score;
-    private TextView infoTxt;
-    private ImageView card1;
-    private ImageView card2;
-    private ImageView card3;
-    private ImageView card4;
-    private ImageView card5;
-    private ImageView card6;
+    private TextView timer, score, infoTxt;
+    private ImageView card1, card2, card3, card4, card5, card6;
+    private int circleID = R.drawable.circle_card, triangleID = R.drawable.triangle_card,
+    squareID = R.drawable.square_card;
     private Button nxtBtn;
 
 
     private ArrayList<ImageView> cards = new ArrayList<ImageView>();
+    private ArrayList<Integer> cardsSavedIDs = new ArrayList<Integer>();
+
 
 
     @Override
@@ -50,7 +50,58 @@ public class MemoryGame extends FileManager {
     }
 
 
-    private void onCardClick() {
+    private void onCardClick(View v) {
+        int viewID = v.getId();
+        switch (viewID) {
+            case 1:
+                flipCard(card1);
+                return;
+            case 2:
+                flipCard(card2);
+                return;
+            case 3:
+                flipCard(card3);
+                return;
+            case 4:
+                flipCard(card4);
+                return;
+            case 5:
+                flipCard(card5);
+                return;
+            case 6:
+                flipCard(card6);
+                return;
+        }
+    }
 
+
+    private void flipCard(ImageView card) {
+        try {
+
+        }
+        catch (Exception fc) {
+            fc.printStackTrace();
+        }
+    }
+
+
+    private void shuffleCards() {
+        Collections.shuffle(cards);
+    }
+
+
+    private void hideCards() {
+        try {
+            for(int i = 0; i < cards.size(); i++) {
+                if (!cardsSavedIDs.isEmpty()) {
+                    cardsSavedIDs.clear();
+                }
+                cardsSavedIDs.add(cards.get(i).getId());
+                cards.get(i).setImageResource(R.drawable.card_back);
+            }
+        }
+        catch (Exception hC) {
+            hC.printStackTrace();
+        }
     }
 }
