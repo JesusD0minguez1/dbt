@@ -26,6 +26,7 @@ public class MemoryGame extends FileManager {
     private int circleID = R.drawable.circle_card, triangleID = R.drawable.triangle_card,
     squareID = R.drawable.square_card, cardBackID = R.drawable.card_back;
     private Button nxtBtn;
+    private boolean cardsClickable;
 
 
     //Array of the card ImageViews just for easy access
@@ -42,7 +43,7 @@ public class MemoryGame extends FileManager {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.memory_game);
 
-        
+
         //Declare views
         timer = findViewById(R.id.timerView);
         score = findViewById(R.id.scoreView);
@@ -61,11 +62,8 @@ public class MemoryGame extends FileManager {
         cards.add(card5); cards.add(card6);
 
 
-        //Shuffle card IDs, save and hide
-        saveIDs(currentCardIDs);
-        shuffleCardIDs(currentCardIDs);
-        saveIDs(previousCardIDs);
-        hideCards();
+        //Turning cardsClickable to false;
+        cardsClickable = false;
     }
 
 
@@ -80,6 +78,22 @@ public class MemoryGame extends FileManager {
         }
         catch (Exception cci) {
             cci.printStackTrace();
+        }
+    }
+
+
+    private void onStartBtnClick(View v) {
+        try {
+            //Shuffle card IDs, save and hide
+            saveIDs(currentCardIDs);
+            shuffleCardIDs(currentCardIDs);
+            saveIDs(previousCardIDs);
+            hideCards();
+            cardsClickable = true;
+            //TODO: Timer here
+        }
+        catch (Exception startBtn) {
+            startBtn.printStackTrace();
         }
     }
 
@@ -111,13 +125,15 @@ public class MemoryGame extends FileManager {
 
     private void flipCard(int cardID, int index) {
         try {
-                if( cardID == R.drawable.card_back) {
-                    cards.get(index).setImageResource(previousCardIDs.get(index));
+                if(cardsClickable) {
+                    if( cardID == R.drawable.card_back) {
+                        cards.get(index).setImageResource(previousCardIDs.get(index));
+                    }
+                    else {
+                        cards.get(index).setImageResource(cardBackID);
+                    }
+                    saveIDs(currentCardIDs);
                 }
-                else {
-                    cards.get(index).setImageResource(cardBackID);
-                }
-            saveIDs(currentCardIDs);
         }
         catch (Exception fc) {
             fc.printStackTrace();
@@ -139,6 +155,19 @@ public class MemoryGame extends FileManager {
         }
         catch (Exception hC) {
             hC.printStackTrace();
+        }
+    }
+
+
+    private void showCards() {
+        try {
+            for(int i = 0; i < cards.size(); i++) {
+                cards.get(i).setImageResource(previousCardIDs.get(i));
+            }
+            saveIDs(currentCardIDs);
+        }
+        catch (Exception showCards) {
+            showCards.printStackTrace();
         }
     }
 }
