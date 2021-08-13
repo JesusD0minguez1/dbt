@@ -1,18 +1,25 @@
 package com.example.dbt;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
+
+
+/*
+Functionality plan -- Mat:
+1. onCreate shuffle imageIDs and then hide images so that we always start with a random set
+2. onClick of the ready button images will then flip and show the shapes on a timer
+3. after timer is up hide images and let the memory game begin
+ */
+
 
 public class MemoryGame extends FileManager {
+    
 
     private TextView timer, score, infoTxt;
     private ImageView card1, card2, card3, card4, card5, card6;
@@ -21,8 +28,12 @@ public class MemoryGame extends FileManager {
     private Button nxtBtn;
 
 
+    //Array of the card ImageViews just for easy access
     private ArrayList<ImageView> cards = new ArrayList<ImageView>();
-    private ArrayList<Integer> cardsSavedIDs = new ArrayList<Integer>();
+    //Save to list using saveIDs() anytime a change is created
+    private ArrayList<Integer> currentCardIDs = new ArrayList<Integer>();
+    //Used to store previous IDs while hiding cards so that we know which card is which shape
+    private ArrayList<Integer> previousCardIDs = new ArrayList<Integer>();
 
 
 
@@ -47,6 +58,28 @@ public class MemoryGame extends FileManager {
         //Create array cards
         cards.add(card1); cards.add(card2); cards.add(card3); cards.add(card4);
         cards.add(card5); cards.add(card6);
+
+
+        //Shuffle card IDs, save and hide
+        saveIDs(currentCardIDs);
+        shuffleCardIDs(currentCardIDs);
+        saveIDs(previousCardIDs);
+        hideCards();
+    }
+
+
+    private void saveIDs(ArrayList<Integer> listToSaveTo) {
+        try {
+            for(int i = 0; i < cards.size(); i++) {
+                if (!listToSaveTo.isEmpty()) {
+                    listToSaveTo.clear();
+                }
+                listToSaveTo.add(cards.get(i).getId());
+            }
+        }
+        catch (Exception cci) {
+            cci.printStackTrace();
+        }
     }
 
 
@@ -85,18 +118,15 @@ public class MemoryGame extends FileManager {
     }
 
 
-    private void shuffleCards() {
-        Collections.shuffle(cards);
+    private void shuffleCardIDs(ArrayList<Integer> listToShuffle) {
+        Collections.shuffle(listToShuffle);
     }
 
 
     private void hideCards() {
         try {
+            saveIDs(previousCardIDs);
             for(int i = 0; i < cards.size(); i++) {
-                if (!cardsSavedIDs.isEmpty()) {
-                    cardsSavedIDs.clear();
-                }
-                cardsSavedIDs.add(cards.get(i).getId());
                 cards.get(i).setImageResource(R.drawable.card_back);
             }
         }
