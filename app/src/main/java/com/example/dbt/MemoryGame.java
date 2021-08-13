@@ -90,7 +90,8 @@ public class MemoryGame extends FileManager {
             saveIDs(previousCardIDs);
             hideCards();
             cardsClickable = true;
-            //TODO: timer(), displayTimer() and checkMatchingPairs() here
+            //TODO: timer()
+            displayTimer();
         }
         catch (Exception startBtn) {
             startBtn.printStackTrace();
@@ -100,6 +101,7 @@ public class MemoryGame extends FileManager {
 
     private void onCardClick(View v) {
         int viewID = v.getId();
+        int countFlipped = 0;
         switch (viewID) {
             case 1:
                 flipCard(currentCardIDs.get(0), 0);
@@ -126,6 +128,15 @@ public class MemoryGame extends FileManager {
     private void flipCard(int cardID, int index) {
         try {
                 if(cardsClickable) {
+                    int countFlipped = 0;
+                    for(int i = 0; i < cards.size(); i++) {
+                        if(currentCardIDs.get(i) == cardBackID) {
+                            countFlipped++;
+                        }
+                    }
+                    if(countFlipped >= 2) {
+                        checkMatchingPairs();
+                    }
                     if( cardID == R.drawable.card_back) {
                         cards.get(index).setImageResource(previousCardIDs.get(index));
                     }
@@ -159,6 +170,17 @@ public class MemoryGame extends FileManager {
     }
 
 
+    private void hideOneCard(int idToHide) {
+        try {
+            cards.get(idToHide).setImageResource(R.drawable.card_back);
+            saveIDs(currentCardIDs);
+        }
+        catch (Exception hoc) {
+            hoc.printStackTrace();
+        }
+    }
+
+
     private void showCards() {
         try {
             for(int i = 0; i < cards.size(); i++) {
@@ -168,6 +190,46 @@ public class MemoryGame extends FileManager {
         }
         catch (Exception showCards) {
             showCards.printStackTrace();
+        }
+    }
+
+
+    private void displayTimer() {
+        timer.setText(time);
+    }
+
+
+    private void checkMatchingPairs() {
+        try {
+            ArrayList<Integer> tempIDs = new ArrayList<Integer>();
+            int countFlipped = 0;
+            ArrayList<Integer> tempIndexes = new ArrayList<Integer>();
+            for (int i = 0; i < cards.size(); i++) {
+                if(currentCardIDs.get(i) != cardBackID) {
+                    countFlipped += 1;
+                    tempIndexes.add(i);
+                }
+            }
+            for (int j = 0; j < countFlipped; j++) {
+                tempIDs.add(currentCardIDs.get(j));
+            }
+            for (int k = 0; k < tempIDs.size(); k++) {
+                for (int o = 0; o < tempIDs.size(); o++) {
+                    if(tempIDs.get(k) == tempIDs.get(o)) {
+                        setUserScore(getUserScore() + 5);
+                    }
+                    else {
+                        if(getUserScore() != 0)
+                        setUserScore(getUserScore() - 5);
+                        for(int p = 0; p < tempIndexes.size(); p++) {
+                            hideOneCard(cards.get(p).getId());
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception cmp) {
+            cmp.printStackTrace();
         }
     }
 }
