@@ -123,6 +123,7 @@
         android:layout_marginTop="168dp"
         android:layout_marginBottom="327dp"
         android:clickable="true"
+        android:contextClickable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/card2"
         app:layout_constraintHorizontal_bias="0.866"
