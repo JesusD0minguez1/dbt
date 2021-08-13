@@ -19,12 +19,12 @@ Functionality plan -- Mat:
 
 
 public class MemoryGame extends FileManager {
-    
+
 
     private TextView timer, score, infoTxt;
     private ImageView card1, card2, card3, card4, card5, card6;
     private int circleID = R.drawable.circle_card, triangleID = R.drawable.triangle_card,
-    squareID = R.drawable.square_card;
+    squareID = R.drawable.square_card, cardBackID = R.drawable.card_back;
     private Button nxtBtn;
 
 
@@ -42,6 +42,7 @@ public class MemoryGame extends FileManager {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.memory_game);
 
+        
         //Declare views
         timer = findViewById(R.id.timerView);
         score = findViewById(R.id.scoreView);
@@ -87,30 +88,36 @@ public class MemoryGame extends FileManager {
         int viewID = v.getId();
         switch (viewID) {
             case 1:
-                flipCard(card1);
+                flipCard(currentCardIDs.get(0), 0);
                 return;
             case 2:
-                flipCard(card2);
+                flipCard(currentCardIDs.get(1), 1);
                 return;
             case 3:
-                flipCard(card3);
+                flipCard(currentCardIDs.get(2), 2);
                 return;
             case 4:
-                flipCard(card4);
+                flipCard(currentCardIDs.get(3), 3);
                 return;
             case 5:
-                flipCard(card5);
+                flipCard(currentCardIDs.get(4), 4);
                 return;
             case 6:
-                flipCard(card6);
+                flipCard(currentCardIDs.get(5), 5);
                 return;
         }
     }
 
 
-    private void flipCard(ImageView card) {
+    private void flipCard(int cardID, int index) {
         try {
-
+                if( cardID == R.drawable.card_back) {
+                    cards.get(index).setImageResource(previousCardIDs.get(index));
+                }
+                else {
+                    cards.get(index).setImageResource(cardBackID);
+                }
+            saveIDs(currentCardIDs);
         }
         catch (Exception fc) {
             fc.printStackTrace();
