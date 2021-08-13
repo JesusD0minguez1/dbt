@@ -90,7 +90,7 @@ public class MemoryGame extends FileManager {
             saveIDs(previousCardIDs);
             hideCards();
             cardsClickable = true;
-            //TODO: Timer here
+            //TODO: timer(), displayTimer() and checkMatchingPairs() here
         }
         catch (Exception startBtn) {
             startBtn.printStackTrace();
