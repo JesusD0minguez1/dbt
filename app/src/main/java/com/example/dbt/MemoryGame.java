@@ -12,9 +12,9 @@ import java.util.Collections;
 
 /*
 Functionality plan -- Mat:
-1. onCreate shuffle imageIDs and then hide images so that we always start with a random set
-2. onClick of the ready button images will then flip and show the shapes on a timer
-3. after timer is up hide images and let the memory game begin
+1. On the click of the start button shuffle imageIDs and then hide images so that we always start
+ with a random set, then timer will start and you have to memorize the shapes
+2. After timer ends, hide images and let the games begin
  */
 
 
@@ -23,10 +23,20 @@ public class MemoryGame extends FileManager {
 
     private TextView timer, score, infoTxt;
     private ImageView card1, card2, card3, card4, card5, card6;
+
+
+
+    /*
+    Android studio gives each image a unique integer which we can use to identify which shapes
+    were where and where they are now.
+    */
     private int circleID = R.drawable.circle_card, triangleID = R.drawable.triangle_card,
-    squareID = R.drawable.square_card, cardBackID = R.drawable.card_back;
+            squareID = R.drawable.square_card, cardBackID = R.drawable.card_back;
+
+
     private Button nxtBtn;
     private boolean cardsClickable;
+    private boolean isGameOver;
 
 
     //Array of the card ImageViews just for easy access
@@ -64,9 +74,13 @@ public class MemoryGame extends FileManager {
 
         //Turning cardsClickable to false;
         cardsClickable = false;
+        isGameOver = false;
     }
 
 
+    /*
+    Saves IDs to given list (currentCardIDs, previousCardIDs)
+    */
     private void saveIDs(ArrayList<Integer> listToSaveTo) {
         try {
             for(int i = 0; i < cards.size(); i++) {
@@ -82,23 +96,28 @@ public class MemoryGame extends FileManager {
     }
 
 
+    /*
+    Starts the game by saving current IDs, shuffling, saving to previousCardIDs,
+    hides cards and then making them clickable while starting the timer
+    */
     private void onStartBtnClick(View v) {
         try {
             //Shuffle card IDs, save and hide
             saveIDs(currentCardIDs);
             shuffleCardIDs(currentCardIDs);
             saveIDs(previousCardIDs);
-            hideCards();
+            showCards();
             cardsClickable = true;
             //TODO: timer()
             displayTimer();
+            hideCards();
         }
         catch (Exception startBtn) {
             startBtn.printStackTrace();
         }
     }
 
-
+    //Work in progress: theoretically flips the card that you click
     private void onCardClick(View v) {
         int viewID = v.getId();
         int countFlipped = 0;
@@ -125,6 +144,10 @@ public class MemoryGame extends FileManager {
     }
 
 
+    /*
+    Flips card and then counts the amount of flipped cards, if greater than two check for pairs.
+    If cards match doesn't hide them again, if they don't match it will re-hide them.
+    */
     private void flipCard(int cardID, int index) {
         try {
                 if(cardsClickable) {
@@ -152,11 +175,18 @@ public class MemoryGame extends FileManager {
     }
 
 
+    /*
+    Uses Java 'Collections' library to shuffle given list of integers
+    lists we use this on are: previousCardIDs and currentCardIDs.
+    */
     private void shuffleCardIDs(ArrayList<Integer> listToShuffle) {
         Collections.shuffle(listToShuffle);
     }
 
 
+    /*
+    Saves all card shape values to previousCardIDs then sets all cards to flipped;
+    */
     private void hideCards() {
         try {
             saveIDs(previousCardIDs);
@@ -170,6 +200,9 @@ public class MemoryGame extends FileManager {
     }
 
 
+    /*
+    Sets one card to flipped and then saves to current IDs
+    */
     private void hideOneCard(int idToHide) {
         try {
             cards.get(idToHide).setImageResource(R.drawable.card_back);
@@ -181,6 +214,10 @@ public class MemoryGame extends FileManager {
     }
 
 
+    /*
+    Sets the image resources of all cards to their previous IDs (AKA Their shapes) then saves to
+    current IDs
+    */
     private void showCards() {
         try {
             for(int i = 0; i < cards.size(); i++) {
@@ -199,6 +236,10 @@ public class MemoryGame extends FileManager {
     }
 
 
+    /*
+    Creates two array lists of the index and IDs of cards that are flipped, then
+    checks if they have the same shape ID.
+     */
     private void checkMatchingPairs() {
         try {
             ArrayList<Integer> tempIDs = new ArrayList<Integer>();
@@ -230,6 +271,19 @@ public class MemoryGame extends FileManager {
         }
         catch (Exception cmp) {
             cmp.printStackTrace();
+        }
+    }
+
+
+    //Only show Next button after the game is over
+    private void displayNextButton() {
+        try {
+            if(isGameOver = true) {
+                nxtBtn.setVisibility(View.VISIBLE);
+            }
+        }
+        catch (Exception dnb) {
+            dnb.printStackTrace();
         }
     }
 }
