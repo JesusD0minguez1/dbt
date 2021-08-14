@@ -100,7 +100,7 @@ public class MemoryGame extends FileManager {
     Starts the game by saving current IDs, shuffling, saving to previousCardIDs,
     hides cards and then making them clickable while starting the timer
     */
-    private void onStartBtnClick(View v) {
+    public void onStartBtnClick(View v) {
         try {
             //Shuffle card IDs, save and hide
             saveIDs(currentCardIDs);
@@ -118,7 +118,7 @@ public class MemoryGame extends FileManager {
     }
 
     //Work in progress: theoretically flips the card that you click
-    private void onCardClick(View v) {
+    public void onCardClick(View v) {
         int viewID = v.getId();
         int countFlipped = 0;
         switch (viewID) {
