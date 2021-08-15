@@ -9,7 +9,7 @@ public class FileManager extends MainActivity {
 
     private String userName;
     private int userScore = 0;
-    private int time;
+    public int time;
     public  int click = 0;
 
     FileManager(){}

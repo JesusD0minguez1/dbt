@@ -25,11 +25,14 @@
         android:autoText="false"
         android:elegantTextHeight="true"
         android:fontFamily="@font/agencyb"
+        android:rotation="-2"
+        android:rotationX="-10"
+        android:rotationY="-2"
         android:shadowColor="#000000"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
         android:shadowRadius="3"
-        android:text="Welcome!"
+        android:text="Welcome to our Game!"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="48sp"
@@ -39,6 +42,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.07" />
+
+    <View
+        android:id="@+id/underLineWelcome"
+        android:layout_width="200dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="106dp"
+        android:layout_marginBottom="95dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/multiAutoCompleteTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ttplayerInfo" />
 
     <MultiAutoCompleteTextView
         android:id="@+id/multiAutoCompleteTextView"
