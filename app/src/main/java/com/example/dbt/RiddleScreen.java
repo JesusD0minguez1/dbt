@@ -1,6 +1,7 @@
 package com.example.dbt;
 import java.util.HashMap;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -209,5 +210,12 @@ public class RiddleScreen extends FileManager {
         score -=100;
         setUserScore(score);
         displayScore();
+    }
+
+    public void nextActivity1(View v)
+    {
+        Button B6 =findViewById(R.id.nxtBtnRiddle);
+        Intent action3 = new Intent(getApplicationContext(), MemoryGame.class);
+        startActivity(action3);
     }
 }

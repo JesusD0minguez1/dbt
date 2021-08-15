@@ -1,6 +1,7 @@
 package com.example.dbt;
 
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,8 +22,8 @@ Functionality plan -- Mat:
 public class MemoryGame extends FileManager {
 
 
-    private TextView timer, score, infoTxt;
-    private ImageView card1, card2, card3, card4, card5, card6;
+    public TextView timer, score, infoTxt;
+    public ImageView card1, card2, card3, card4, card5, card6;
 
 
 
@@ -34,17 +35,17 @@ public class MemoryGame extends FileManager {
             squareID = R.drawable.square_card, cardBackID = R.drawable.card_back;
 
 
-    private Button nxtBtn;
-    private boolean cardsClickable;
-    private boolean isGameOver;
+    public Button nxtBtn;
+    public boolean cardsClickable;
+    public boolean isGameOver;
 
 
     //Array of the card ImageViews just for easy access
-    private ArrayList<ImageView> cards = new ArrayList<ImageView>();
+    public ArrayList<Integer> cards = new ArrayList<Integer>();
     //Save to list using saveIDs() anytime a change is created
-    private ArrayList<Integer> currentCardIDs = new ArrayList<Integer>();
+    public ArrayList<Integer> currentCardIDs  = new ArrayList<>();;
     //Used to store previous IDs while hiding cards so that we know which card is which shape
-    private ArrayList<Integer> previousCardIDs = new ArrayList<Integer>();
+    public ArrayList<Integer> previousCardIDs  = new ArrayList<>();;
 
 
 
@@ -59,17 +60,18 @@ public class MemoryGame extends FileManager {
         score = findViewById(R.id.scoreView);
         infoTxt = findViewById(R.id.memoryInfoText);
         card1 = findViewById(R.id.card1);
+        card1.setImageResource(R.drawable.circle_card);
         card2 = findViewById(R.id.card2);
+        card2.setImageResource(R.drawable.triangle_card);
         card3 = findViewById(R.id.card3);
+        card3.setImageResource(R.drawable.square_card);
         card4 = findViewById(R.id.card4);
+        card4.setImageResource(R.drawable.square_card);
         card5 = findViewById(R.id.card5);
+        card5.setImageResource(R.drawable.triangle_card);
         card6 = findViewById(R.id.card6);
+        card6.setImageResource(R.drawable.circle_card);
         nxtBtn = findViewById(R.id.nxtBtnMemory);
-
-
-        //Create array cards
-        cards.add(card1); cards.add(card2); cards.add(card3); cards.add(card4);
-        cards.add(card5); cards.add(card6);
 
 
         //Turning cardsClickable to false;
@@ -83,11 +85,24 @@ public class MemoryGame extends FileManager {
     */
     private void saveIDs(ArrayList<Integer> listToSaveTo) {
         try {
+            if (!listToSaveTo.isEmpty()) {
+                listToSaveTo.clear();
+            }
             for(int i = 0; i < cards.size(); i++) {
-                if (!listToSaveTo.isEmpty()) {
-                    listToSaveTo.clear();
+                ImageView card = findViewById(cards.get(i));
+                Drawable cardDrawable = card.getDrawable();
+                if (cardDrawable == getDrawable(circleID)) {
+                    listToSaveTo.add(circleID);
                 }
-                listToSaveTo.add(cards.get(i).getId());
+                else if (cardDrawable == getDrawable(squareID)) {
+                    listToSaveTo.add(squareID);
+                }
+                else if(cardDrawable == getDrawable(triangleID)) {
+                    listToSaveTo.add(triangleID);
+                }
+                else {
+                    listToSaveTo.add(cardBackID);
+                }
             }
         }
         catch (Exception cci) {
@@ -102,14 +117,20 @@ public class MemoryGame extends FileManager {
     */
     public void onStartBtnClick(View v) {
         try {
+            //Create array cards :: CAUSING ISSUES NEEDS FIXING
+            cards.add(findViewById(R.id.card1).getId()); cards.add(findViewById(R.id.card2).getId());
+            cards.add(findViewById(R.id.card3).getId()); cards.add(findViewById(R.id.card4).getId());
+            cards.add(findViewById(R.id.card5).getId()); cards.add(findViewById(R.id.card6).getId());
+            System.out.print("HERE \n---------------------\n " +cards.get(0).toString());
             //Shuffle card IDs, save and hide
             saveIDs(currentCardIDs);
             shuffleCardIDs(currentCardIDs);
             saveIDs(previousCardIDs);
+            saveIDs(currentCardIDs);
             showCards();
             cardsClickable = true;
             //TODO: timer()
-            displayTimer();
+            //displayTimer();
             hideCards();
         }
         catch (Exception startBtn) {
@@ -118,28 +139,11 @@ public class MemoryGame extends FileManager {
     }
 
     //Work in progress: theoretically flips the card that you click
-    public void onCardClick(View v) {
-        int viewID = v.getId();
-        int countFlipped = 0;
-        switch (viewID) {
-            case 1:
-                flipCard(currentCardIDs.get(0), 0);
-                return;
-            case 2:
-                flipCard(currentCardIDs.get(1), 1);
-                return;
-            case 3:
-                flipCard(currentCardIDs.get(2), 2);
-                return;
-            case 4:
-                flipCard(currentCardIDs.get(3), 3);
-                return;
-            case 5:
-                flipCard(currentCardIDs.get(4), 4);
-                return;
-            case 6:
-                flipCard(currentCardIDs.get(5), 5);
-                return;
+    public void onCardClick(View cardClicked) {
+        for (int i = 0; i < cards.size(); i++) {
+            if(cards.get(i) == cardClicked.getId()) {
+                flipCard(currentCardIDs.get(i), i);
+            }
         }
     }
 
@@ -151,6 +155,7 @@ public class MemoryGame extends FileManager {
     private void flipCard(int cardID, int index) {
         try {
                 if(cardsClickable) {
+                    ImageView card;
                     int countFlipped = 0;
                     for(int i = 0; i < cards.size(); i++) {
                         if(currentCardIDs.get(i) == cardBackID) {
@@ -161,10 +166,12 @@ public class MemoryGame extends FileManager {
                         checkMatchingPairs();
                     }
                     if( cardID == R.drawable.card_back) {
-                        cards.get(index).setImageResource(previousCardIDs.get(index));
+                        card = findViewById(cards.get(index));
+                        card.setImageResource(previousCardIDs.get(index));
                     }
                     else {
-                        cards.get(index).setImageResource(cardBackID);
+                        card = findViewById(cards.get(index));
+                        card.setImageResource(R.drawable.card_back);
                     }
                     saveIDs(currentCardIDs);
                 }
@@ -190,8 +197,10 @@ public class MemoryGame extends FileManager {
     private void hideCards() {
         try {
             saveIDs(previousCardIDs);
+            ImageView card;
             for(int i = 0; i < cards.size(); i++) {
-                cards.get(i).setImageResource(R.drawable.card_back);
+                card = findViewById(cards.get(i));
+                card.setImageResource(R.drawable.card_back);
             }
         }
         catch (Exception hC) {
@@ -205,7 +214,9 @@ public class MemoryGame extends FileManager {
     */
     private void hideOneCard(int idToHide) {
         try {
-            cards.get(idToHide).setImageResource(R.drawable.card_back);
+            ImageView card;
+            card = findViewById(cards.get(idToHide));
+            card.setImageResource(R.drawable.card_back);
             saveIDs(currentCardIDs);
         }
         catch (Exception hoc) {
@@ -220,8 +231,10 @@ public class MemoryGame extends FileManager {
     */
     private void showCards() {
         try {
+            ImageView card;
             for(int i = 0; i < cards.size(); i++) {
-                cards.get(i).setImageResource(previousCardIDs.get(i));
+                card = findViewById(cards.get(i));
+                card.setImageResource(previousCardIDs.get(i));
             }
             saveIDs(currentCardIDs);
         }
@@ -263,7 +276,7 @@ public class MemoryGame extends FileManager {
                         if(getUserScore() != 0)
                         setUserScore(getUserScore() - 5);
                         for(int p = 0; p < tempIndexes.size(); p++) {
-                            hideOneCard(cards.get(p).getId());
+                            hideOneCard(cards.get(p));
                         }
                     }
                 }
