@@ -3,6 +3,7 @@ package com.example.dbt;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -129,9 +130,7 @@ public class MemoryGame extends FileManager {
             saveIDs(currentCardIDs);
             showCards();
             cardsClickable = true;
-            //TODO: timer()
-            //displayTimer();
-            hideCards();
+            countdown(10);
         }
         catch (Exception startBtn) {
             startBtn.printStackTrace();
@@ -244,11 +243,6 @@ public class MemoryGame extends FileManager {
     }
 
 
-    private void displayTimer() {
-        timer.setText(time);
-    }
-
-
     /*
     Creates two array lists of the index and IDs of cards that are flipped, then
     checks if they have the same shape ID.
@@ -298,5 +292,22 @@ public class MemoryGame extends FileManager {
         catch (Exception dnb) {
             dnb.printStackTrace();
         }
+    }
+
+
+    public void countdown(int time) {
+        int milli = time * 1000;
+
+        new CountDownTimer(milli, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                timer.setText((millisUntilFinished / 1000) + "");
+            }
+
+            public void onFinish() {
+                timer.setText("Time's up!");
+                hideCards();
+            }
+        }.start();
     }
 }
