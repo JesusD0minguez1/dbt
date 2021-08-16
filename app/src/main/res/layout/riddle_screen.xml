@@ -102,7 +102,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/op1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:buttonTint="#FF9800"
@@ -119,7 +119,7 @@
             android:textStyle="bold" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/op2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:buttonTint="#FF9800"
@@ -135,7 +135,7 @@
             android:textStyle="bold" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/op3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:buttonTint="#FF9800"
@@ -151,7 +151,7 @@
             android:textStyle="bold" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/op4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:buttonTint="#FF9800"
@@ -167,7 +167,7 @@
             android:textStyle="bold" />
 
         <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/op5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:buttonTint="#FF9800"
@@ -202,6 +202,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.834" />
 
+    <Button
+        android:id="@+id/nxtBtnRiddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/agencyb"
+        android:onClick="nextActivity1"
+        android:shadowColor="#000000"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="5"
+        android:text="next"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/riddleCA"
+        app:layout_constraintEnd_toStartOf="@+id/riddleScore"
+        app:layout_constraintHorizontal_bias="0.803"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        tools:visibility="visible" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="@android:style/Widget.ProgressBar.Horizontal"
@@ -228,6 +249,7 @@
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:clickable="true"
+        android:onClick="settingsClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

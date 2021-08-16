@@ -35,8 +35,8 @@ public class FileManager extends MainActivity {
     public void setUserScore(int newScore) { userScore = newScore; }
 
 
-    public boolean checkCorrect() {
-        return true;
+    public void checkCorrect(View v) {
+
     }
 
 
