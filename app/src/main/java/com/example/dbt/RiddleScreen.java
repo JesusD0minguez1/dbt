@@ -2,10 +2,8 @@ package com.example.dbt;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -17,8 +15,8 @@ import java.util.Set;
 public class RiddleScreen extends FileManager {
 
 
-    private HashMap<Integer, String> riddles = new HashMap<Integer, String>(3);
-    private HashMap<Integer, String> riddleAnswer = new HashMap<Integer, String>(9);
+    private HashMap<Integer, String> riddles = new HashMap<Integer, String>(6);
+    private HashMap<Integer, String> riddleAnswer = new HashMap<Integer, String>(6);
     private ProgressBar progBar;
 
 
@@ -38,9 +36,12 @@ public class RiddleScreen extends FileManager {
 
     private void populateRiddles() {
         try {
-            riddles.put(1, "Test Riddle 1");
-            riddles.put(2, "Test Riddle 2");
-            riddles.put(3, "test Riddle 3");
+            riddles.put(1, "(MHA) Aizawa's hero name?");
+            riddles.put(2, "Nintendo 64 release date (US)?");
+            riddles.put(3, "What college did Comire work at before");
+            riddles.put(4, "What movie was filmed in Salt Lake City");
+            riddles.put(5, "");
+            riddles.put(6, "");
         } catch (Exception pr) {
             pr.printStackTrace();
         }
@@ -49,9 +50,12 @@ public class RiddleScreen extends FileManager {
 
     private void populateQuestions() {
         try {
-            riddleAnswer.put(1, "Riddle 1 : Question 1");
-            riddleAnswer.put(2, "Riddle 2 : Question 1");
+            riddleAnswer.put(1, "Eraser Head");
+            riddleAnswer.put(2, "September 29, 1996");
             riddleAnswer.put(3, "Riddle 3 : Question 1");
+            riddleAnswer.put(4, "The Sandlot");
+            riddleAnswer.put(5, "Riddle 5 : Question 1");
+            riddleAnswer.put(6, "Riddle 6 : Question 1");
         } catch (Exception pq) {
             pq.printStackTrace();
         }
@@ -69,37 +73,49 @@ public class RiddleScreen extends FileManager {
         final int[] p = {1};
         p[0] = 0;
 
-        Set<Integer> rkey = riddleAnswer.keySet();
-        Set<Integer> raKey = riddles.keySet();
-        
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                RadioButton cr = r4;
+                RadioButton cr = r1;
                 switch (p[0]) {
                     case 0:
                         cr = r1;
                         displayRiddlesOption(1);
+                        displayRiddles(1);
                         break;
                     case 1:
                         cr = r2;
                         displayRiddlesOption(2);
+                        displayRiddles(2);
                         break;
                     case 2:
-                        cr = r4;
+                        cr = r3;
                         displayRiddlesOption(3);
+                        displayRiddles(3);
+                        break;
+                    case 3:
+                        cr = r5;
+                        displayRiddlesOption(4);
+                        displayRiddles(4);
+                        break;
+                    case 4:
+                        cr = r3;
+                        displayRiddlesOption(5);
+                        displayRiddles(5);
+                        break;
+                    case 5:
+                        cr = r4;
+                        displayRiddlesOption(6);
+                        displayRiddles(6);
                         break;
                 }
                 if (cr.isChecked()) {
-                    if (p[0] <= 2) {
                         isCorrect[0] = true;
                         updateUserScore(isCorrect[0]);
                         p[0] = p[0] + 1;
-                    }
                 } else {
-
-                    if (!(getUserScore() <= 0)) {
-                        isCorrect[0] = false;
-                        p[0] = p[0] + 1;
+                    p[0] = p[0] + 1;
+                    isCorrect[0] = false;
+                    if (!(getUserScore() <= 0) && p[0] < 6) {
                         updateUserScore(isCorrect[0]);
                     }
                 }
@@ -133,6 +149,29 @@ public class RiddleScreen extends FileManager {
         }
     }
 
+    private void displayRiddles(int p){
+        TextView riddleDisplay = findViewById(R.id.riddleInfotxt);
+        switch (p){
+            case 1:
+                riddleDisplay.setText(riddles.get(2));
+                break;
+            case 2:
+                riddleDisplay.setText(riddles.get(3));
+                break;
+            case 3:
+                riddleDisplay.setText(riddles.get(4));
+                break;
+            case 4:
+                riddleDisplay.setText(riddles.get(5));
+                break;
+            case 5:
+                riddleDisplay.setText(riddles.get(6));
+                break;
+            case 6:
+                riddleDisplay.setText("Done");
+        }
+    }
+
     public void displayRiddlesOption() {
         try {
             RadioButton r1 = findViewById(R.id.op1);
@@ -142,10 +181,10 @@ public class RiddleScreen extends FileManager {
             RadioButton r5 = findViewById(R.id.op5);
 
             r1.setText(riddleAnswer.get(1));
-            r2.setText("Option");
-            r3.setText("dd");
-            r4.setText("ferwer");
-            r5.setText("rwbr");
+            r2.setText("Head Eraser");
+            r3.setText("Cancel Head");
+            r4.setText("Mr. Mic");
+            r5.setText("Quirk Eraser");
 
 
         } catch (Exception e) {
@@ -162,27 +201,47 @@ public class RiddleScreen extends FileManager {
             RadioButton op5 = findViewById(R.id.op5);
 
             switch (p) {
-                case 0:
-                    op1.setText(riddleAnswer.get(1));
-                    op2.setText("Option");
-                    op3.setText("dd");
-                    op4.setText("ferwer");
-                    op5.setText("rwbr");
-                    break;
-
                 case 1:
-                    op1.setText("sfsf");
+                    op1.setText("July 5, 1997");
                     op2.setText(riddleAnswer.get(2));
-                    op3.setText("dd");
-                    op4.setText("ferwer");
-                    op5.setText("rwbr");
+                    op3.setText("Jun 23, 1996");
+                    op4.setText("November 16, 1996");
+                    op5.setText("March 1, 1997");
                     break;
                 case 2:
-                    op1.setText("Howdy!");
-                    op2.setText("Are you ready for a bad time?");
-                    op3.setText("Who needs arms with legs like these");
-                    op4.setText(riddleAnswer.get(2));
-                    op5.setText("Nyah!");
+                    op1.setText("Oof");
+                    op2.setText("Thing");
+                    op3.setText(riddleAnswer.get(3));
+                    op4.setText("FLD");
+                    op5.setText("MOMMA!");
+                    break;
+                case 3:
+                    op1.setText("The Goonies");
+                    op2.setText("VFR");
+                    op3.setText("Find hell with me");
+                    op4.setText("FIRH!");
+                    op5.setText(riddleAnswer.get(4));
+                    break;
+                case 4:
+                    op1.setText("*Guitar riffs*");
+                    op2.setText("I can show you");
+                    op3.setText("What it's like");
+                    op4.setText(riddleAnswer.get(5));
+                    op5.setText("thaf;!");
+                    break;
+                case 5:
+                    op1.setText("LIIIKKEE");
+                    op2.setText("*More guitar riffs*");
+                    op3.setText("*Drum ending*");
+                    op4.setText(riddleAnswer.get(6));
+                    op5.setText("What will it take, to rip the heart from your hate");
+                    break;
+                case 6:
+                    op1.setText("");
+                    op2.setText("");
+                    op3.setText("");
+                    op4.setText("");
+                    op5.setText("");
             }
         } catch (Exception e) {
             e.printStackTrace();
