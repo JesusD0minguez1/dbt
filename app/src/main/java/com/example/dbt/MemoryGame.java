@@ -131,12 +131,11 @@ public class MemoryGame extends FileManager {
             System.out.print("HERE \n---------------------\n " +cards.get(0).toString());
             //Shuffle card IDs, save and hide
             saveIDs(currentCardIDs);
-            shuffleCardIDs(currentCardIDs);
+            Collections.shuffle(currentCardIDs);
             saveIDs(previousCardIDs);
-            shuffleCardIDs(currentCardIDs);
-            saveIDs(currentCardIDs);
             showCards();
             countdown(5);
+            Collections.shuffle(currentCardIDs);
             cardsClickable = true;
         }
         catch (Exception startBtn) {
@@ -147,9 +146,11 @@ public class MemoryGame extends FileManager {
     //Work in progress: theoretically flips the card that you click
     public void onCardClick(View cardClicked) {
         ImageView card = (ImageView) cardClicked;
-        for (int i = 0; i < cards.size(); i++) {
-            if(cards.get(i).equals(cardClicked.getId())) {
-                flipCard(card, i);
+        if (cardClicked.getVisibility() == View.VISIBLE) {
+            for (int i = 0; i < cards.size(); i++) {
+                if(cards.get(i).equals(cardClicked.getId())) {
+                    flipCard(card, i);
+                }
             }
         }
     }
@@ -162,15 +163,21 @@ public class MemoryGame extends FileManager {
     private void flipCard(ImageView card, int index) {
         try {
                 if(cardsClickable) {
-
+                    int cardId1 = 0, cardId2 = 0;
                     int countFlipped = 0;
                     for(int i = 0; i < cards.size(); i++) {
-                        if(currentCardIDs.get(i) == cardBackID) {
+                        if(currentCardIDs.get(i) != cardBackID) {
+                            if(countFlipped == 0) {
+                                cardId1 = currentCardIDs.get(i);
+                            }
                             countFlipped++;
+                            if(countFlipped == 1) {
+                                cardId2 = currentCardIDs.get(i);
+                            }
                         }
                     }
-                    if(countFlipped >= 2) {
-                        //checkMatchingPairs();
+                    if(countFlipped == 2) {
+                        checkMatchingPairs(cardId1, cardId2);
                     }
                     if( card.getTag().equals(R.drawable.card_back)) {
                         card.setImageResource(previousCardIDs.get(index));
@@ -186,15 +193,6 @@ public class MemoryGame extends FileManager {
         catch (Exception fc) {
             fc.printStackTrace();
         }
-    }
-
-
-    /*
-    Uses Java 'Collections' library to shuffle given list of integers
-    lists we use this on are: previousCardIDs and currentCardIDs.
-    */
-    private void shuffleCardIDs(ArrayList<Integer> listToShuffle) {
-        Collections.shuffle(listToShuffle);
     }
 
 
@@ -242,9 +240,26 @@ public class MemoryGame extends FileManager {
         try {
             ImageView card;
             for(int i = 0; i < cards.size(); i++) {
-                card = findViewById(cards.get(i));
-                card.setImageResource(previousCardIDs.get(i));
-                card.setTag(previousCardIDs.get(i));
+                card = findViewById(previousCardIDs.get(i));
+                if (card.getTag().equals(circleID)) {
+                    card.setImageResource(R.drawable.circle_card);
+                    card.setTag(R.drawable.circle_card);
+                }
+                else if (card.getTag().equals(squareID)) {
+                    card.setImageResource(R.drawable.square_card);
+                    card.setTag(R.drawable.square_card);
+                }
+                else if(card.getTag().equals(triangleID)) {
+                    card.setImageResource(R.drawable.triangle_card);
+                    card.setTag(R.drawable.triangle_card);
+                }
+                else {
+                    card.setImageResource(R.drawable.card_back);
+                    card.setTag(R.drawable.card_back);
+                }
+                if(card.getVisibility() == View.INVISIBLE) {
+                    card.setVisibility(View.VISIBLE);
+                }
             }
             saveIDs(currentCardIDs);
         }
@@ -255,35 +270,26 @@ public class MemoryGame extends FileManager {
 
 
     /*
-    Creates two array lists of the index and IDs of cards that are flipped, then
-    checks if they have the same shape ID.
+    Takes in two card ids, compares them,
+    if matching add score and hide the cards from the screen
+    else lower score and hide cards
      */
-    private void checkMatchingPairs() {
+    private void checkMatchingPairs(int cardId1, int cardId2) {
         try {
-            ArrayList<Integer> tempIDs = new ArrayList<Integer>();
-            int countFlipped = 0;
-            ArrayList<Integer> tempIndexes = new ArrayList<Integer>();
-            for (int i = 0; i < cards.size(); i++) {
-                if(currentCardIDs.get(i) != cardBackID) {
-                    countFlipped += 1;
-                    tempIndexes.add(i);
-                }
+            ImageView card1;
+            ImageView card2;
+            if (cardId1 == cardId2) {
+                setUserScore(getUserScore() + 5);
+                card1 = findViewById(cards.get(currentCardIDs.indexOf(cardId1)));
+                card2 = findViewById(cards.get(currentCardIDs.indexOf(cardId2)));
+                card1.setVisibility(View.INVISIBLE);
+                card2.setVisibility(View.INVISIBLE);
             }
-            for (int j = 0; j < countFlipped; j++) {
-                tempIDs.add(currentCardIDs.get(j));
-            }
-            for (int k = 0; k < tempIDs.size(); k++) {
-                for (int o = 0; o < tempIDs.size(); o++) {
-                    if(tempIDs.get(k) == tempIDs.get(o)) {
-                        setUserScore(getUserScore() + 5);
-                    }
-                    else {
-                        if(getUserScore() != 0)
-                        setUserScore(getUserScore() - 5);
-                        for(int p = 0; p < tempIndexes.size(); p++) {
-                            hideOneCard(cards.get(p));
-                        }
-                    }
+            else {
+                if(getUserScore() != 0) {
+                    setUserScore(getUserScore() - 5);
+                    hideOneCard(cardId1);
+                    hideOneCard(cardId2);
                 }
             }
         }
@@ -306,6 +312,11 @@ public class MemoryGame extends FileManager {
     }
 
 
+    /*
+    Countdown courtesy of Joey:
+    --Counts down to set time and then hidesCards() after
+    --countdown is over
+     */
     public void countdown(int time) {
         int milli = time * 1000;
 
