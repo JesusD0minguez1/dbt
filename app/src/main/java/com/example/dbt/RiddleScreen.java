@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -265,5 +266,18 @@ public class RiddleScreen extends FileManager {
         Button B6 = findViewById(R.id.nxtBtnRiddle);
         Intent action3 = new Intent(getApplicationContext(), MemoryGame.class);
         startActivity(action3);
+    }
+
+
+    public void settingsRiddle(View v)
+    {
+        ImageView settings = findViewById(R.id.settingsRiddle);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SettingMenu set = new SettingMenu();
+                set.showWindow(RiddleScreen.this, settings);
+            }
+        });
     }
 }

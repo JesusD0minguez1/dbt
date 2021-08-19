@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/gamebg" />
 
     <TextView
@@ -94,7 +94,7 @@
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/card3"
+        app:layout_constraintBottom_toTopOf="@+id/card2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/startButtonMem" />
@@ -119,91 +119,85 @@
         app:layout_constraintEnd_toStartOf="@+id/startButtonMem" />
 
     <ImageView
-        android:id="@+id/card1"
+        android:id="@+id/card0"
         android:layout_width="107dp"
         android:layout_height="110dp"
         android:layout_marginTop="168dp"
         android:layout_marginBottom="327dp"
         android:clickable="true"
         android:contextClickable="false"
-        android:onClick="onCardClick"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/card2"
+        app:layout_constraintEnd_toStartOf="@+id/card1"
         app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/underLineMem"
-        tools:srcCompat="@drawable/circle_card" />
+        tools:srcCompat="@drawable/card_back" />
 
     <ImageView
-        android:id="@+id/card2"
+        android:id="@+id/card1"
         android:layout_width="107dp"
         android:layout_height="110dp"
         android:layout_marginTop="168dp"
         android:layout_marginBottom="327dp"
         android:clickable="true"
-        android:onClick="onCardClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/underLineMem"
-        tools:srcCompat="@drawable/triangle_card" />
+        tools:srcCompat="@drawable/card_back" />
 
     <ImageView
-        android:id="@+id/card3"
+        android:id="@+id/card2"
         android:layout_width="107dp"
         android:layout_height="110dp"
         android:layout_marginStart="264dp"
         android:layout_marginTop="250dp"
         android:layout_marginEnd="24dp"
         android:clickable="true"
-        android:onClick="onCardClick"
-        app:layout_constraintBottom_toTopOf="@+id/card6"
+        app:layout_constraintBottom_toTopOf="@+id/card5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.814"
-        tools:srcCompat="@drawable/square_card" />
+        tools:srcCompat="@drawable/card_back" />
 
     <ImageView
-        android:id="@+id/card4"
+        android:id="@+id/card3"
         android:layout_width="107dp"
         android:layout_height="110dp"
         android:clickable="true"
-        android:onClick="onCardClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.666"
-        tools:srcCompat="@drawable/square_card" />
+        tools:srcCompat="@drawable/card_back" />
+
+    <ImageView
+        android:id="@+id/card4"
+        android:layout_width="107dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        app:layout_constraintEnd_toStartOf="@+id/card5"
+        app:layout_constraintStart_toEndOf="@+id/card3"
+        app:layout_constraintTop_toBottomOf="@+id/card1"
+        tools:srcCompat="@drawable/card_back" />
 
     <ImageView
         android:id="@+id/card5"
         android:layout_width="107dp"
         android:layout_height="110dp"
-        android:layout_marginTop="8dp"
         android:clickable="true"
-        android:onClick="onCardClick"
-        app:layout_constraintEnd_toStartOf="@+id/card6"
-        app:layout_constraintStart_toEndOf="@+id/card4"
-        app:layout_constraintTop_toBottomOf="@+id/card2"
-        tools:srcCompat="@drawable/triangle_card" />
-
-    <ImageView
-        android:id="@+id/card6"
-        android:layout_width="107dp"
-        android:layout_height="110dp"
-        android:clickable="true"
-        android:onClick="onCardClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.878"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.666"
-        tools:srcCompat="@drawable/circle_card" />
+        tools:srcCompat="@drawable/card_back" />
 
     <ImageView
         android:id="@+id/settingsMem"
@@ -211,6 +205,7 @@
         android:layout_height="57dp"
         android:layout_marginStart="352dp"
         android:layout_marginBottom="674dp"
+        android:onClick="settingsMem"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -226,6 +221,7 @@
         android:layout_marginEnd="135dp"
         android:layout_marginBottom="25dp"
         android:fontFamily="@font/agencyb"
+        android:onClick="nextActivityMemory"
         android:shadowColor="#000000"
         android:shadowDx="10"
         android:shadowDy="10"
