@@ -27,7 +27,7 @@ public class MemoryGame extends FileManager {
     public TextView timer, score, infoTxt;
     public ImageView card0, card1, card2, card3, card4, card5;
     private int circle, triangle, square, cardBack;
-    public Button nxtBtn;
+    public Button nxtBtn, startBtn;
     public boolean gameStarted;
     //Array of the card ImageViews just for easy access
     Integer[] cards;
@@ -62,6 +62,7 @@ public class MemoryGame extends FileManager {
         card5 = findViewById(R.id.card5);
         card5.setImageResource(R.drawable.card_back);
         nxtBtn = findViewById(R.id.nxtBtnMemory);
+        startBtn = findViewById(R.id.startButtonMem);
 
 
         gameStarted = false;
@@ -76,6 +77,8 @@ public class MemoryGame extends FileManager {
         try {
             //Checks to see if game is already started
             if(gameStarted == false) {
+                //Set start button invisible
+                startBtn.setVisibility(View.INVISIBLE);
                 //Set card tags so we know their positions
                 card0.setTag("0"); card1.setTag("1"); card2.setTag("2"); card3.setTag("3"); card4.setTag("4");
                 card5.setTag("5");
@@ -217,51 +220,75 @@ public class MemoryGame extends FileManager {
         if (firstClicked == secondClicked) {
             totalMatches += 1;
             if (firstPosition == 0) {
-                card0.setVisibility(View.INVISIBLE);
+                card0.setEnabled(false);
+                card0.setPadding(50, 50, 50, 50);
+                //card0.setVisibility(View.INVISIBLE);
             }
             else if (firstPosition == 1) {
-                card1.setVisibility(View.INVISIBLE);
+                card1.setEnabled(false);
+                card1.setPadding(50, 50, 50, 50);
+                //card1.setVisibility(View.INVISIBLE);
             }
             else if (firstPosition == 2) {
-                card2.setVisibility(View.INVISIBLE);
+                card2.setEnabled(false);
+                card2.setPadding(50, 50, 50, 50);
+                //card2.setVisibility(View.INVISIBLE);
             }
             else if (firstPosition == 3) {
-                card3.setVisibility(View.INVISIBLE);
+                card3.setEnabled(false);
+                card3.setPadding(50, 50, 50, 50);
+                //card3.setVisibility(View.INVISIBLE);
             }
             else if (firstPosition == 4) {
-                card4.setVisibility(View.INVISIBLE);
+                card4.setEnabled(false);
+                card4.setPadding(50, 50, 50, 50);
+                //card4.setVisibility(View.INVISIBLE);
             }
             else if (firstPosition == 5) {
-                card5.setVisibility(View.INVISIBLE);
+                card5.setEnabled(false);
+                card5.setPadding(50, 50, 50, 50);
+                //card5.setVisibility(View.INVISIBLE);
             }
             if (secondPosition == 0) {
-                card0.setVisibility(View.INVISIBLE);
+                card0.setEnabled(false);
+                card0.setPadding(50, 50, 50, 50);
+                //card0.setVisibility(View.INVISIBLE);
             }
             else if (secondPosition == 1) {
-                card1.setVisibility(View.INVISIBLE);
+                card1.setEnabled(false);
+                card1.setPadding(50, 50, 50, 50);
+                //card1.setVisibility(View.INVISIBLE);
             }
             else if (secondPosition == 2) {
-                card2.setVisibility(View.INVISIBLE);
+                card2.setEnabled(false);
+                card2.setPadding(50, 50, 50, 50);
+                //card2.setVisibility(View.INVISIBLE);
             }
             else if (secondPosition == 3) {
-                card3.setVisibility(View.INVISIBLE);
+                card3.setEnabled(false);
+                card3.setPadding(50, 50, 50, 50);
+                //card3.setVisibility(View.INVISIBLE);
             }
             else if (secondPosition == 4) {
-                card4.setVisibility(View.INVISIBLE);
+                card4.setEnabled(false);
+                card4.setPadding(50, 50, 50, 50);
+                //card4.setVisibility(View.INVISIBLE);
             }
             else if (secondPosition == 5) {
-                card5.setVisibility(View.INVISIBLE);
+                card5.setEnabled(false);
+                card5.setPadding(50, 50, 50, 50);
+                //card5.setVisibility(View.INVISIBLE);
             }
+            infoTxt.setText("Correct!");
             //TODO Add whatever amount to user's score
         }
         else {
             hideCards();
         }
         if(firstClicked != secondClicked) {
-            //TODO Remove whatever amount from user's score
-        }
-        else {
+            infoTxt.setText("Incorrect!");
             hideCards();
+            //TODO Remove whatever amount from user's score
         }
         enableCards();
         if (totalMatches == 3) {
@@ -318,12 +345,24 @@ public class MemoryGame extends FileManager {
 
     }
     private void hideCards() {
-        card0.setImageResource(R.drawable.card_back);
-        card1.setImageResource(R.drawable.card_back);
-        card2.setImageResource(R.drawable.card_back);
-        card3.setImageResource(R.drawable.card_back);
-        card4.setImageResource(R.drawable.card_back);
-        card5.setImageResource(R.drawable.card_back);
+        if(card0.getPaddingBottom() != 50) {
+            card0.setImageResource(R.drawable.card_back);
+        }
+        if(card1.getPaddingBottom() != 50) {
+            card1.setImageResource(R.drawable.card_back);
+        }
+        if(card2.getPaddingBottom() != 50) {
+            card2.setImageResource(R.drawable.card_back);
+        }
+        if(card3.getPaddingBottom() != 50) {
+            card3.setImageResource(R.drawable.card_back);
+        }
+        if(card4.getPaddingBottom() != 50) {
+            card4.setImageResource(R.drawable.card_back);
+        }
+        if(card5.getPaddingBottom() != 50) {
+            card5.setImageResource(R.drawable.card_back);
+        }
     }
 
 
@@ -362,7 +401,8 @@ public class MemoryGame extends FileManager {
             }
 
             public void onFinish() {
-                timer.setText("Time's up!");
+                infoTxt.setText("Time's up!");
+                timer.setText("");
                 hideCards();
             }
         }.start();
