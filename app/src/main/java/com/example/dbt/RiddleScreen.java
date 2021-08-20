@@ -1,5 +1,6 @@
 package com.example.dbt;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,14 +10,13 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.HashMap;
-import java.util.Set;
 
 
 public class RiddleScreen extends FileManager {
 
 
-    private HashMap<Integer, String> riddles = new HashMap<Integer, String>(6);
-    private HashMap<Integer, String> riddleAnswer = new HashMap<Integer, String>(6);
+    final private HashMap<Integer, String> riddles = new HashMap<Integer, String>(6);
+    final private HashMap<Integer, String> riddleAnswer = new HashMap<Integer, String>(6);
     private ProgressBar progBar;
 
 
@@ -38,9 +38,9 @@ public class RiddleScreen extends FileManager {
         try {
             riddles.put(1, "(MHA) Aizawa's hero name?");
             riddles.put(2, "Nintendo 64 release date (US)?");
-            riddles.put(3, "What college did Comire work at before");
-            riddles.put(4, "What movie was filmed in Salt Lake City");
-            riddles.put(5, "");
+            riddles.put(3, "Where did Comire work at before?");
+            riddles.put(4, "What movie was filmed in SLC?");
+            riddles.put(5, "Where was Neumont before?");
             riddles.put(6, "");
         } catch (Exception pr) {
             pr.printStackTrace();
@@ -52,9 +52,9 @@ public class RiddleScreen extends FileManager {
         try {
             riddleAnswer.put(1, "Eraser Head");
             riddleAnswer.put(2, "September 29, 1996");
-            riddleAnswer.put(3, "Riddle 3 : Question 1");
+            riddleAnswer.put(3, "USC");
             riddleAnswer.put(4, "The Sandlot");
-            riddleAnswer.put(5, "Riddle 5 : Question 1");
+            riddleAnswer.put(5, "South Jordan?");
             riddleAnswer.put(6, "Riddle 6 : Question 1");
         } catch (Exception pq) {
             pq.printStackTrace();
@@ -62,7 +62,7 @@ public class RiddleScreen extends FileManager {
     }
 
 
-    public boolean checkCorrect() {
+    public void checkCorrect() {
         Button btn = findViewById(R.id.riddleCA);
         RadioButton r1 = findViewById(R.id.op1);
         RadioButton r2 = findViewById(R.id.op2);
@@ -109,22 +109,26 @@ public class RiddleScreen extends FileManager {
                         break;
                 }
                 if (cr.isChecked()) {
+                    if (p[0] < 6) {
                         isCorrect[0] = true;
                         updateUserScore(isCorrect[0]);
                         p[0] = p[0] + 1;
+                        trackProgress(p[0]);
+                    }
                 } else {
                     p[0] = p[0] + 1;
                     isCorrect[0] = false;
+                    trackProgress(p[0]);
                     if (!(getUserScore() <= 0) && p[0] < 6) {
                         updateUserScore(isCorrect[0]);
                     }
                 }
             }
         });
-        return isCorrect[0];
     }
 
 
+    @SuppressLint("SetTextI18n")
     private void updateUserScore(boolean correct) {
         TextView score = findViewById(R.id.riddleScore);
         try {
@@ -149,9 +153,9 @@ public class RiddleScreen extends FileManager {
         }
     }
 
-    private void displayRiddles(int p){
+    private void displayRiddles(int p) {
         TextView riddleDisplay = findViewById(R.id.riddleInfotxt);
-        switch (p){
+        switch (p) {
             case 1:
                 riddleDisplay.setText(riddles.get(2));
                 break;
@@ -172,6 +176,7 @@ public class RiddleScreen extends FileManager {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void displayRiddlesOption() {
         try {
             RadioButton r1 = findViewById(R.id.op1);
@@ -192,6 +197,7 @@ public class RiddleScreen extends FileManager {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void displayRiddlesOption(int p) {
         try {
             RadioButton op1 = findViewById(R.id.op1);
@@ -210,16 +216,16 @@ public class RiddleScreen extends FileManager {
                     break;
                 case 2:
                     op1.setText("Oof");
-                    op2.setText("Thing");
+                    op2.setText("UNO");
                     op3.setText(riddleAnswer.get(3));
                     op4.setText("FLD");
                     op5.setText("MOMMA!");
                     break;
                 case 3:
                     op1.setText("The Goonies");
-                    op2.setText("VFR");
-                    op3.setText("Find hell with me");
-                    op4.setText("FIRH!");
+                    op2.setText("Texas Chainsaw Massacre");
+                    op3.setText("Star Wars: Episode VI");
+                    op4.setText("Daddy Day Camp");
                     op5.setText(riddleAnswer.get(4));
                     break;
                 case 4:
