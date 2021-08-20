@@ -19,6 +19,7 @@ public class RiddleScreen extends FileManager {
     private HashMap<Integer, String> riddles = new HashMap<Integer, String>(6);
     private HashMap<Integer, String> riddleAnswer = new HashMap<Integer, String>(6);
     private ProgressBar progBar;
+    private int nextProg = 0;
 
 
     @Override
@@ -82,31 +83,37 @@ public class RiddleScreen extends FileManager {
                         cr = r1;
                         displayRiddlesOption(1);
                         displayRiddles(1);
+                        nextProg += 1;
                         break;
                     case 1:
                         cr = r2;
                         displayRiddlesOption(2);
                         displayRiddles(2);
+                        nextProg += 1;
                         break;
                     case 2:
                         cr = r3;
                         displayRiddlesOption(3);
                         displayRiddles(3);
+                        nextProg += 1;
                         break;
                     case 3:
                         cr = r5;
                         displayRiddlesOption(4);
                         displayRiddles(4);
+                        nextProg += 1;
                         break;
                     case 4:
                         cr = r3;
                         displayRiddlesOption(5);
                         displayRiddles(5);
+                        nextProg += 1;
                         break;
                     case 5:
                         cr = r4;
                         displayRiddlesOption(6);
                         displayRiddles(6);
+                        nextProg += 1;
                         break;
                 }
                 if (cr.isChecked()) {
@@ -120,6 +127,7 @@ public class RiddleScreen extends FileManager {
                         updateUserScore(isCorrect[0]);
                     }
                 }
+                trackProgress(nextProg);
             }
         });
         return isCorrect[0];

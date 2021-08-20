@@ -227,7 +227,7 @@
         app:srcCompat="@drawable/settings" />
 
     <Button
-        android:id="@+id/nxtBtnMemory"
+        android:id="@+id/returnBtnMemory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/agencyb"
@@ -236,7 +236,7 @@
         android:shadowDx="10"
         android:shadowDy="10"
         android:shadowRadius="5"
-        android:text="next"
+        android:text="return"
         android:textSize="48sp"
         android:textStyle="bold"
         android:visibility="invisible"

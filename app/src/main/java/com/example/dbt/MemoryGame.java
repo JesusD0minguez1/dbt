@@ -1,7 +1,6 @@
 package com.example.dbt;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -27,7 +26,7 @@ public class MemoryGame extends FileManager {
     public TextView timer, score, infoTxt;
     public ImageView card0, card1, card2, card3, card4, card5;
     private int circle, triangle, square, cardBack;
-    public Button nxtBtn, startBtn;
+    public Button returnBtn, startBtn;
     public boolean gameStarted;
     //Array of the card ImageViews just for easy access
     Integer[] cards;
@@ -61,7 +60,7 @@ public class MemoryGame extends FileManager {
         card4.setImageResource(R.drawable.card_back);
         card5 = findViewById(R.id.card5);
         card5.setImageResource(R.drawable.card_back);
-        nxtBtn = findViewById(R.id.nxtBtnMemory);
+        returnBtn = findViewById(R.id.returnBtnMemory);
         startBtn = findViewById(R.id.startButtonMem);
 
 
@@ -414,7 +413,7 @@ public class MemoryGame extends FileManager {
     */
     private void endGame() {
         disableCards();
-        nxtBtn.setVisibility(View.VISIBLE);
+        returnBtn.setVisibility(View.VISIBLE);
         timer.setText("Game Over!");
     }
 
