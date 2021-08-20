@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ public class RiddleScreen extends FileManager {
     final private HashMap<Integer, String> riddles = new HashMap<Integer, String>(6);
     final private HashMap<Integer, String> riddleAnswer = new HashMap<Integer, String>(6);
     private ProgressBar progBar;
+    private int nextProg = 0;
 
 
     @Override
@@ -81,31 +83,37 @@ public class RiddleScreen extends FileManager {
                         cr = r1;
                         displayRiddlesOption(1);
                         displayRiddles(1);
+                        nextProg += 1;
                         break;
                     case 1:
                         cr = r2;
                         displayRiddlesOption(2);
                         displayRiddles(2);
+                        nextProg += 1;
                         break;
                     case 2:
                         cr = r3;
                         displayRiddlesOption(3);
                         displayRiddles(3);
+                        nextProg += 1;
                         break;
                     case 3:
                         cr = r5;
                         displayRiddlesOption(4);
                         displayRiddles(4);
+                        nextProg += 1;
                         break;
                     case 4:
                         cr = r3;
                         displayRiddlesOption(5);
                         displayRiddles(5);
+                        nextProg += 1;
                         break;
                     case 5:
                         cr = r4;
                         displayRiddlesOption(6);
                         displayRiddles(6);
+                        nextProg += 1;
                         break;
                 }
                 if (cr.isChecked()) {
@@ -123,6 +131,7 @@ public class RiddleScreen extends FileManager {
                         updateUserScore(isCorrect[0]);
                     }
                 }
+                trackProgress(nextProg);
             }
         });
     }
@@ -271,5 +280,18 @@ public class RiddleScreen extends FileManager {
         Button B6 = findViewById(R.id.nxtBtnRiddle);
         Intent action3 = new Intent(getApplicationContext(), MemoryGame.class);
         startActivity(action3);
+    }
+
+
+    public void settingsRiddle(View v)
+    {
+        ImageView settings = findViewById(R.id.settingsRiddle);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SettingMenu set = new SettingMenu();
+                set.showWindow(RiddleScreen.this, settings);
+            }
+        });
     }
 }
