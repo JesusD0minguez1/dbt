@@ -131,6 +131,16 @@ public class RiddleScreen extends FileManager {
                         updateUserScore(isCorrect[0]);
                     }
                 }
+                if(p[0] == 6) {
+                    btn.setText("Return");
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View cardClicked) {
+                            Intent returnT = new Intent(getApplicationContext(), PlayerInfo.class);
+                            startActivity(returnT);
+                        }
+                    });
+                }
                 trackProgress(nextProg);
             }
         });
@@ -274,12 +284,6 @@ public class RiddleScreen extends FileManager {
         } catch (Exception tp) {
             tp.printStackTrace();
         }
-    }
-
-    public void nextActivity1(View v) {
-        Button B6 = findViewById(R.id.nxtBtnRiddle);
-        Intent action3 = new Intent(getApplicationContext(), MemoryGame.class);
-        startActivity(action3);
     }
 
 
