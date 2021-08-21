@@ -1,6 +1,7 @@
 package com.example.dbt;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -414,6 +415,13 @@ public class MemoryGame extends FileManager {
     private void endGame() {
         disableCards();
         returnBtn.setVisibility(View.VISIBLE);
+        returnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View cardClicked) {
+                Intent playerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
+                startActivity(playerInfo);
+            }
+        });
         timer.setText("Game Over!");
     }
 

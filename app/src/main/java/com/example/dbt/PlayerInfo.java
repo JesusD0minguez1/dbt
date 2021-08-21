@@ -10,12 +10,41 @@ import android.widget.ImageView;
 
 public class PlayerInfo extends AppCompatActivity {
 
+
+    private ImageView memGameIcon, triviaGameIcon, simonGameIcon;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.player_info);
 
+
+        memGameIcon = findViewById(R.id.memGameIcon);
+        memGameIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View cardClicked) {
+                Intent memGame = new Intent(getApplicationContext(), MemoryGame.class);
+                startActivity(memGame);
+            }
+        });
+        triviaGameIcon = findViewById(R.id.triviaGameIcon);
+        triviaGameIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View cardClicked) {
+                Intent triviaGame = new Intent(getApplicationContext(), RiddleScreen.class);
+                startActivity(triviaGame);
+            }
+        });
+        simonGameIcon = findViewById(R.id.simonGameIcon);
+        simonGameIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View cardClicked) {
+                Intent simonGame = new Intent(getApplicationContext(), Simon.class);
+                startActivity(simonGame);
+            }
+        });
     }
 
 
