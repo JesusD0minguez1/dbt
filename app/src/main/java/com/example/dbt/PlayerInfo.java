@@ -41,8 +41,13 @@ public class PlayerInfo extends AppCompatActivity {
         simonGameIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View cardClicked) {
-                Intent simonGame = new Intent(getApplicationContext(), Simon.class);
-                startActivity(simonGame);
+                try {
+                    Intent simonGame = new Intent(getApplicationContext(), Simon.class);
+                    startActivity(simonGame);
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

@@ -2,6 +2,7 @@ package com.example.dbt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -25,6 +26,7 @@ public class Simon extends AppCompatActivity {
     ImageView r2;
     ImageView r3;
     ImageView r4;
+    Button returnBtnSimon;
 
     int score = 0;
     static boolean NextPattern = false;
@@ -49,6 +51,14 @@ public class Simon extends AppCompatActivity {
         r2.setVisibility(View.INVISIBLE);
         r3.setVisibility(View.INVISIBLE);
         r4.setVisibility(View.INVISIBLE);
+        returnBtnSimon = findViewById(R.id.returnBtnSimon);
+        returnBtnSimon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View cardClicked) {
+                Intent returnToPlayerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
+                startActivity(returnToPlayerInfo);
+            }
+        });
     }
 
     public void SimonGo(View v){
