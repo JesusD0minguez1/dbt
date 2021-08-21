@@ -89,28 +89,6 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/settings" />
 
-    <Button
-        android:id="@+id/playerInfoNxt"
-        android:layout_width="278dp"
-        android:layout_height="94dp"
-        android:elegantTextHeight="true"
-        android:fontFamily="@font/agencyb"
-        android:onClick="nextActivity"
-        android:shadowColor="#000000"
-        android:shadowDx="10"
-        android:shadowDy="10"
-        android:shadowRadius="5"
-        android:text="Temp Next"
-        android:textAlignment="center"
-        android:textSize="48sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.954" />
-
     <ImageView
         android:id="@+id/memGameIcon"
         android:layout_width="115dp"
@@ -139,10 +117,10 @@
         android:layout_height="100dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/playerInfoNxt"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/memGameIcon"
-        app:layout_constraintVertical_bias="0.384"
+        app:layout_constraintVertical_bias="0.015"
         app:srcCompat="@drawable/trivia_game_icon" />
 
     <EditText

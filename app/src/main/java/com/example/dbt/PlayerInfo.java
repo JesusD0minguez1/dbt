@@ -59,12 +59,4 @@ public class PlayerInfo extends AppCompatActivity {
             }
         });
     }
-
-    public void nextActivity(View v)
-    {
-        Button B5 =findViewById(R.id.playerInfoNxt);
-        Intent action2 = new Intent(getApplicationContext(), RiddleScreen.class);
-        startActivity(action2);
-    }
-
 }
