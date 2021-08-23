@@ -11,7 +11,7 @@ import android.widget.ImageView;
 public class PlayerInfo extends AppCompatActivity {
 
 
-    private ImageView memGameIcon, triviaGameIcon, simonGameIcon;
+    private ImageView memGameIcon, triviaGameIcon, simonGameIcon, highScoresIcon;
 
 
     @Override
@@ -43,6 +43,19 @@ public class PlayerInfo extends AppCompatActivity {
             public void onClick(View cardClicked) {
                 try {
                     Intent simonGame = new Intent(getApplicationContext(), Simon.class);
+                    startActivity(simonGame);
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        highScoresIcon = findViewById(R.id.highScoresIcon);
+        highScoresIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View cardClicked) {
+                try {
+                    Intent simonGame = new Intent(getApplicationContext(), HighScores.class);
                     startActivity(simonGame);
                 }
                 catch(Exception e) {

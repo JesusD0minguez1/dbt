@@ -112,6 +112,20 @@
         app:srcCompat="@drawable/simon_game_icon" />
 
     <ImageView
+        android:id="@+id/highScoresIcon"
+        android:layout_width="115dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="148dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/triviaGameIcon"
+        app:layout_constraintVertical_bias="0.169"
+        app:srcCompat="@drawable/high_scores" />
+
+    <ImageView
         android:id="@+id/triviaGameIcon"
         android:layout_width="115dp"
         android:layout_height="100dp"

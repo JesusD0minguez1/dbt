@@ -13,6 +13,9 @@
             android:name=".Simon"
             android:exported="true" />
         <activity
+            android:name=".HighScores"
+            android:exported="true" />
+        <activity
             android:name=".MemoryGame"
             android:exported="true" />
         <activity
