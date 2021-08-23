@@ -138,6 +138,20 @@
         app:layout_constraintVertical_bias="0.015"
         app:srcCompat="@drawable/trivia_game_icon" />
 
+    <ImageView
+        android:id="@+id/pingPongGameIcon"
+        android:layout_width="115dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/highScoresIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/triviaGameIcon"
+        app:layout_constraintTop_toBottomOf="@+id/simonGameIcon"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ping_pong" />
+
     <EditText
         android:id="@+id/userName"
         android:layout_width="wrap_content"
