@@ -25,7 +25,7 @@ public class MemoryGame extends FileManager {
 
 
     public TextView timer, score, infoTxt;
-    public ImageView card0, card1, card2, card3, card4, card5;
+    public ImageView card0, card1, card2, card3, card4, card5, card6, card7, card8;
     private int circle, triangle, square, cardBack;
     public Button returnBtn, startBtn;
     public boolean gameStarted;
@@ -34,9 +34,9 @@ public class MemoryGame extends FileManager {
     //Count cards clicked for checking correct
     private int clicked = 1;
     private int totalMatches = 0;
-    private int firstClicked, secondClicked;
-    private int firstPosition, secondPosition;
-    private int prevTag = 10;
+    private int firstClicked, secondClicked, thirdClicked;
+    private int firstPosition, secondPosition, thirdPosition;
+    private int prevTag = 30;
 
 
     @Override
@@ -61,6 +61,12 @@ public class MemoryGame extends FileManager {
         card4.setImageResource(R.drawable.card_back);
         card5 = findViewById(R.id.card5);
         card5.setImageResource(R.drawable.card_back);
+        card6 = findViewById(R.id.card6);
+        card6.setImageResource(R.drawable.card_back);
+        card7 = findViewById(R.id.card7);
+        card7.setImageResource(R.drawable.card_back);
+        card8 = findViewById(R.id.card8);
+        card8.setImageResource(R.drawable.card_back);
         returnBtn = findViewById(R.id.returnBtnMemory);
         startBtn = findViewById(R.id.startButtonMem);
 
@@ -81,7 +87,7 @@ public class MemoryGame extends FileManager {
                 startBtn.setVisibility(View.INVISIBLE);
                 //Set card tags so we know their positions
                 card0.setTag("0"); card1.setTag("1"); card2.setTag("2"); card3.setTag("3"); card4.setTag("4");
-                card5.setTag("5");
+                card5.setTag("5"); card6.setTag("6"); card7.setTag("7"); card8.setTag("8");
                 cards = getCards();
                 /*
                 Set on Click listeners
@@ -128,6 +134,27 @@ public class MemoryGame extends FileManager {
                         cardClick(card5, currentTag);
                     }
                 });
+                card6.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View cardClicked) {
+                        int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
+                        cardClick(card6, currentTag);
+                    }
+                });
+                card7.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View cardClicked) {
+                        int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
+                        cardClick(card7, currentTag);
+                    }
+                });
+                card8.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View cardClicked) {
+                        int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
+                        cardClick(card8, currentTag);
+                    }
+                });
                 setImageIds();
                 Collections.shuffle(Arrays.asList(cards));
                 showCards();
@@ -146,7 +173,7 @@ public class MemoryGame extends FileManager {
     */
     private Integer[] getCards () {
         Integer[] cards;
-        cards = new Integer[]{1, 2, 3, 11, 12, 13};
+        cards = new Integer[]{1, 2, 3, 11, 12, 13, 21, 22, 23};
         return cards;
     }
 
@@ -186,10 +213,21 @@ public class MemoryGame extends FileManager {
                 case 13:
                     card.setImageResource(triangle);
                     break;
+                case 21:
+                    card.setImageResource(circle);
+                    break;
+                case 22:
+                    card.setImageResource(square);
+                    break;
+                case 23:
+                    card.setImageResource(triangle);
             }
             if (clicked == 1) {
                 firstClicked = cards[cardTag];
-                if (firstClicked > 10) {
+                if (firstClicked > 20) {
+                    firstClicked = firstClicked - 20;
+                }
+                else if (firstClicked > 10) {
                     firstClicked = firstClicked - 10;
                 }
                 prevTag = cardTag;
@@ -198,12 +236,28 @@ public class MemoryGame extends FileManager {
             }
             else if (clicked == 2) {
                 secondClicked = cards[cardTag];
-                if (secondClicked > 10) {
+                if(secondClicked > 20) {
+                    secondClicked = secondClicked - 20;
+                }
+                else if (secondClicked > 10) {
                     secondClicked = secondClicked - 10;
                 }
-                prevTag = 10;
-                clicked = 1;
+
+                prevTag = cardTag;
+                clicked = 3;
                 secondPosition = cardTag;
+            }
+            else if (clicked == 3) {
+                thirdClicked = cards[cardTag];
+                if (thirdClicked > 20) {
+                    thirdClicked = thirdClicked - 20;
+                }
+                else if(thirdClicked > 10) {
+                    thirdClicked = thirdClicked -10;
+                }
+                prevTag = 30;
+                clicked = 1;
+                thirdPosition = cardTag;
                 disableCards();
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -217,67 +271,115 @@ public class MemoryGame extends FileManager {
 
 
     private void checkCorrect() {
-        if (firstClicked == secondClicked) {
+        if (firstClicked == secondClicked && firstClicked == thirdClicked && secondClicked == thirdClicked) {
             totalMatches += 1;
             if (firstPosition == 0) {
                 card0.setEnabled(false);
                 card0.setPadding(50, 50, 50, 50);
-                //card0.setVisibility(View.INVISIBLE);
             }
             else if (firstPosition == 1) {
                 card1.setEnabled(false);
                 card1.setPadding(50, 50, 50, 50);
-                //card1.setVisibility(View.INVISIBLE);
             }
             else if (firstPosition == 2) {
                 card2.setEnabled(false);
                 card2.setPadding(50, 50, 50, 50);
-                //card2.setVisibility(View.INVISIBLE);
             }
             else if (firstPosition == 3) {
                 card3.setEnabled(false);
                 card3.setPadding(50, 50, 50, 50);
-                //card3.setVisibility(View.INVISIBLE);
             }
             else if (firstPosition == 4) {
                 card4.setEnabled(false);
                 card4.setPadding(50, 50, 50, 50);
-                //card4.setVisibility(View.INVISIBLE);
             }
             else if (firstPosition == 5) {
                 card5.setEnabled(false);
                 card5.setPadding(50, 50, 50, 50);
-                //card5.setVisibility(View.INVISIBLE);
+            }
+            else if (firstPosition == 6) {
+                card6.setEnabled(false);
+                card6.setPadding(50, 50, 50, 50);
+            }
+            else if (firstPosition == 7) {
+                card7.setEnabled(false);
+                card7.setPadding(50, 50, 50, 50);
+            }
+            else if (firstPosition == 8) {
+                card8.setEnabled(false);
+                card8.setPadding(50, 50, 50, 50);
             }
             if (secondPosition == 0) {
                 card0.setEnabled(false);
                 card0.setPadding(50, 50, 50, 50);
-                //card0.setVisibility(View.INVISIBLE);
             }
             else if (secondPosition == 1) {
                 card1.setEnabled(false);
                 card1.setPadding(50, 50, 50, 50);
-                //card1.setVisibility(View.INVISIBLE);
             }
             else if (secondPosition == 2) {
                 card2.setEnabled(false);
                 card2.setPadding(50, 50, 50, 50);
-                //card2.setVisibility(View.INVISIBLE);
             }
             else if (secondPosition == 3) {
                 card3.setEnabled(false);
                 card3.setPadding(50, 50, 50, 50);
-                //card3.setVisibility(View.INVISIBLE);
             }
             else if (secondPosition == 4) {
                 card4.setEnabled(false);
                 card4.setPadding(50, 50, 50, 50);
-                //card4.setVisibility(View.INVISIBLE);
             }
             else if (secondPosition == 5) {
                 card5.setEnabled(false);
                 card5.setPadding(50, 50, 50, 50);
-                //card5.setVisibility(View.INVISIBLE);
+            }
+            else if (secondPosition == 6) {
+                card6.setEnabled(false);
+                card6.setPadding(50, 50, 50, 50);
+            }
+            else if (secondPosition == 7) {
+                card7.setEnabled(false);
+                card7.setPadding(50, 50, 50, 50);
+            }
+            else if (secondPosition == 8) {
+                card8.setEnabled(false);
+                card8.setPadding(50, 50, 50, 50);
+            }
+            if (thirdPosition == 0) {
+                card0.setEnabled(false);
+                card0.setPadding(50, 50, 50, 50);
+            }
+            else if (thirdPosition == 1) {
+                card1.setEnabled(false);
+                card1.setPadding(50, 50, 50, 50);
+            }
+            else if (thirdPosition == 2) {
+                card2.setEnabled(false);
+                card2.setPadding(50, 50, 50, 50);
+            }
+            else if (thirdPosition == 3) {
+                card3.setEnabled(false);
+                card3.setPadding(50, 50, 50, 50);
+            }
+            else if (thirdPosition == 4) {
+                card4.setEnabled(false);
+                card4.setPadding(50, 50, 50, 50);
+            }
+            else if (thirdPosition == 5) {
+                card5.setEnabled(false);
+                card5.setPadding(50, 50, 50, 50);
+            }
+            else if (thirdPosition == 6) {
+                card6.setEnabled(false);
+                card6.setPadding(50, 50, 50, 50);
+            }
+            else if (thirdPosition == 7) {
+                card7.setEnabled(false);
+                card7.setPadding(50, 50, 50, 50);
+            }
+            else if (thirdPosition == 8) {
+                card8.setEnabled(false);
+                card8.setPadding(50, 50, 50, 50);
             }
             infoTxt.setText("Correct!");
             //TODO Add whatever amount to user's score
@@ -285,7 +387,7 @@ public class MemoryGame extends FileManager {
         else {
             hideCards();
         }
-        if(firstClicked != secondClicked) {
+        if(firstClicked != secondClicked || firstClicked != thirdClicked || secondClicked != thirdClicked) {
             infoTxt.setText("Incorrect!");
             hideCards();
             //TODO Remove whatever amount from user's score
@@ -302,7 +404,7 @@ public class MemoryGame extends FileManager {
     */
     private void showCards() {
         ImageView card = findViewById(R.id.card0);
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 9; i++) {
             switch (i) {
                 case 0:
                     card = findViewById(R.id.card0);
@@ -322,6 +424,15 @@ public class MemoryGame extends FileManager {
                 case 5:
                     card = findViewById(R.id.card5);
                     break;
+                case 6:
+                    card = findViewById(R.id.card6);
+                    break;
+                case 7:
+                    card = findViewById(R.id.card7);
+                    break;
+                case 8:
+                    card = findViewById(R.id.card8);
+                    break;
             }
             if (cards[i] == 1) {
                 card.setImageResource(circle);
@@ -339,6 +450,15 @@ public class MemoryGame extends FileManager {
                 card.setImageResource(square);
             }
             else if(cards[i] == 13) {
+                card.setImageResource(triangle);
+            }
+            else if(cards[i] == 21) {
+                card.setImageResource(circle);
+            }
+            else if(cards[i] == 22) {
+                card.setImageResource(square);
+            }
+            else if(cards[i] == 23) {
                 card.setImageResource(triangle);
             }
         }
@@ -363,6 +483,15 @@ public class MemoryGame extends FileManager {
         if(card5.getPaddingBottom() != 50) {
             card5.setImageResource(R.drawable.card_back);
         }
+        if(card6.getPaddingBottom() != 50) {
+            card6.setImageResource(R.drawable.card_back);
+        }
+        if(card7.getPaddingBottom() != 50) {
+            card7.setImageResource(R.drawable.card_back);
+        }
+        if(card8.getPaddingBottom() != 50) {
+            card8.setImageResource(R.drawable.card_back);
+        }
     }
 
 
@@ -376,6 +505,9 @@ public class MemoryGame extends FileManager {
         card3.setEnabled(true);
         card4.setEnabled(true);
         card5.setEnabled(true);
+        card6.setEnabled(true);
+        card7.setEnabled(true);
+        card8.setEnabled(true);
     }
     private void disableCards() {
         card0.setEnabled(false);
@@ -384,6 +516,9 @@ public class MemoryGame extends FileManager {
         card3.setEnabled(false);
         card4.setEnabled(false);
         card5.setEnabled(false);
+        card6.setEnabled(false);
+        card7.setEnabled(false);
+        card8.setEnabled(false);
     }
 
 

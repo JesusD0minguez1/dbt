@@ -24,7 +24,7 @@
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginStart="37dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/agencyb"
         android:shadowColor="#000000"
@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="37dp"
         android:fontFamily="@font/agencyb"
         android:rotation="-2"
@@ -61,6 +61,7 @@
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,6 +81,7 @@
         android:id="@+id/scoreView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="284dp"
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/agencyb"
@@ -94,15 +96,17 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/card2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/memoryInfoText"
-        app:layout_constraintVertical_bias="0.936" />
+        app:layout_constraintVertical_bias="0.842" />
 
     <TextView
         android:id="@+id/timerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="291dp"
         android:layout_marginBottom="27dp"
         android:fontFamily="@font/agencyb"
         android:inputType="number"
@@ -115,8 +119,10 @@
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/card0"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/memoryInfoText" />
+        app:layout_constraintTop_toBottomOf="@+id/memoryInfoText"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/card0"
@@ -174,7 +180,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="204dp"
         android:layout_marginEnd="271dp"
         android:background="#4CAF50"
         android:clickable="true"
@@ -188,7 +194,7 @@
         android:id="@+id/card4"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="204dp"
         android:layout_marginEnd="16dp"
         android:background="#4CAF50"
         android:clickable="true"
@@ -203,7 +209,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="271dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="40dp"
         android:background="#4CAF50"
         android:clickable="true"
@@ -211,6 +217,49 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/memoryInfoText"
+        tools:srcCompat="@drawable/card_back" />
+
+    <ImageView
+        android:id="@+id/card6"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:background="#4CAF50"
+        android:clickable="true"
+        app:layout_constraintEnd_toStartOf="@+id/card7"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card3"
+        tools:srcCompat="@drawable/card_back" />
+
+    <ImageView
+        android:id="@+id/card7"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="155dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="156dp"
+        android:background="#4CAF50"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card4"
+        tools:srcCompat="@drawable/card_back" />
+
+    <ImageView
+        android:id="@+id/card8"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="40dp"
+        android:background="#4CAF50"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/card7"
+        app:layout_constraintTop_toBottomOf="@+id/card5"
         tools:srcCompat="@drawable/card_back" />
 
     <ImageView
@@ -237,19 +286,21 @@
         android:shadowDy="10"
         android:shadowRadius="5"
         android:text="return"
-        android:textSize="48sp"
+        android:textSize="34sp"
         android:textStyle="bold"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card4" />
+        app:layout_constraintTop_toBottomOf="@+id/card4"
+        app:layout_constraintVertical_bias="0.777" />
 
     <Button
         android:id="@+id/startButtonMem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="19dp"
         android:fontFamily="@font/agencyb"
         android:onClick="onStartBtnClick"
@@ -262,7 +313,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/card1"
         app:layout_constraintEnd_toStartOf="@+id/scoreView"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toEndOf="@+id/timerView"
-        app:layout_constraintTop_toBottomOf="@+id/memoryInfoText" />
+        app:layout_constraintTop_toBottomOf="@+id/memoryInfoText"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
