@@ -131,7 +131,7 @@ public class MemoryGame extends FileManager {
                 setImageIds();
                 Collections.shuffle(Arrays.asList(cards));
                 showCards();
-                countdown(5);
+                countdown(3);
                 gameStarted= true;
             }
         }
