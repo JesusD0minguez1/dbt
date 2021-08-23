@@ -25,7 +25,7 @@ public class PlayerInfo extends AppCompatActivity {
 
         //set view for username
         userName = findViewById(R.id.userName);
-        //Set ids and onClicks for icons
+        //Memory Game
         memGameIcon = findViewById(R.id.memGameIcon);
         memGameIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +42,7 @@ public class PlayerInfo extends AppCompatActivity {
                 }
             }
         });
+        //Trivia Game
         triviaGameIcon = findViewById(R.id.triviaGameIcon);
         triviaGameIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +59,7 @@ public class PlayerInfo extends AppCompatActivity {
                 }
             }
         });
+        //Simon Game
         simonGameIcon = findViewById(R.id.simonGameIcon);
         simonGameIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +76,7 @@ public class PlayerInfo extends AppCompatActivity {
                 }
             }
         });
+        //High Scores Screen
         highScoresIcon = findViewById(R.id.highScoresIcon);
         highScoresIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +93,7 @@ public class PlayerInfo extends AppCompatActivity {
                 }
             }
         });
+        //Ping Pong Game
         pingPongIcon = findViewById(R.id.pingPongGameIcon);
         pingPongIcon.setOnClickListener(new View.OnClickListener() {
             @Override
