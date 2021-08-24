@@ -80,7 +80,6 @@
         android:layout_width="61dp"
         android:layout_height="53dp"
         android:clickable="true"
-        android:onClick="settings"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

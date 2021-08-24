@@ -112,6 +112,15 @@ public class PlayerInfo extends AppCompatActivity {
                 }
             }
         });
+        //Settings
+        ImageView settings = findViewById(R.id.settings1);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SettingMenu set = new SettingMenu();
+                set.showWindow(PlayerInfo.this, settings);
+            }
+        });
     }
 
 
@@ -134,17 +143,5 @@ public class PlayerInfo extends AppCompatActivity {
         else {
             return true;
         }
-    }
-
-    public void settings(View v)
-    {
-        ImageView settings = findViewById(R.id.settings1);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SettingMenu set = new SettingMenu();
-                set.showWindow(PlayerInfo.this, settings);
-            }
-        });
     }
 }

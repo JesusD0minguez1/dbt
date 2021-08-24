@@ -51,12 +51,22 @@ public class Simon extends AppCompatActivity {
         r2.setVisibility(View.INVISIBLE);
         r3.setVisibility(View.INVISIBLE);
         r4.setVisibility(View.INVISIBLE);
+        //Return Button
         returnBtnSimon = findViewById(R.id.returnBtnSimon);
         returnBtnSimon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View cardClicked) {
                 Intent returnToPlayerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
                 startActivity(returnToPlayerInfo);
+            }
+        });
+        //Settings
+        ImageView settings = findViewById(R.id.simonSettings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SettingMenu set = new SettingMenu();
+                set.showWindow(Simon.this, settings);
             }
         });
     }
@@ -320,16 +330,4 @@ public class Simon extends AppCompatActivity {
             }
         }.start();
     }
-
-    public void settingsClick(View v){
-        ImageView settings = findViewById(R.id.simonSettings);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SettingMenu set = new SettingMenu();
-                set.showWindow(Simon.this, settings);
-            }
-        });
-    }
-
 }

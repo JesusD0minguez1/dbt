@@ -34,6 +34,15 @@ public class RiddleScreen extends FileManager {
         displayRiddles();
         displayRiddlesOption();
         checkCorrect();
+        //Settings
+        ImageView settings = findViewById(R.id.settingsRiddle);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SettingMenu set = new SettingMenu();
+                set.showWindow(RiddleScreen.this, settings);
+            }
+        });
     }
 
 
@@ -359,18 +368,5 @@ public class RiddleScreen extends FileManager {
         } catch (Exception tp) {
             tp.printStackTrace();
         }
-    }
-
-
-    public void settingsRiddle(View v)
-    {
-        ImageView settings = findViewById(R.id.settingsRiddle);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SettingMenu set = new SettingMenu();
-                set.showWindow(RiddleScreen.this, settings);
-            }
-        });
     }
 }
