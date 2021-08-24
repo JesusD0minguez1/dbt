@@ -141,6 +141,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/agencyb"
+        android:rotationX="10"
         android:shadowColor="#000000"
         android:shadowDx="1.6"
         android:shadowDy="1.5"

@@ -58,6 +58,7 @@
         android:layout_marginTop="83dp"
         android:layout_marginEnd="81dp"
         android:fontFamily="@font/agencyb"
+        android:rotationX="10"
         android:shadowColor="#000000"
         android:shadowDx="1.6"
         android:shadowDy="1.3"
