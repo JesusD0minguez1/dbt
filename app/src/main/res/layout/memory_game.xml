@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/gamebg" />
+        app:srcCompat="@drawable/immers_bg" />
 
     <TextView
         android:id="@+id/memoryInfoText"
@@ -35,7 +35,7 @@
         android:text="Remember where the shapes are!"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="37dp"
         android:fontFamily="@font/agencyb"
         android:rotation="0"
@@ -59,10 +59,10 @@
         android:shadowRadius="1.6"
         android:text="Can you Remember?"
         android:textColor="#FFFFFF"
-        android:textSize="48sp"
+        android:textSize="44sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -304,7 +304,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card4"
-        app:layout_constraintVertical_bias="0.777" />
+        app:layout_constraintVertical_bias="0.658" />
 
     <Button
         android:id="@+id/startButtonMem"
@@ -324,7 +324,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/card1"
         app:layout_constraintEnd_toStartOf="@+id/scoreView"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.928"
         app:layout_constraintStart_toEndOf="@+id/timerView"
         app:layout_constraintTop_toBottomOf="@+id/memoryInfoText"
         app:layout_constraintVertical_bias="0.0" />

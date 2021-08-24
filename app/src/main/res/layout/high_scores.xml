@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/gamebg" />
+        app:srcCompat="@drawable/immers_bg" />
 
     <Button
         android:id="@+id/returnBtnHighScores"
