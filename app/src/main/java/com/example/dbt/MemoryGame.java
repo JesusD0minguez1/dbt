@@ -25,9 +25,9 @@ Functionality plan -- Mat:
 public class MemoryGame extends FileManager {
 
 
-    public TextView timer, score, infoTxt;
+    public TextView timer, scoreView, infoTxt;
     public ImageView card0, card1, card2, card3, card4, card5, card6, card7, card8;
-    private int circle, triangle, square, cardBack;
+    private int circle, triangle, square, cardBack, memScore;
     public Button returnBtn, startBtn;
     public boolean gameStarted;
     //Array of the card ImageViews just for easy access
@@ -48,7 +48,7 @@ public class MemoryGame extends FileManager {
 
         //Declare views
         timer = findViewById(R.id.timerView);
-        score = findViewById(R.id.scoreView);
+        scoreView = findViewById(R.id.scoreView);
         infoTxt = findViewById(R.id.memoryInfoText);
         card0 = findViewById(R.id.card0);
         card0.setImageResource(R.drawable.card_back);
@@ -173,6 +173,7 @@ public class MemoryGame extends FileManager {
                 showCards();
                 countdown(3);
                 gameStarted= true;
+                memScore = 0;
             }
         }
         catch (Exception startBtn) {
@@ -403,7 +404,7 @@ public class MemoryGame extends FileManager {
                     break;
             }
             infoTxt.setText("Correct!");
-            //TODO Add whatever amount to user's score
+            setScore(true);
         }
         else {
             hideCards();
@@ -411,7 +412,7 @@ public class MemoryGame extends FileManager {
         if(firstClicked != secondClicked || firstClicked != thirdClicked || secondClicked != thirdClicked) {
             infoTxt.setText("Incorrect!");
             hideCards();
-            //TODO Remove whatever amount from user's score
+            setScore(false);
         }
         enableCards();
         if (totalMatches == 3) {
@@ -574,6 +575,32 @@ public class MemoryGame extends FileManager {
     }
 
 
+    private void setScore(boolean isCorrect) {
+        try {
+            scoreView.setText("");
+            if(isCorrect) {
+                memScore += 100;
+            }
+            else {
+                int newMemScore = memScore;
+                if(newMemScore != 0 && newMemScore >= 100) {
+                    memScore -= 100;
+                }
+                else if(newMemScore < 100 && newMemScore != 0) {
+                    memScore = memScore - newMemScore;
+                }
+                else {
+                    memScore = 0;
+                }
+            }
+            scoreView.setText("Score: " + memScore);
+        }
+        catch (Exception score) {
+            score.printStackTrace();
+        }
+    }
+
+
     /*
     Ends the game and displays the next button
     */
@@ -584,6 +611,7 @@ public class MemoryGame extends FileManager {
             @Override
             public void onClick(View cardClicked) {
                 Intent playerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
+                playerInfo.putExtra("memScore", memScore);
                 startActivity(playerInfo);
             }
         });

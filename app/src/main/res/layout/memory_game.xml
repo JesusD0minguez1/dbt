@@ -90,7 +90,7 @@
         android:shadowDx="1.5"
         android:shadowDy="1.3"
         android:shadowRadius="1.6"
-        android:text="Score"
+        android:text="Score : 0"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
         android:textStyle="bold"

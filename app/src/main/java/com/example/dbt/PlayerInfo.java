@@ -25,6 +25,12 @@ public class PlayerInfo extends AppCompatActivity {
         setContentView(R.layout.player_info);
 
 
+        //Get score from memGame
+        Intent getScore = getIntent();
+        int memScore = getScore.getIntExtra("memScore", 0);
+        System.out.println("HERE -- " + memScore);
+
+
         //set view for username
         userName = findViewById(R.id.userName);
         //Memory Game
