@@ -18,10 +18,7 @@ import android.media.MediaActionSound;
 
 public class SettingMenu extends MainActivity
 {
-
-
-    Status status = new Status();
-
+    
 
     public void showWindow(Activity activity, ImageView b, MediaPlayer mp)
     {
