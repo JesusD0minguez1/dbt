@@ -14,7 +14,7 @@ import android.widget.ImageView;
 public class PlayerInfo extends AppCompatActivity {
 
 
-    private ImageView memGameIcon, triviaGameIcon, simonGameIcon, highScoresIcon, pingPongIcon;
+    private ImageView memGameIcon, triviaGameIcon, simonGameIcon, highScoresIcon, textAdvIcon;
     private EditText userName;
     MediaPlayer playerInfoMusic;
 
@@ -115,8 +115,8 @@ public class PlayerInfo extends AppCompatActivity {
             }
         });
         //Ping Pong Game
-        pingPongIcon = findViewById(R.id.pingPongGameIcon);
-        pingPongIcon.setOnClickListener(new View.OnClickListener() {
+        textAdvIcon = findViewById(R.id.pingPongGameIcon);
+        textAdvIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View cardClicked) {
                 try {

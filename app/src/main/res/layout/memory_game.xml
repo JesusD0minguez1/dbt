@@ -27,6 +27,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/agencyb"
+        android:rotationX="10"
         android:shadowColor="#000000"
         android:shadowDx="1.6"
         android:shadowDy="1.3"
