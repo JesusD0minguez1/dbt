@@ -38,6 +38,7 @@ public class MemoryGame extends FileManager {
     private int firstClicked, secondClicked, thirdClicked;
     private int firstPosition, secondPosition, thirdPosition;
     private int prevTag = 30;
+    MediaPlayer memMusic;
 
 
     @Override
@@ -77,7 +78,7 @@ public class MemoryGame extends FileManager {
 
         //Settings menu
         ImageView settings = findViewById(R.id.settingsMem);
-        MediaPlayer memMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.new_test);
+        memMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.new_test);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -612,6 +613,9 @@ public class MemoryGame extends FileManager {
             public void onClick(View cardClicked) {
                 Intent playerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
                 playerInfo.putExtra("memScore", memScore);
+                if(memMusic.isPlaying()) {
+                    memMusic.stop();
+                }
                 startActivity(playerInfo);
             }
         });

@@ -28,6 +28,7 @@ public class Simon extends AppCompatActivity {
     ImageView r3;
     ImageView r4;
     Button returnBtnSimon;
+    MediaPlayer simonMusic;
 
     int score = 0;
     static boolean NextPattern = false;
@@ -57,13 +58,16 @@ public class Simon extends AppCompatActivity {
         returnBtnSimon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View cardClicked) {
+                if(simonMusic.isPlaying()) {
+                    simonMusic.stop();
+                }
                 Intent returnToPlayerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
                 startActivity(returnToPlayerInfo);
             }
         });
         //Settings
         ImageView settings = findViewById(R.id.simonSettings);
-        MediaPlayer simonMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.riddle);
+        simonMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.riddle);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

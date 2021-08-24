@@ -16,6 +16,7 @@ public class PlayerInfo extends AppCompatActivity {
 
     private ImageView memGameIcon, triviaGameIcon, simonGameIcon, highScoresIcon, pingPongIcon;
     private EditText userName;
+    MediaPlayer playerInfoMusic;
 
 
     @Override
@@ -41,6 +42,9 @@ public class PlayerInfo extends AppCompatActivity {
                 try {
                     if(checkUserName() == true) {
                         sendUserName();
+                        if(playerInfoMusic.isPlaying()) {
+                            playerInfoMusic.stop();
+                        }
                         Intent memGame = new Intent(getApplicationContext(), MemoryGame.class);
                         startActivity(memGame);
                     }
@@ -58,6 +62,9 @@ public class PlayerInfo extends AppCompatActivity {
                 try {
                     if(checkUserName() == true) {
                         sendUserName();
+                        if(playerInfoMusic.isPlaying()) {
+                            playerInfoMusic.stop();
+                        }
                         Intent triviaGame = new Intent(getApplicationContext(), RiddleScreen.class);
                         startActivity(triviaGame);
                     }
@@ -75,6 +82,9 @@ public class PlayerInfo extends AppCompatActivity {
                 try {
                     if(checkUserName() == true) {
                         sendUserName();
+                        if(playerInfoMusic.isPlaying()) {
+                            playerInfoMusic.stop();
+                        }
                         Intent simonGame = new Intent(getApplicationContext(), Simon.class);
                         startActivity(simonGame);
                     }
@@ -92,6 +102,9 @@ public class PlayerInfo extends AppCompatActivity {
                 try {
                     if(checkUserName() == true) {
                         sendUserName();
+                        if(playerInfoMusic.isPlaying()) {
+                            playerInfoMusic.stop();
+                        }
                         Intent simonGame = new Intent(getApplicationContext(), HighScores.class);
                         startActivity(simonGame);
                     }
@@ -109,6 +122,9 @@ public class PlayerInfo extends AppCompatActivity {
                 try {
                     if(checkUserName() == true) {
                         sendUserName();
+                        if(playerInfoMusic.isPlaying()) {
+                            playerInfoMusic.stop();
+                        }
                         /*
                         Intent simonGame = new Intent(getApplicationContext(), HighScores.class);
                         startActivity(simonGame);
@@ -122,7 +138,7 @@ public class PlayerInfo extends AppCompatActivity {
         });
         //Settings
         ImageView settings = findViewById(R.id.settings1);
-        MediaPlayer playerInfoMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.new_test);
+        playerInfoMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.new_test);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

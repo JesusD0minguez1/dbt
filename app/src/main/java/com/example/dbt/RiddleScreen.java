@@ -21,6 +21,7 @@ public class RiddleScreen extends FileManager {
     final private HashMap<Integer, String> riddleAnswer = new HashMap<Integer, String>(10);
     private ProgressBar progBar;
     private int nextProg = 0;
+    MediaPlayer rdMusic;
 
 
 
@@ -37,7 +38,7 @@ public class RiddleScreen extends FileManager {
         checkCorrect();
         //Settings
         ImageView settings = findViewById(R.id.settingsRiddle);
-        MediaPlayer rdMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.riddle);
+        rdMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.riddle);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,6 +183,9 @@ public class RiddleScreen extends FileManager {
                     btn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View cardClicked) {
+                            if(rdMusic.isPlaying()) {
+                                rdMusic.stop();
+                            }
                             Intent returnT = new Intent(getApplicationContext(), PlayerInfo.class);
                             startActivity(returnT);
                         }
