@@ -1,56 +1,75 @@
 package com.example.dbt;
+
+
 import android.app.Activity;
-import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
+import android.content.Context;
+import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import android.os.Bundle;
 import android.view.MenuItem;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.view.View;
-import android.widget.Button;
-import android.widget.PopupMenu;
-import android.widget.Toast;
-import androidx.annotation.ContentView;
+import android.media.MediaActionSound;
 
-import com.google.android.material.chip.ChipGroup;
 
-import java.lang.annotation.Annotation;
-import androidx.appcompat.app.AppCompatActivity;
-
-public class SettingMenu extends AppCompatActivity
+public class SettingMenu extends MainActivity
 {
+
+    MediaPlayer rdMusic;
+    Status status = new Status();
+
 
     public void showWindow(Activity activity, ImageView b)
     {
         PopupMenu popupMenu = new PopupMenu(activity, b);
         popupMenu.getMenuInflater().inflate(R.menu.pop_up_layout, popupMenu .getMenu());
+        popupMenu.show();
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener()
         {
+            @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Toast t = new Toast(activity);
                 Toast.makeText(activity, item.getTitle(),t.LENGTH_LONG).show();
-                if (item.getTitle().equals("On/Off"))
+                if (item.getTitle().equals("Music On"))
                 {
-                    SettingOptions options = new SettingOptions();
-                    options.audioChange1(activity);
+                    audioChange1(activity);
+                    return true;
                 }
                 else if(item.getTitle().equals("Main Menu"))
                 {
-                    SettingOptions options = new SettingOptions();
-                    options.quitApp(activity);
+                    quitApp(activity);
+                    return true;
                 }
-                return true;
+                else {
+                    return false;
+                }
             }
         });
-        popupMenu.show();
     }
+
+
+    public void audioChange1(Activity a)
+    {
+        rdMusic = MediaPlayer.create(a,R.raw.riddle);
+        if(rdMusic.isPlaying()) {
+            rdMusic.pause();
+        }
+        else {
+            rdMusic.start();
+            rdMusic.setLooping(true);
+        }
+    }
+
+
+
+    public void quitApp(Activity activity){
+        activity.finish();
+        System.exit(0);
+    }
+
 
 }
