@@ -2,6 +2,7 @@ package com.example.dbt;
 
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -76,11 +77,12 @@ public class MemoryGame extends FileManager {
 
         //Settings menu
         ImageView settings = findViewById(R.id.settingsMem);
+        MediaPlayer memMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.riddle);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SettingMenu set = new SettingMenu();
-                set.showWindow(MemoryGame.this, settings);
+                set.showWindow(MemoryGame.this, settings, memMusic);
             }
         });
     }

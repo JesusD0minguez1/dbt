@@ -3,6 +3,7 @@ package com.example.dbt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -62,11 +63,12 @@ public class Simon extends AppCompatActivity {
         });
         //Settings
         ImageView settings = findViewById(R.id.simonSettings);
+        MediaPlayer simonMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.riddle);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SettingMenu set = new SettingMenu();
-                set.showWindow(Simon.this, settings);
+                set.showWindow(Simon.this, settings, simonMusic);
             }
         });
     }

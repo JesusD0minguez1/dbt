@@ -19,11 +19,11 @@ import android.media.MediaActionSound;
 public class SettingMenu extends MainActivity
 {
 
-    MediaPlayer rdMusic;
+
     Status status = new Status();
 
 
-    public void showWindow(Activity activity, ImageView b)
+    public void showWindow(Activity activity, ImageView b, MediaPlayer mp)
     {
         PopupMenu popupMenu = new PopupMenu(activity, b);
         popupMenu.getMenuInflater().inflate(R.menu.pop_up_layout, popupMenu .getMenu());
@@ -34,9 +34,9 @@ public class SettingMenu extends MainActivity
             public boolean onMenuItemClick(MenuItem item) {
                 Toast t = new Toast(activity);
                 Toast.makeText(activity, item.getTitle(),t.LENGTH_LONG).show();
-                if (item.getTitle().equals("Music On"))
+                if (item.getTitle().equals("Music On/Off"))
                 {
-                    audioChange1(activity);
+                    audioChange1(activity, mp);
                     return true;
                 }
                 else if(item.getTitle().equals("Main Menu"))
@@ -52,15 +52,20 @@ public class SettingMenu extends MainActivity
     }
 
 
-    public void audioChange1(Activity a)
+    public void audioChange1(Activity a, MediaPlayer mp)
     {
-        rdMusic = MediaPlayer.create(a,R.raw.riddle);
-        if(rdMusic.isPlaying()) {
-            rdMusic.pause();
+        try {
+            if(mp.isLooping()) {
+                mp.stop();
+                mp.setLooping(false);
+            }
+            else {
+                mp.start();
+                mp.setLooping(true);
+            }
         }
-        else {
-            rdMusic.start();
-            rdMusic.setLooping(true);
+        catch (Exception music) {
+            music.printStackTrace();
         }
     }
 

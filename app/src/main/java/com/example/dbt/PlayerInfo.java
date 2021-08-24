@@ -3,6 +3,8 @@ package com.example.dbt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -114,11 +116,12 @@ public class PlayerInfo extends AppCompatActivity {
         });
         //Settings
         ImageView settings = findViewById(R.id.settings1);
+        MediaPlayer playerInfoMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.riddle);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SettingMenu set = new SettingMenu();
-                set.showWindow(PlayerInfo.this, settings);
+                set.showWindow(PlayerInfo.this, settings, playerInfoMusic);
             }
         });
     }

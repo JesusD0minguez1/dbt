@@ -2,6 +2,7 @@ package com.example.dbt;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,11 +37,12 @@ public class RiddleScreen extends FileManager {
         checkCorrect();
         //Settings
         ImageView settings = findViewById(R.id.settingsRiddle);
+        MediaPlayer rdMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.riddle);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SettingMenu set = new SettingMenu();
-                set.showWindow(RiddleScreen.this, settings);
+                set.showWindow(RiddleScreen.this, settings, rdMusic);
             }
         });
     }

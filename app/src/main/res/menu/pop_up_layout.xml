@@ -2,8 +2,8 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id = "@+id/OnOff"
-        android:title = "Music On" />
+        android:id="@+id/OnOff"
+        android:title="Music On/Off" />
     <item
         android:id = "@+id/Quit"
         android:title = "Main Menu"/>
