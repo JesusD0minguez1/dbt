@@ -116,7 +116,7 @@ public class PlayerInfo extends AppCompatActivity {
         });
         //Settings
         ImageView settings = findViewById(R.id.settings1);
-        MediaPlayer playerInfoMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.riddle);
+        MediaPlayer playerInfoMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.new_test);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

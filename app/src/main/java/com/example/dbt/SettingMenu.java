@@ -36,7 +36,7 @@ public class SettingMenu extends MainActivity
                 Toast.makeText(activity, item.getTitle(),t.LENGTH_LONG).show();
                 if (item.getTitle().equals("Music On/Off"))
                 {
-                    audioChange1(activity, mp);
+                    audioChange1(mp);
                     return true;
                 }
                 else if(item.getTitle().equals("Main Menu"))
@@ -52,7 +52,7 @@ public class SettingMenu extends MainActivity
     }
 
 
-    public void audioChange1(Activity a, MediaPlayer mp)
+    public void audioChange1(MediaPlayer mp)
     {
         try {
             if(mp.isLooping()) {

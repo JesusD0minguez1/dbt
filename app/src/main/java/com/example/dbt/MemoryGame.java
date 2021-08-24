@@ -77,7 +77,7 @@ public class MemoryGame extends FileManager {
 
         //Settings menu
         ImageView settings = findViewById(R.id.settingsMem);
-        MediaPlayer memMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.riddle);
+        MediaPlayer memMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.new_test);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
