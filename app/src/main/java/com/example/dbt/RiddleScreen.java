@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -17,10 +16,11 @@ import java.util.HashMap;
 public class RiddleScreen extends FileManager {
 
 
-    final private HashMap<Integer, String> riddles = new HashMap<Integer, String>(10);
-    final private HashMap<Integer, String> riddleAnswer = new HashMap<Integer, String>(10);
+    final private HashMap<Integer, String> riddles = new HashMap<>(10);
+    final private HashMap<Integer, String> riddleAnswer = new HashMap<>(10);
     private ProgressBar progBar;
     private int nextProg = 0;
+    private int trivScore = 0;
     MediaPlayer rdMusic;
 
 
@@ -38,17 +38,15 @@ public class RiddleScreen extends FileManager {
         checkCorrect();
         //Settings
         ImageView settings = findViewById(R.id.settingsRiddle);
-        rdMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.riddle);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SettingMenu set = new SettingMenu();
-                set.showWindow(RiddleScreen.this, settings, rdMusic);
-            }
+        rdMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.gravity);
+        settings.setOnClickListener(v -> {
+            SettingMenu set = new SettingMenu();
+            set.showWindow(RiddleScreen.this, settings, rdMusic);
         });
     }
 
 
+    @SuppressLint("SetTextI18n")
     private void populateRiddles() {
         TextView tv = findViewById(R.id.riddleScore);
         try {
@@ -87,6 +85,7 @@ public class RiddleScreen extends FileManager {
     }
 
 
+    @SuppressLint("SetTextI18n")
     public void checkCorrect() {
         Button btn = findViewById(R.id.riddleCA);
         RadioButton r1 = findViewById(R.id.op1);
@@ -98,101 +97,96 @@ public class RiddleScreen extends FileManager {
         final int[] p = {1};
         p[0] = 0;
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                RadioButton cr = r1;
-                switch (p[0]) {
-                    case 0:
-                        cr = r1;
-                        displayRiddlesOption(1);
-                        displayRiddles(1);
-                        nextProg += 1;
-                        break;
-                    case 1:
-                        cr = r2;
-                        displayRiddlesOption(2);
-                        displayRiddles(2);
-                        nextProg += 1;
-                        break;
-                    case 2:
-                        cr = r3;
-                        displayRiddlesOption(3);
-                        displayRiddles(3);
-                        nextProg += 1;
-                        break;
-                    case 3:
-                        cr = r5;
-                        displayRiddlesOption(4);
-                        displayRiddles(4);
-                        nextProg += 1;
-                        break;
-                    case 4:
-                        cr = r4;
-                        displayRiddlesOption(5);
-                        displayRiddles(5);
-                        nextProg += 1;
-                        break;
-                    case 5:
-                        cr = r4;
-                        displayRiddlesOption(6);
-                        displayRiddles(6);
-                        nextProg += 1;
-                        break;
-                    case 6:
-                        cr = r1;
-                        displayRiddlesOption(7);
-                        displayRiddles(7);
-                        nextProg += 1;
-                        break;
-                    case 7:
-                        cr = r3;
-                        displayRiddlesOption(8);
-                        displayRiddles(8);
-                        nextProg += 1;
-                        break;
-                    case 8:
-                        cr = r1;
-                        displayRiddlesOption(9);
-                        displayRiddles(9);
-                        nextProg += 1;
-                        break;
-                    case 9:
-                        //cr = r3;
-                        displayRiddlesOption(10);
-                        displayRiddles(10);
-                        nextProg += 1;
-                        break;
-                }
-                if (cr.isChecked()) {
-                    if (p[0] < 11) {
-                        isCorrect[0] = true;
-                        updateUserScore(isCorrect[0]);
-                        p[0] = p[0] + 1;
-                        trackProgress(p[0]);
-                    }
-                } else {
-                    p[0] = p[0] + 1;
-                    isCorrect[0] = false;
-                    trackProgress(p[0]);
-                    if (!(getUserScore() <= 0) && p[0] < 11) {
-                        updateUserScore(isCorrect[0]);
-                    }
-                }
-                if(p[0] == 10) {
-                    btn.setText("Return");
-                    btn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View cardClicked) {
-                            if(rdMusic.isPlaying()) {
-                                rdMusic.stop();
-                            }
-                            Intent returnT = new Intent(getApplicationContext(), PlayerInfo.class);
-                            startActivity(returnT);
-                        }
-                    });
-                }
-                trackProgress(nextProg);
+        btn.setOnClickListener(v -> {
+            RadioButton cr = r1;
+            switch (p[0]) {
+                case 0:
+                    cr = r1;
+                    displayRiddlesOption(1);
+                    displayRiddles(1);
+                    nextProg += 1;
+                    break;
+                case 1:
+                    cr = r2;
+                    displayRiddlesOption(2);
+                    displayRiddles(2);
+                    nextProg += 1;
+                    break;
+                case 2:
+                    cr = r3;
+                    displayRiddlesOption(3);
+                    displayRiddles(3);
+                    nextProg += 1;
+                    break;
+                case 3:
+                    cr = r5;
+                    displayRiddlesOption(4);
+                    displayRiddles(4);
+                    nextProg += 1;
+                    break;
+                case 4:
+                    cr = r4;
+                    displayRiddlesOption(5);
+                    displayRiddles(5);
+                    nextProg += 1;
+                    break;
+                case 5:
+                    cr = r4;
+                    displayRiddlesOption(6);
+                    displayRiddles(6);
+                    nextProg += 1;
+                    break;
+                case 6:
+                    cr = r1;
+                    displayRiddlesOption(7);
+                    displayRiddles(7);
+                    nextProg += 1;
+                    break;
+                case 7:
+                    cr = r3;
+                    displayRiddlesOption(8);
+                    displayRiddles(8);
+                    nextProg += 1;
+                    break;
+                case 8:
+                    cr = r1;
+                    displayRiddlesOption(9);
+                    displayRiddles(9);
+                    nextProg += 1;
+                    break;
+                case 9:
+                    cr = r3;
+                    displayRiddlesOption(10);
+                    displayRiddles(10);
+                    nextProg += 1;
+                    break;
             }
+            if (cr.isChecked()) {
+                if (p[0] < 11) {
+                    isCorrect[0] = true;
+                    updateUserScore(true);
+                    p[0] = p[0] + 1;
+                    trackProgress(p[0]);
+                }
+            } else {
+                p[0] = p[0] + 1;
+                isCorrect[0] = false;
+                trackProgress(p[0]);
+                if (!(trivScore <= 0) && p[0] < 11) {
+                    updateUserScore(isCorrect[0]);
+                }
+            }
+            if(p[0] == 10) {
+                btn.setText("Return");
+                btn.setOnClickListener(cardClicked -> {
+                    if(rdMusic.isPlaying()) {
+                        rdMusic.stop();
+                    }
+                    Intent returnT = new Intent(getApplicationContext(), PlayerInfo.class);
+                    startActivity(returnT);
+                });
+            }
+            trackProgress(nextProg);
         });
     }
 
@@ -202,12 +196,14 @@ public class RiddleScreen extends FileManager {
         TextView score = findViewById(R.id.riddleScore);
         try {
             if (correct) {
-                setUserScore(getUserScore() + 5);
-                score.setText(getUserScore() + "");
+                trivScore = trivScore + 5;
+                score.setText(trivScore + "");
+
+
             } else {
-                if (!(getUserScore() <= 0)) {
-                    setUserScore(getUserScore() - 5);
-                    score.setText(getUserScore() + "");
+                if (!(trivScore <= 0)) {
+                    trivScore = trivScore - 5;
+                    score.setText(trivScore + "");
                 }
             }
         } catch (Exception uus) {
@@ -222,6 +218,7 @@ public class RiddleScreen extends FileManager {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void displayRiddles(int p) {
         TextView riddleDisplay = findViewById(R.id.riddleInfotxt);
         switch (p) {
@@ -258,7 +255,7 @@ public class RiddleScreen extends FileManager {
     }
 
     @SuppressLint("SetTextI18n")
-    public void displayRiddlesOption() {
+    private void displayRiddlesOption() {
         try {
             RadioButton r1 = findViewById(R.id.op1);
             RadioButton r2 = findViewById(R.id.op2);
