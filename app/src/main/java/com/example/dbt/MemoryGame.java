@@ -250,120 +250,7 @@ public class MemoryGame extends AppCompatActivity {
     private void checkCorrect() {
         if (firstClicked == secondClicked && firstClicked == thirdClicked && secondClicked == thirdClicked) {
             totalMatches += 1;
-            switch (firstPosition) {
-                case 0:
-                    card0.setEnabled(false);
-                    card0.setPadding(50, 50, 50, 50);
-                    break;
-                case 1:
-                    card1.setEnabled(false);
-                    card1.setPadding(50, 50, 50, 50);
-                    break;
-                case 2:
-                    card2.setEnabled(false);
-                    card2.setPadding(50, 50, 50, 50);
-                    break;
-                case 3:
-                    card3.setEnabled(false);
-                    card3.setPadding(50, 50, 50, 50);
-                    break;
-                case 4:
-                    card4.setEnabled(false);
-                    card4.setPadding(50, 50, 50, 50);
-                    break;
-                case 5:
-                    card5.setEnabled(false);
-                    card5.setPadding(50, 50, 50, 50);
-                    break;
-                case 6:
-                    card6.setEnabled(false);
-                    card6.setPadding(50, 50, 50, 50);
-                    break;
-                case 7:
-                    card7.setEnabled(false);
-                    card7.setPadding(50, 50, 50, 50);
-                    break;
-                case 8:
-                    card8.setEnabled(false);
-                    card8.setPadding(50, 50, 50, 50);
-                    break;
-            }
-            switch (secondPosition) {
-                case 0:
-                    card0.setEnabled(false);
-                    card0.setPadding(50, 50, 50, 50);
-                    break;
-                case 1:
-                    card1.setEnabled(false);
-                    card1.setPadding(50, 50, 50, 50);
-                    break;
-                case 2:
-                    card2.setEnabled(false);
-                    card2.setPadding(50, 50, 50, 50);
-                    break;
-                case 3:
-                    card3.setEnabled(false);
-                    card3.setPadding(50, 50, 50, 50);
-                    break;
-                case 4:
-                    card4.setEnabled(false);
-                    card4.setPadding(50, 50, 50, 50);
-                    break;
-                case 5:
-                    card5.setEnabled(false);
-                    card5.setPadding(50, 50, 50, 50);
-                    break;
-                case 6:
-                    card6.setEnabled(false);
-                    card6.setPadding(50, 50, 50, 50);
-                    break;
-                case 7:
-                    card7.setEnabled(false);
-                    card7.setPadding(50, 50, 50, 50);
-                    break;
-                case 8:
-                    card8.setEnabled(false);
-                    card8.setPadding(50, 50, 50, 50);
-                    break;
-            }
-            switch (thirdPosition) {
-                case 0:
-                    card0.setEnabled(false);
-                    card0.setPadding(50, 50, 50, 50);
-                    break;
-                case 1:
-                    card1.setEnabled(false);
-                    card1.setPadding(50, 50, 50, 50);
-                    break;
-                case 2:
-                    card2.setEnabled(false);
-                    card2.setPadding(50, 50, 50, 50);
-                    break;
-                case 3:
-                    card3.setEnabled(false);
-                    card3.setPadding(50, 50, 50, 50);
-                    break;
-                case 4:
-                    card4.setEnabled(false);
-                    card4.setPadding(50, 50, 50, 50);
-                    break;
-                case 5:
-                    card5.setEnabled(false);
-                    card5.setPadding(50, 50, 50, 50);
-                    break;
-                case 6:
-                    card6.setEnabled(false);
-                    card6.setPadding(50, 50, 50, 50);
-                    break;
-                case 7:
-                    card7.setEnabled(false);
-                    card7.setPadding(50, 50, 50, 50);
-                    break;
-                case 8:
-                    card8.setEnabled(false);
-                    card8.setPadding(50, 50, 50, 50);
-                    break;
-            }
+            hideSingleCard(firstPosition); hideSingleCard(secondPosition); hideSingleCard(thirdPosition);
             infoTxt.setText("Correct!");
             setScore(true);
         }
@@ -378,6 +265,51 @@ public class MemoryGame extends AppCompatActivity {
         enableCards();
         if (totalMatches == 3) {
             endGame();
+        }
+    }
+
+
+    /*
+    Hide singular card based on position
+    */
+    private void hideSingleCard(int position) {
+        switch (position) {
+            case 0:
+                card0.setEnabled(false);
+                card0.setPadding(50, 50, 50, 50);
+                break;
+            case 1:
+                card1.setEnabled(false);
+                card1.setPadding(50, 50, 50, 50);
+                break;
+            case 2:
+                card2.setEnabled(false);
+                card2.setPadding(50, 50, 50, 50);
+                break;
+            case 3:
+                card3.setEnabled(false);
+                card3.setPadding(50, 50, 50, 50);
+                break;
+            case 4:
+                card4.setEnabled(false);
+                card4.setPadding(50, 50, 50, 50);
+                break;
+            case 5:
+                card5.setEnabled(false);
+                card5.setPadding(50, 50, 50, 50);
+                break;
+            case 6:
+                card6.setEnabled(false);
+                card6.setPadding(50, 50, 50, 50);
+                break;
+            case 7:
+                card7.setEnabled(false);
+                card7.setPadding(50, 50, 50, 50);
+                break;
+            case 8:
+                card8.setEnabled(false);
+                card8.setPadding(50, 50, 50, 50);
+                break;
         }
     }
 

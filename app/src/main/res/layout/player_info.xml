@@ -59,31 +59,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <MultiAutoCompleteTextView
-        android:id="@+id/gameInfoTxt"
-        android:layout_width="284dp"
-        android:layout_height="53dp"
-        android:clickable="false"
-        android:editable="false"
-        android:elegantTextHeight="true"
-        android:fontFamily="@font/agencyb"
-        android:rotationX="10"
-        android:shadowColor="#000000"
-        android:shadowDx="1.5"
-        android:shadowDy="1.3"
-        android:shadowRadius="3.0"
-        android:text="Enter your name, then click a game!"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.21" />
-
     <ImageView
         android:id="@+id/settings1"
         android:layout_width="61dp"
@@ -104,7 +79,7 @@
         android:layout_width="115dp"
         android:layout_height="100dp"
         android:layout_marginStart="84dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="20dp"
         android:rotationX="10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userName"
@@ -115,14 +90,16 @@
         android:layout_width="115dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="84dp"
         android:rotationX="10"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/memGameIcon"
         app:layout_constraintTop_toBottomOf="@+id/userName"
         app:srcCompat="@drawable/simon_game_icon" />
+
+    //app:srcCompat="@drawable/high_scores"
 
     <ImageView
         android:id="@+id/highScoresIcon"
@@ -138,8 +115,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/triviaGameIcon"
         app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/high_scores"
         tools:srcCompat="@drawable/high_scores" />
-    //app:srcCompat="@drawable/high_scores"
 
     <ImageView
         android:id="@+id/triviaGameIcon"
@@ -151,8 +128,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/memGameIcon"
-        app:layout_constraintVertical_bias="0.015"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/trivia_game_icon" />
+
+    //app:srcCompat="@drawable/text_adv_icon"
 
     <ImageView
         android:id="@+id/idiotTestGameIcon"
@@ -164,17 +143,17 @@
         android:rotationX="10"
         app:layout_constraintBottom_toTopOf="@+id/highScoresIcon"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/triviaGameIcon"
         app:layout_constraintTop_toBottomOf="@+id/simonGameIcon"
         app:layout_constraintVertical_bias="1.0" />
-    //app:srcCompat="@drawable/text_adv_icon"
 
     <EditText
         android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="61dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="61dp"
         android:ems="10"
         android:fontFamily="@font/agencyb"
@@ -194,9 +173,8 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gameInfoTxt"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/underLineWelcome" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
