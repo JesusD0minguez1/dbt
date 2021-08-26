@@ -52,9 +52,9 @@ public class SettingMenu extends MainActivity
     public void audioChange1(MediaPlayer mp)
     {
         try {
-            if(mp.isLooping()) {
-                mp.stop();
-                mp.setLooping(false);
+            if(mp.isPlaying()) {
+                mp.seekTo(0);
+                mp.pause();
             }
             else {
                 mp.start();

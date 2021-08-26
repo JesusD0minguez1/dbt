@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 
 
-public class RiddleScreen extends FileManager {
+public class RiddleScreen extends MainActivity {
 
 
     final private HashMap<Integer, String> riddles = new HashMap<>(10);
