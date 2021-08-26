@@ -2,6 +2,8 @@ package com.example.dbt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -25,6 +27,8 @@ public class Simon extends AppCompatActivity {
     ImageView r2;
     ImageView r3;
     ImageView r4;
+    Button returnBtnSimon;
+    MediaPlayer simonMusic;
 
     int score = 0;
     static boolean NextPattern = false;
@@ -49,6 +53,28 @@ public class Simon extends AppCompatActivity {
         r2.setVisibility(View.INVISIBLE);
         r3.setVisibility(View.INVISIBLE);
         r4.setVisibility(View.INVISIBLE);
+        //Return Button
+        returnBtnSimon = findViewById(R.id.returnBtnSimon);
+        returnBtnSimon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View cardClicked) {
+                if(simonMusic.isPlaying()) {
+                    simonMusic.stop();
+                }
+                Intent returnToPlayerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
+                startActivity(returnToPlayerInfo);
+            }
+        });
+        //Settings
+        ImageView settings = findViewById(R.id.simonSettings);
+        simonMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.riddle);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SettingMenu set = new SettingMenu();
+                set.showWindow(Simon.this, settings, simonMusic);
+            }
+        });
     }
 
     public void SimonGo(View v){
@@ -310,16 +336,4 @@ public class Simon extends AppCompatActivity {
             }
         }.start();
     }
-
-    public void settingsClick(View v){
-        ImageView settings = findViewById(R.id.simonSettings);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SettingMenu set = new SettingMenu();
-                set.showWindow(Simon.this, settings);
-            }
-        });
-    }
-
 }

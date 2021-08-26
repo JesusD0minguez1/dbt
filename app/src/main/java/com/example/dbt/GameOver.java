@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class GameOver extends FileManager {
+public class GameOver extends MainActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

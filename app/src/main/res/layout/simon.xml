@@ -8,15 +8,16 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/gamebg" />
+        app:srcCompat="@drawable/immers_bg" />
 
     <Button
         android:id="@+id/startSimon"
@@ -29,7 +30,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.874" />
+        app:layout_constraintVertical_bias="0.806" />
 
     <ImageView
         android:id="@+id/g1"
@@ -139,9 +140,16 @@
         android:id="@+id/simonTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/agencyb"
+        android:rotationX="10"
+        android:shadowColor="#000000"
+        android:shadowDx="1.6"
+        android:shadowDy="1.5"
+        android:shadowRadius="1.5"
         android:text="Simon GO!!!"
         android:textColor="#FFEB3B"
         android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -153,8 +161,14 @@
         android:id="@+id/simonScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/agencyb"
+        android:shadowColor="#000000"
+        android:shadowDx="1.6"
+        android:shadowDy="1.5"
+        android:shadowRadius="1.5"
         android:textColor="#FFEB3B"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
@@ -167,7 +181,6 @@
         android:layout_width="58dp"
         android:layout_height="53dp"
         android:clickable="true"
-        android:onClick="settingsClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.954"
@@ -175,5 +188,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023"
         app:srcCompat="@drawable/settings" />
+
+    <Button
+        android:id="@+id/returnBtnSimon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/agencyb"
+        android:shadowColor="#000000"
+        android:shadowDx="1.6"
+        android:shadowDy="1.5"
+        android:shadowRadius="1.5"
+        android:text="Return"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startSimon"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

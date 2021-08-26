@@ -19,15 +19,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/gamebg" />
+        app:srcCompat="@drawable/title_screen_bg" />
 
     <TextView
         android:id="@+id/authorInfoTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="308dp"
+        android:layout_height="104dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="31dp"
         android:fontFamily="@font/agencyb"
+        android:rotationX="10"
         android:shadowColor="#000000"
         android:shadowDx="1.6"
         android:shadowDy="1.3"
@@ -39,30 +40,27 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/B1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleActivityMain"
-        app:layout_constraintVertical_bias="0.118" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/titleActivityMain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="333dp"
+        android:layout_height="313dp"
         android:layout_marginStart="102dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="102dp"
         android:fontFamily="@font/agencyb"
-        android:rotation="-2"
-        android:rotationX="-10"
-        android:rotationY="-2"
+        android:rotationX="10"
         android:shadowColor="#000000"
         android:shadowDx="1.5"
         android:shadowDy="1.3"
         android:shadowRadius="1.6"
-        android:text="Title Pending"
+        android:text="Mat's Marvelous Arcade along the Coding expertise of Jesus the Jovia, Moises the Meiser, Erik the Erik, and Joey the Average Joe"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="48sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,6 +72,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/agencyb"
         android:onClick="nextGUI"
+        android:rotationX="10"
         android:shadowColor="#000000"
         android:shadowDx="10.0"
         android:shadowDy="10.0"
@@ -83,8 +82,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.752" />
+        app:layout_constraintVertical_bias="0.744" />
 </androidx.constraintlayout.widget.ConstraintLayout>

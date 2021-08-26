@@ -2,8 +2,8 @@ package com.example.dbt;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -13,13 +13,16 @@ import android.widget.TextView;
 import java.util.HashMap;
 
 
-public class RiddleScreen extends FileManager {
+public class RiddleScreen extends MainActivity {
 
 
-    final private HashMap<Integer, String> riddles = new HashMap<Integer, String>(6);
-    final private HashMap<Integer, String> riddleAnswer = new HashMap<Integer, String>(6);
+    final private HashMap<Integer, String> riddles = new HashMap<>(10);
+    final private HashMap<Integer, String> riddleAnswer = new HashMap<>(10);
     private ProgressBar progBar;
     private int nextProg = 0;
+    private int trivScore = 0;
+    MediaPlayer rdMusic;
+
 
 
     @Override
@@ -33,17 +36,31 @@ public class RiddleScreen extends FileManager {
         displayRiddles();
         displayRiddlesOption();
         checkCorrect();
+        //Settings
+        ImageView settings = findViewById(R.id.settingsRiddle);
+        rdMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.gravity);
+        settings.setOnClickListener(v -> {
+            SettingMenu set = new SettingMenu();
+            set.showWindow(RiddleScreen.this, settings, rdMusic);
+        });
     }
 
 
+    @SuppressLint("SetTextI18n")
     private void populateRiddles() {
+        TextView tv = findViewById(R.id.riddleScore);
         try {
             riddles.put(1, "(MHA) Aizawa's hero name?");
             riddles.put(2, "Nintendo 64 release date (US)?");
-            riddles.put(3, "Where did Comire work at before?");
+            riddles.put(3, "Where did Comire work before?");
             riddles.put(4, "What movie was filmed in SLC?");
             riddles.put(5, "Where was Neumont before?");
-            riddles.put(6, "");
+            riddles.put(6, "How do you kill a Wendigo?");
+            riddles.put(7, "What was Walt Disney afraid of?");
+            riddles.put(8, "What actor played Indiana Jones?");
+            riddles.put(9, "Who explored the Pacific NW in early 1800s?");
+            riddles.put(10, "Body's resistance to changes in motion or speed?");
+            tv.setText(0+"");
         } catch (Exception pr) {
             pr.printStackTrace();
         }
@@ -56,14 +73,19 @@ public class RiddleScreen extends FileManager {
             riddleAnswer.put(2, "September 29, 1996");
             riddleAnswer.put(3, "USC");
             riddleAnswer.put(4, "The Sandlot");
-            riddleAnswer.put(5, "South Jordan?");
-            riddleAnswer.put(6, "Riddle 6 : Question 1");
+            riddleAnswer.put(5, "West Jordan");
+            riddleAnswer.put(6, "Fire");
+            riddleAnswer.put(7, "Mice");
+            riddleAnswer.put(8, "Harrison Ford");
+            riddleAnswer.put(9, "Lewis & Clark");
+            riddleAnswer.put(10, "Inertia");
         } catch (Exception pq) {
             pq.printStackTrace();
         }
     }
 
 
+    @SuppressLint("SetTextI18n")
     public void checkCorrect() {
         Button btn = findViewById(R.id.riddleCA);
         RadioButton r1 = findViewById(R.id.op1);
@@ -75,64 +97,96 @@ public class RiddleScreen extends FileManager {
         final int[] p = {1};
         p[0] = 0;
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                RadioButton cr = r1;
-                switch (p[0]) {
-                    case 0:
-                        cr = r1;
-                        displayRiddlesOption(1);
-                        displayRiddles(1);
-                        nextProg += 1;
-                        break;
-                    case 1:
-                        cr = r2;
-                        displayRiddlesOption(2);
-                        displayRiddles(2);
-                        nextProg += 1;
-                        break;
-                    case 2:
-                        cr = r3;
-                        displayRiddlesOption(3);
-                        displayRiddles(3);
-                        nextProg += 1;
-                        break;
-                    case 3:
-                        cr = r5;
-                        displayRiddlesOption(4);
-                        displayRiddles(4);
-                        nextProg += 1;
-                        break;
-                    case 4:
-                        cr = r3;
-                        displayRiddlesOption(5);
-                        displayRiddles(5);
-                        nextProg += 1;
-                        break;
-                    case 5:
-                        cr = r4;
-                        displayRiddlesOption(6);
-                        displayRiddles(6);
-                        nextProg += 1;
-                        break;
-                }
-                if (cr.isChecked()) {
-                    if (p[0] < 6) {
-                        isCorrect[0] = true;
-                        updateUserScore(isCorrect[0]);
-                        p[0] = p[0] + 1;
-                        trackProgress(p[0]);
-                    }
-                } else {
-                    p[0] = p[0] + 1;
-                    isCorrect[0] = false;
-                    trackProgress(p[0]);
-                    if (!(getUserScore() <= 0) && p[0] < 6) {
-                        updateUserScore(isCorrect[0]);
-                    }
-                }
-                trackProgress(nextProg);
+        btn.setOnClickListener(v -> {
+            RadioButton cr = r1;
+            switch (p[0]) {
+                case 0:
+                    cr = r1;
+                    displayRiddlesOption(1);
+                    displayRiddles(1);
+                    nextProg += 1;
+                    break;
+                case 1:
+                    cr = r2;
+                    displayRiddlesOption(2);
+                    displayRiddles(2);
+                    nextProg += 1;
+                    break;
+                case 2:
+                    cr = r3;
+                    displayRiddlesOption(3);
+                    displayRiddles(3);
+                    nextProg += 1;
+                    break;
+                case 3:
+                    cr = r5;
+                    displayRiddlesOption(4);
+                    displayRiddles(4);
+                    nextProg += 1;
+                    break;
+                case 4:
+                    cr = r4;
+                    displayRiddlesOption(5);
+                    displayRiddles(5);
+                    nextProg += 1;
+                    break;
+                case 5:
+                    cr = r4;
+                    displayRiddlesOption(6);
+                    displayRiddles(6);
+                    nextProg += 1;
+                    break;
+                case 6:
+                    cr = r1;
+                    displayRiddlesOption(7);
+                    displayRiddles(7);
+                    nextProg += 1;
+                    break;
+                case 7:
+                    cr = r3;
+                    displayRiddlesOption(8);
+                    displayRiddles(8);
+                    nextProg += 1;
+                    break;
+                case 8:
+                    cr = r1;
+                    displayRiddlesOption(9);
+                    displayRiddles(9);
+                    nextProg += 1;
+                    break;
+                case 9:
+                    cr = r3;
+                    displayRiddlesOption(10);
+                    displayRiddles(10);
+                    nextProg += 1;
+                    break;
             }
+            if (cr.isChecked()) {
+                if (p[0] < 11) {
+                    isCorrect[0] = true;
+                    updateUserScore(true);
+                    p[0] = p[0] + 1;
+                    trackProgress(p[0]);
+                }
+            } else {
+                p[0] = p[0] + 1;
+                isCorrect[0] = false;
+                trackProgress(p[0]);
+                if (!(trivScore <= 0) && p[0] < 11) {
+                    updateUserScore(isCorrect[0]);
+                }
+            }
+            if(p[0] == 10) {
+                btn.setText("Return");
+                btn.setOnClickListener(cardClicked -> {
+                    if(rdMusic.isPlaying()) {
+                        rdMusic.stop();
+                    }
+                    Intent returnT = new Intent(getApplicationContext(), PlayerInfo.class);
+                    startActivity(returnT);
+                });
+            }
+            trackProgress(nextProg);
         });
     }
 
@@ -142,12 +196,14 @@ public class RiddleScreen extends FileManager {
         TextView score = findViewById(R.id.riddleScore);
         try {
             if (correct) {
-                setUserScore(getUserScore() + 5);
-                score.setText(getUserScore() + "");
+                trivScore = trivScore + 5;
+                score.setText(trivScore + "");
+
+
             } else {
-                if (!(getUserScore() <= 0)) {
-                    setUserScore(getUserScore() - 5);
-                    score.setText(getUserScore() + "");
+                if (!(trivScore <= 0)) {
+                    trivScore = trivScore - 5;
+                    score.setText(trivScore + "");
                 }
             }
         } catch (Exception uus) {
@@ -162,6 +218,7 @@ public class RiddleScreen extends FileManager {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void displayRiddles(int p) {
         TextView riddleDisplay = findViewById(R.id.riddleInfotxt);
         switch (p) {
@@ -181,12 +238,24 @@ public class RiddleScreen extends FileManager {
                 riddleDisplay.setText(riddles.get(6));
                 break;
             case 6:
-                riddleDisplay.setText("Done");
+                riddleDisplay.setText(riddles.get(7));
+                break;
+            case 7:
+                riddleDisplay.setText(riddles.get(8));
+                break;
+            case 8:
+                riddleDisplay.setText(riddles.get(9));
+                break;
+            case 9:
+                riddleDisplay.setText(riddles.get(10));
+                break;
+            case 10:
+                riddleDisplay.setText("Done!");
         }
     }
 
     @SuppressLint("SetTextI18n")
-    public void displayRiddlesOption() {
+    private void displayRiddlesOption() {
         try {
             RadioButton r1 = findViewById(R.id.op1);
             RadioButton r2 = findViewById(R.id.op2);
@@ -238,20 +307,48 @@ public class RiddleScreen extends FileManager {
                     op5.setText(riddleAnswer.get(4));
                     break;
                 case 4:
-                    op1.setText("*Guitar riffs*");
-                    op2.setText("I can show you");
-                    op3.setText("What it's like");
+                    op1.setText("South Jordan");
+                    op2.setText("Sandy");
+                    op3.setText("West City Valley");
                     op4.setText(riddleAnswer.get(5));
-                    op5.setText("thaf;!");
+                    op5.setText("Holladay");
                     break;
                 case 5:
-                    op1.setText("LIIIKKEE");
-                    op2.setText("*More guitar riffs*");
-                    op3.setText("*Drum ending*");
+                    op1.setText("Dead Man's Blood");
+                    op2.setText("Borax");
+                    op3.setText("Silver Bullets");
                     op4.setText(riddleAnswer.get(6));
-                    op5.setText("What will it take, to rip the heart from your hate");
+                    op5.setText("Machete");
                     break;
                 case 6:
+                    op1.setText(riddleAnswer.get(7));
+                    op2.setText("Dogs");
+                    op3.setText("Elephants");
+                    op4.setText("Ducks");
+                    op5.setText("Heights");
+                    break;
+                case 7:
+                    op1.setText("Tom Hiddleston");
+                    op2.setText("Tom Hanks");
+                    op3.setText(riddleAnswer.get(8));
+                    op4.setText("Clint Eastwood");
+                    op5.setText("Bruce Willis");
+                    break;
+                case 8:
+                    op1.setText(riddleAnswer.get(9));
+                    op2.setText("Marco Polo");
+                    op3.setText("Beavis and Butthead");
+                    op4.setText("Stanley and Livingstone");
+                    op5.setText("Burke and Wills");
+                    break;
+                case 9:
+                    op1.setText("Motion");
+                    op2.setText("Gravity");
+                    op3.setText(riddleAnswer.get(10));
+                    op4.setText("Friction");
+                    op5.setText("Tension");
+                    break;
+                case 10:
                     op1.setText("");
                     op2.setText("");
                     op3.setText("");
@@ -274,24 +371,5 @@ public class RiddleScreen extends FileManager {
         } catch (Exception tp) {
             tp.printStackTrace();
         }
-    }
-
-    public void nextActivity1(View v) {
-        Button B6 = findViewById(R.id.nxtBtnRiddle);
-        Intent action3 = new Intent(getApplicationContext(), MemoryGame.class);
-        startActivity(action3);
-    }
-
-
-    public void settingsRiddle(View v)
-    {
-        ImageView settings = findViewById(R.id.settingsRiddle);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SettingMenu set = new SettingMenu();
-                set.showWindow(RiddleScreen.this, settings);
-            }
-        });
     }
 }

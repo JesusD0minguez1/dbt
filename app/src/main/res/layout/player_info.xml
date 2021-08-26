@@ -107,7 +107,7 @@
         android:layout_marginTop="96dp"
         android:rotationX="10"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gameInfoTxt"
+        app:layout_constraintTop_toBottomOf="@+id/userName"
         app:srcCompat="@drawable/mem_game_icon" />
 
     <ImageView
@@ -119,9 +119,9 @@
         android:layout_marginEnd="84dp"
         android:rotationX="10"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toEndOf="@+id/memGameIcon"
-        app:layout_constraintTop_toBottomOf="@+id/gameInfoTxt"
+        app:layout_constraintTop_toBottomOf="@+id/userName"
         app:srcCompat="@drawable/simon_game_icon" />
 
     <ImageView
@@ -172,6 +172,9 @@
         android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="61dp"
         android:ems="10"
         android:fontFamily="@font/agencyb"
         android:hint="Name Here"
@@ -189,7 +192,6 @@
         android:textColorLink="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/memGameIcon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
