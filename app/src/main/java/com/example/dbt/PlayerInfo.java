@@ -123,7 +123,7 @@ public class PlayerInfo extends AppCompatActivity {
         });
         //Settings
         ImageView settings = findViewById(R.id.settings1);
-        playerInfoMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.new_test);
+        playerInfoMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.perfect_alexander);
         settings.setOnClickListener(v -> {
             SettingMenu set = new SettingMenu();
             set.showWindow(PlayerInfo.this, settings, playerInfoMusic);
