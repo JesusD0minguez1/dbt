@@ -18,7 +18,7 @@ import android.media.MediaActionSound;
 
 public class SettingMenu extends MainActivity
 {
-    
+
 
     public void showWindow(Activity activity, ImageView b, MediaPlayer mp)
     {
@@ -65,7 +65,6 @@ public class SettingMenu extends MainActivity
             music.printStackTrace();
         }
     }
-
 
 
     public void quitApp(Activity activity){

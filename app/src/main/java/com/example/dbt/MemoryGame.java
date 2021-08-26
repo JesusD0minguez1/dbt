@@ -30,7 +30,7 @@ public class MemoryGame extends AppCompatActivity {
     public TextView timer, scoreView, infoTxt, titleTxt;
     public ImageView card0, card1, card2, card3, card4, card5, card6, card7, card8;
     private int circle, triangle, square, cardBack, memScore;
-    public Button returnBtn, startBtn;
+    public Button returnBtn, startBtn, resetBtn;
     public boolean gameStarted;
     //Array of the card ImageViews just for easy access
     Integer[] cards;
@@ -74,6 +74,7 @@ public class MemoryGame extends AppCompatActivity {
         card8.setImageResource(R.drawable.card_back);
         returnBtn = findViewById(R.id.returnBtnMemory);
         startBtn = findViewById(R.id.startButtonMem);
+        resetBtn = findViewById(R.id.resetAcitivityBtn);
 
 
         gameStarted = false;
@@ -81,14 +82,8 @@ public class MemoryGame extends AppCompatActivity {
 
         //Settings menu
         ImageView settings = findViewById(R.id.settingsMem);
-        memMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.new_test);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SettingMenu set = new SettingMenu();
-                set.showWindow(MemoryGame.this, settings, memMusic);
-            }
-        });
+        memMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.krabs_rave);
+        settings.setOnClickListener(v -> { SettingMenu set = new SettingMenu(); set.showWindow(MemoryGame.this, settings, memMusic); });
     }
 
 
@@ -109,68 +104,41 @@ public class MemoryGame extends AppCompatActivity {
                 /*
                 Set on Click listeners
                  */
-                card0.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View cardClicked) {
-                        int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
-                        cardClick(card0, currentTag);
-                    }
+                card0.setOnClickListener(cardClicked -> {
+                    int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
+                    cardClick(card0, currentTag);
                 });
-                card1.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View cardClicked) {
-                        int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
-                        cardClick(card1, currentTag);
-                    }
+                card1.setOnClickListener(cardClicked -> {
+                    int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
+                    cardClick(card1, currentTag);
                 });
-                card2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View cardClicked) {
-                        int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
-                        cardClick(card2, currentTag);
-                    }
+                card2.setOnClickListener(cardClicked -> {
+                    int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
+                    cardClick(card2, currentTag);
                 });
-                card3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View cardClicked) {
-                        int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
-                        cardClick(card3, currentTag);
-                    }
+                card3.setOnClickListener(cardClicked -> {
+                    int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
+                    cardClick(card3, currentTag);
                 });
-                card4.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View cardClicked) {
-                        int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
-                        cardClick(card4, currentTag);
-                    }
+                card4.setOnClickListener(cardClicked -> {
+                    int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
+                    cardClick(card4, currentTag);
                 });
-                card5.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View cardClicked) {
-                        int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
-                        cardClick(card5, currentTag);
-                    }
+                card5.setOnClickListener(cardClicked -> {
+                    int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
+                    cardClick(card5, currentTag);
                 });
-                card6.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View cardClicked) {
-                        int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
-                        cardClick(card6, currentTag);
-                    }
+                card6.setOnClickListener(cardClicked -> {
+                    int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
+                    cardClick(card6, currentTag);
                 });
-                card7.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View cardClicked) {
-                        int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
-                        cardClick(card7, currentTag);
-                    }
+                card7.setOnClickListener(cardClicked -> {
+                    int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
+                    cardClick(card7, currentTag);
                 });
-                card8.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View cardClicked) {
-                        int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
-                        cardClick(card8, currentTag);
-                    }
+                card8.setOnClickListener(cardClicked -> {
+                    int currentTag = (Integer.parseInt((String) cardClicked.getTag()));
+                    cardClick(card8, currentTag);
                 });
                 setImageIds();
                 Collections.shuffle(Arrays.asList(cards));
@@ -214,31 +182,20 @@ public class MemoryGame extends AppCompatActivity {
         if (cardTag != prevTag) {
             switch (cards[cardTag]) {
                 case 1:
-                    card.setImageResource(circle);
-                    break;
-                case 2:
-                    card.setImageResource(square);
-                    break;
-                case 3:
-                    card.setImageResource(triangle);
-                    break;
                 case 11:
-                    card.setImageResource(circle);
-                    break;
-                case 12:
-                    card.setImageResource(square);
-                    break;
-                case 13:
-                    card.setImageResource(triangle);
-                    break;
                 case 21:
                     card.setImageResource(circle);
                     break;
+                case 2:
+                case 12:
                 case 22:
                     card.setImageResource(square);
                     break;
+                case 3:
+                case 13:
                 case 23:
                     card.setImageResource(triangle);
+                    break;
             }
             switch (clicked) {
                 case 1:
@@ -462,29 +419,17 @@ public class MemoryGame extends AppCompatActivity {
             }
             switch (cards[i]) {
                 case 1:
-                    card.setImageResource(circle);
-                    break;
-                case 2:
-                    card.setImageResource(square);
-                    break;
-                case 3:
-                    card.setImageResource(triangle);
-                    break;
                 case 11:
-                    card.setImageResource(circle);
-                    break;
-                case 12:
-                    card.setImageResource(square);
-                    break;
-                case 13:
-                    card.setImageResource(triangle);
-                    break;
                 case 21:
                     card.setImageResource(circle);
                     break;
+                case 2:
+                case 12:
                 case 22:
                     card.setImageResource(square);
                     break;
+                case 3:
+                case 13:
                 case 23:
                     card.setImageResource(triangle);
                     break;
@@ -614,16 +559,13 @@ public class MemoryGame extends AppCompatActivity {
         card4.setAlpha(0.50f); card5.setAlpha(0.50f); card6.setAlpha(0.50f); card7.setAlpha(0.50f);
         card8.setAlpha(0.50f);
         returnBtn.setVisibility(View.VISIBLE);
-        returnBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View cardClicked) {
-                Intent playerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
-                playerInfo.putExtra("memScore", memScore);
-                if(memMusic.isPlaying()) {
-                    memMusic.stop();
-                }
-                startActivity(playerInfo);
+        returnBtn.setOnClickListener(cardClicked -> {
+            Intent playerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
+            playerInfo.putExtra("memScore", memScore);
+            if(memMusic.isPlaying()) {
+                memMusic.stop();
             }
+            startActivity(playerInfo);
         });
         timer.setText("");
         infoTxt.setText("");
@@ -639,7 +581,7 @@ public class MemoryGame extends AppCompatActivity {
             titleTxt.requestLayout();
         }
         if (memScore == 0) {
-            titleTxt.setText("0/3???");
+            titleTxt.setText("0/3??? Why??");
         }
         else if (memScore == 100) {
             titleTxt.setText("1/3? Try again...");
@@ -650,5 +592,17 @@ public class MemoryGame extends AppCompatActivity {
         else if(memScore == 300) {
             titleTxt.setText("3/3 Amazing!");
         }
+        resetBtn.setVisibility(View.VISIBLE);
+        resetBtn.setOnClickListener(cardClicked -> resetGame());
+    }
+
+
+    /*
+    Resets everything to initial state for replay
+     */
+    private void resetGame() {
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 }

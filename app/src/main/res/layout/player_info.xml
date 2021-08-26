@@ -137,7 +137,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/triviaGameIcon"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@drawable/high_scores" />
     //app:srcCompat="@drawable/high_scores"
 
     <ImageView
