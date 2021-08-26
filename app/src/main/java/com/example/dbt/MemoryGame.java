@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -22,10 +24,10 @@ Functionality plan -- Mat:
  */
 
 
-public class MemoryGame extends FileManager {
+public class MemoryGame extends AppCompatActivity {
 
 
-    public TextView timer, scoreView, infoTxt;
+    public TextView timer, scoreView, infoTxt, titleTxt;
     public ImageView card0, card1, card2, card3, card4, card5, card6, card7, card8;
     private int circle, triangle, square, cardBack, memScore;
     public Button returnBtn, startBtn;
@@ -51,6 +53,7 @@ public class MemoryGame extends FileManager {
         timer = findViewById(R.id.timerView);
         scoreView = findViewById(R.id.scoreView);
         infoTxt = findViewById(R.id.memoryInfoText);
+        titleTxt =findViewById(R.id.titleMemGame);
         card0 = findViewById(R.id.card0);
         card0.setImageResource(R.drawable.card_back);
         card1 = findViewById(R.id.card1);
@@ -564,12 +567,12 @@ public class MemoryGame extends FileManager {
         new CountDownTimer(milli, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                timer.setText((millisUntilFinished / 1000) + "");
+                timer.setText("Timer: " + (millisUntilFinished / 1000));
             }
 
             public void onFinish() {
-                infoTxt.setText("Time's up!");
-                timer.setText("");
+                infoTxt.setText("Good luck!");
+                timer.setText("Time's up!");
                 hideCards();
             }
         }.start();
@@ -607,6 +610,9 @@ public class MemoryGame extends FileManager {
     */
     private void endGame() {
         disableCards();
+        card0.setAlpha(0.50f); card1.setAlpha(0.50f); card2.setAlpha(0.50f); card3.setAlpha(0.50f);
+        card4.setAlpha(0.50f); card5.setAlpha(0.50f); card6.setAlpha(0.50f); card7.setAlpha(0.50f);
+        card8.setAlpha(0.50f);
         returnBtn.setVisibility(View.VISIBLE);
         returnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -619,6 +625,30 @@ public class MemoryGame extends FileManager {
                 startActivity(playerInfo);
             }
         });
-        timer.setText("Game Over!");
+        timer.setText("");
+        infoTxt.setText("");
+        if (scoreView.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) scoreView.getLayoutParams();
+            p.setMargins(120, 0, 56, 24);
+            scoreView.requestLayout();
+        }
+        scoreView.setTextSize(36);
+        if (titleTxt.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) titleTxt.getLayoutParams();
+            p.setMargins(38, 150, 37, 0);
+            titleTxt.requestLayout();
+        }
+        if (memScore == 0) {
+            titleTxt.setText("0/3???");
+        }
+        else if (memScore == 100) {
+            titleTxt.setText("1/3? Try again...");
+        }
+        else if(memScore == 200) {
+            titleTxt.setText("2/3? Not too bad.");
+        }
+        else if(memScore == 300) {
+            titleTxt.setText("3/3 Amazing!");
+        }
     }
 }
