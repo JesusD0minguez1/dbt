@@ -29,17 +29,12 @@ public class MemoryGame extends AppCompatActivity {
 
     public TextView timer, scoreView, infoTxt, titleTxt;
     public ImageView card0, card1, card2, card3, card4, card5, card6, card7, card8;
-    private int circle, triangle, square, cardBack, memScore;
-    public Button returnBtn, startBtn, resetBtn;
+    public Button returnBtn, startBtn, nextLvLBtn;
     public boolean gameStarted;
-    //Array of the card ImageViews just for easy access
     Integer[] cards;
-    //Count cards clicked for checking correct
-    private int clicked = 1;
-    private int totalMatches = 0;
-    private int firstClicked, secondClicked, thirdClicked;
-    private int firstPosition, secondPosition, thirdPosition;
-    private int prevTag = 30;
+    private int clicked = 1, level = 1, totalMatches = 0, firstClicked, secondClicked, thirdClicked,
+    firstPosition, secondPosition, thirdPosition, prevTag = 30, circle, triangle, square, cardBack,
+    memScore, level1Score, level2Score, level3Score, totalScore = 0;
     MediaPlayer memMusic;
 
 
@@ -47,42 +42,32 @@ public class MemoryGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.memory_game);
-
-
+        //Set next level if applicable
+        Intent getLevel = getIntent();
+        level = getLevel.getIntExtra("level", 0);
+        totalScore = getLevel.getIntExtra("prevScore", 0);
+        if (level == 0) { level = 1; }
         //Declare views
-        timer = findViewById(R.id.timerView);
-        scoreView = findViewById(R.id.scoreView);
-        infoTxt = findViewById(R.id.memoryInfoText);
-        titleTxt =findViewById(R.id.titleMemGame);
-        card0 = findViewById(R.id.card0);
-        card0.setImageResource(R.drawable.card_back);
-        card1 = findViewById(R.id.card1);
-        card1.setImageResource(R.drawable.card_back);
-        card2 = findViewById(R.id.card2);
-        card2.setImageResource(R.drawable.card_back);
-        card3 = findViewById(R.id.card3);
-        card3.setImageResource(R.drawable.card_back);
-        card4 = findViewById(R.id.card4);
-        card4.setImageResource(R.drawable.card_back);
-        card5 = findViewById(R.id.card5);
-        card5.setImageResource(R.drawable.card_back);
-        card6 = findViewById(R.id.card6);
-        card6.setImageResource(R.drawable.card_back);
-        card7 = findViewById(R.id.card7);
-        card7.setImageResource(R.drawable.card_back);
-        card8 = findViewById(R.id.card8);
-        card8.setImageResource(R.drawable.card_back);
-        returnBtn = findViewById(R.id.returnBtnMemory);
-        startBtn = findViewById(R.id.startButtonMem);
-        resetBtn = findViewById(R.id.resetAcitivityBtn);
-
-
+        timer = findViewById(R.id.timerView); scoreView = findViewById(R.id.scoreView);
+        infoTxt = findViewById(R.id.memoryInfoText); titleTxt =findViewById(R.id.titleMemGame);
+        if (level != 1) { infoTxt.setText("Level " + level); scoreView.setText("Score: " + totalScore);
+        timer.setText("Timer: " + (4 - level)); }
+        card0 = findViewById(R.id.card0); card0.setImageResource(R.drawable.card_back);
+        card1 = findViewById(R.id.card1); card1.setImageResource(R.drawable.card_back);
+        card2 = findViewById(R.id.card2); card2.setImageResource(R.drawable.card_back);
+        card3 = findViewById(R.id.card3); card3.setImageResource(R.drawable.card_back);
+        card4 = findViewById(R.id.card4); card4.setImageResource(R.drawable.card_back);
+        card5 = findViewById(R.id.card5); card5.setImageResource(R.drawable.card_back);
+        card6 = findViewById(R.id.card6); card6.setImageResource(R.drawable.card_back);
+        card7 = findViewById(R.id.card7); card7.setImageResource(R.drawable.card_back);
+        card8 = findViewById(R.id.card8); card8.setImageResource(R.drawable.card_back);
+        returnBtn = findViewById(R.id.returnBtnMemory); startBtn = findViewById(R.id.startButtonMem);
+        nextLvLBtn = findViewById(R.id.resetAcitivityBtn);
         gameStarted = false;
-
-
         //Settings menu
         ImageView settings = findViewById(R.id.settingsMem);
         memMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.krabs_rave);
+        try { memMusic.prepareAsync(); } catch (Exception prep) {prep.printStackTrace(); }
         settings.setOnClickListener(v -> { SettingMenu set = new SettingMenu(); set.showWindow(MemoryGame.this, settings, memMusic); });
     }
 
@@ -143,14 +128,22 @@ public class MemoryGame extends AppCompatActivity {
                 setImageIds();
                 Collections.shuffle(Arrays.asList(cards));
                 showCards();
-                countdown(3);
+                switch (level) {
+                    case 1:
+                        countdown(3);
+                        break;
+                    case 2:
+                        countdown(2);
+                        break;
+                    case 3:
+                        countdown(1);
+                        break;
+                }
                 gameStarted= true;
                 memScore = 0;
             }
         }
-        catch (Exception startBtn) {
-            startBtn.printStackTrace();
-        }
+        catch (Exception startBtn) { startBtn.printStackTrace(); }
     }
 
 
@@ -168,10 +161,8 @@ public class MemoryGame extends AppCompatActivity {
     Sets image ids of each corresponding shape
     */
     private void setImageIds() {
-        circle = R.drawable.circle_card;
-        square = R.drawable.square_card;
-        triangle = R.drawable.triangle_card;
-        cardBack = R.drawable.card_back;
+        circle = R.drawable.circle_card; square = R.drawable.square_card;
+        triangle = R.drawable.triangle_card; cardBack = R.drawable.card_back;
     }
 
 
@@ -200,24 +191,16 @@ public class MemoryGame extends AppCompatActivity {
             switch (clicked) {
                 case 1:
                     firstClicked = cards[cardTag];
-                    if (firstClicked > 20) {
-                        firstClicked = firstClicked - 20;
-                    }
-                    else if (firstClicked > 10) {
-                        firstClicked = firstClicked - 10;
-                    }
+                    if (firstClicked > 20) { firstClicked = firstClicked - 20; }
+                    else if (firstClicked > 10) { firstClicked = firstClicked - 10; }
                     prevTag = cardTag;
                     clicked = 2;
                     firstPosition = cardTag;
                     break;
                 case 2:
                     secondClicked = cards[cardTag];
-                    if(secondClicked > 20) {
-                        secondClicked = secondClicked - 20;
-                    }
-                    else if (secondClicked > 10) {
-                        secondClicked = secondClicked - 10;
-                    }
+                    if(secondClicked > 20) { secondClicked = secondClicked - 20; }
+                    else if (secondClicked > 10) { secondClicked = secondClicked - 10; }
 
                     prevTag = cardTag;
                     clicked = 3;
@@ -225,12 +208,8 @@ public class MemoryGame extends AppCompatActivity {
                     break;
                 case 3:
                     thirdClicked = cards[cardTag];
-                    if (thirdClicked > 20) {
-                        thirdClicked = thirdClicked - 20;
-                    }
-                    else if(thirdClicked > 10) {
-                        thirdClicked = thirdClicked -10;
-                    }
+                    if (thirdClicked > 20) { thirdClicked = thirdClicked - 20; }
+                    else if(thirdClicked > 10) { thirdClicked = thirdClicked -10; }
                     prevTag = 30;
                     clicked = 1;
                     thirdPosition = cardTag;
@@ -254,18 +233,14 @@ public class MemoryGame extends AppCompatActivity {
             timer.setText("Correct!");
             setScore(true);
         }
-        else {
-            hideCards();
-        }
+        else { hideCards(); }
         if(firstClicked != secondClicked || firstClicked != thirdClicked || secondClicked != thirdClicked) {
             timer.setText("Incorrect!");
             hideCards();
             setScore(false);
         }
         enableCards();
-        if (totalMatches == 3) {
-            endGame();
-        }
+        if (totalMatches == 3) { endGame(); }
     }
 
 
@@ -401,9 +376,7 @@ public class MemoryGame extends AppCompatActivity {
                     card = findViewById(R.id.card8);
                     break;
             }
-            if (card.getPaddingBottom() != 50) {
-                card.setImageResource(R.drawable.card_back);
-            }
+            if (card.getPaddingBottom() != 50) { card.setImageResource(R.drawable.card_back); }
         }
     }
 
@@ -430,43 +403,28 @@ public class MemoryGame extends AppCompatActivity {
         int milli = time * 1000;
         showCards();
         new CountDownTimer(milli, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                timer.setText("Timer: " + (millisUntilFinished / 1000));
-            }
-
+            public void onTick(long millisUntilFinished) { timer.setText("Timer: " + (millisUntilFinished / 1000)); }
             public void onFinish() {
-                infoTxt.setText("");
+                infoTxt.setText("Level: " + level);
                 timer.setText("Good Luck!");
                 hideCards();
-            }
-        }.start();
+            } }.start();
     }
 
 
     private void setScore(boolean isCorrect) {
         try {
             scoreView.setText("");
-            if(isCorrect) {
-                memScore += 100;
-            }
+            if(isCorrect) { memScore += 100; }
             else {
                 int newMemScore = memScore;
-                if(newMemScore != 0 && newMemScore >= 100) {
-                    memScore -= 100;
-                }
-                else if(newMemScore < 100 && newMemScore != 0) {
-                    memScore = memScore - newMemScore;
-                }
-                else {
-                    memScore = 0;
-                }
+                if(newMemScore != 0 && newMemScore >= 100) { memScore -= 100; }
+                else if(newMemScore < 100 && newMemScore != 0) { memScore = memScore - newMemScore; }
+                else { memScore = 0; }
             }
-            scoreView.setText("Score: " + memScore);
+            scoreView.setText("Score: " + (memScore + totalScore));
         }
-        catch (Exception score) {
-            score.printStackTrace();
-        }
+        catch (Exception score) { score.printStackTrace(); }
     }
 
 
@@ -482,14 +440,10 @@ public class MemoryGame extends AppCompatActivity {
         returnBtn.setOnClickListener(cardClicked -> {
             Intent playerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
             playerInfo.putExtra("memScore", memScore);
-            if(memMusic.isPlaying()) {
-                memMusic.pause();
-                memMusic.release();
-            }
+            if(memMusic.isPlaying()) { memMusic.pause(); memMusic.release(); }
             startActivity(playerInfo);
         });
-        timer.setText("");
-        infoTxt.setText("");
+        timer.setText(""); infoTxt.setText("");
         if (scoreView.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) scoreView.getLayoutParams();
             p.setMargins(120, 0, 56, 24);
@@ -501,20 +455,24 @@ public class MemoryGame extends AppCompatActivity {
             p.setMargins(38, 150, 37, 0);
             titleTxt.requestLayout();
         }
-        if (memScore == 0) {
-            titleTxt.setText("0 Points??? Why??");
+        if (level != 1) {
+            if (memScore == 0) { titleTxt.setText("0 Points This Round??? Why??"); }
+            else if (memScore == 100) { titleTxt.setText("100 Points This Round? Try again..."); }
+            else if(memScore == 200) { titleTxt.setText("200 Points This Round? Not too bad."); }
+            else if(memScore == 300) { titleTxt.setText("300 Points This Round, Amazing!"); }
+        } else {
+            if (memScore == 0) { titleTxt.setText("0 Points??? Why??"); }
+            else if (memScore == 100) { titleTxt.setText("100 Points? Try again..."); }
+            else if(memScore == 200) { titleTxt.setText("200 Points? Not too bad."); }
+            else if(memScore == 300) { titleTxt.setText("300 Points, Amazing!"); }
         }
-        else if (memScore == 100) {
-            titleTxt.setText("100 Points? Try again...");
+
+        if (level != 3) {
+            nextLvLBtn.setVisibility(View.VISIBLE); nextLvLBtn.setOnClickListener(cardClicked -> resetGame());
+        } else {
+            nextLvLBtn.setVisibility(View.VISIBLE); nextLvLBtn.setOnClickListener(cardClicked -> resetGame());
+            nextLvLBtn.setText("Reset");
         }
-        else if(memScore == 200) {
-            titleTxt.setText("200 Points? Not too bad.");
-        }
-        else if(memScore == 300) {
-            titleTxt.setText("300 Points, Amazing!");
-        }
-        resetBtn.setVisibility(View.VISIBLE);
-        resetBtn.setOnClickListener(cardClicked -> resetGame());
     }
 
 
@@ -523,6 +481,10 @@ public class MemoryGame extends AppCompatActivity {
      */
     private void resetGame() {
         Intent intent = getIntent();
+        if (level == 3) { level = 1;}
+        else { level++; }
+        intent.putExtra("level", level);
+        intent.putExtra("prevScore", (memScore + totalScore));
         finish();
         startActivity(intent);
     }

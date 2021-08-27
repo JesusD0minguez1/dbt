@@ -64,15 +64,14 @@ public class Simon extends AppCompatActivity {
         //Return Button
         returnBtnSimon = findViewById(R.id.returnBtnSimon);
         returnBtnSimon.setOnClickListener(cardClicked -> {
-            if(simonMusic.isPlaying()) {
-                simonMusic.stop();
-            }
+            if(simonMusic.isPlaying()) { simonMusic.pause(); simonMusic.release(); }
             Intent returnToPlayerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
             startActivity(returnToPlayerInfo);
         });
         //Settings
         ImageView settings = findViewById(R.id.simonSettings);
         simonMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.riddle);
+        try { simonMusic.prepareAsync(); } catch (Exception prep) {prep.printStackTrace(); }
         settings.setOnClickListener(v -> {
             SettingMenu set = new SettingMenu();
             set.showWindow(Simon.this, settings, simonMusic);

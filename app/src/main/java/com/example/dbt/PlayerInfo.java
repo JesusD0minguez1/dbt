@@ -39,10 +39,7 @@ public class PlayerInfo extends AppCompatActivity {
         memGameIcon.setOnClickListener(cardClicked -> {
             try {
                 if(checkUserName() == true) {
-                    sendUserName();
-                    if(playerInfoMusic.isPlaying()) {
-                        playerInfoMusic.stop();
-                    }
+                    sendUserName(); musicRelease();
                     Intent memGame = new Intent(getApplicationContext(), MemoryGame.class);
                     startActivity(memGame);
                 }
@@ -56,10 +53,7 @@ public class PlayerInfo extends AppCompatActivity {
         triviaGameIcon.setOnClickListener(cardClicked -> {
             try {
                 if(checkUserName() == true) {
-                    sendUserName();
-                    if(playerInfoMusic.isPlaying()) {
-                        playerInfoMusic.stop();
-                    }
+                    sendUserName(); musicRelease();
                     Intent triviaGame = new Intent(getApplicationContext(), RiddleScreen.class);
                     startActivity(triviaGame);
                 }
@@ -73,10 +67,7 @@ public class PlayerInfo extends AppCompatActivity {
         simonGameIcon.setOnClickListener(cardClicked -> {
             try {
                 if(checkUserName() == true) {
-                    sendUserName();
-                    if(playerInfoMusic.isPlaying()) {
-                        playerInfoMusic.stop();
-                    }
+                    sendUserName(); musicRelease();
                     Intent simonGame = new Intent(getApplicationContext(), Simon.class);
                     startActivity(simonGame);
                 }
@@ -90,10 +81,7 @@ public class PlayerInfo extends AppCompatActivity {
         highScoresIcon.setOnClickListener(cardClicked -> {
             try {
                 if(checkUserName() == true) {
-                    sendUserName();
-                    if(playerInfoMusic.isPlaying()) {
-                        playerInfoMusic.stop();
-                    }
+                    sendUserName(); musicRelease();
                     Intent simonGame = new Intent(getApplicationContext(), HighScores.class);
                     startActivity(simonGame);
                 }
@@ -107,10 +95,7 @@ public class PlayerInfo extends AppCompatActivity {
         idiotTestIcon.setOnClickListener(cardClicked -> {
             try {
                 if(checkUserName() == true) {
-                    sendUserName();
-                    if(playerInfoMusic.isPlaying()) {
-                        playerInfoMusic.stop();
-                    }
+                    sendUserName(); musicRelease();
                     /*
                     Intent simonGame = new Intent(getApplicationContext(), HighScores.class);
                     startActivity(simonGame);
@@ -124,6 +109,7 @@ public class PlayerInfo extends AppCompatActivity {
         //Settings
         ImageView settings = findViewById(R.id.settings1);
         playerInfoMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.one_heroes_journey);
+        try { playerInfoMusic.prepareAsync(); } catch (Exception prep) {prep.printStackTrace(); }
         settings.setOnClickListener(v -> {
             SettingMenu set = new SettingMenu();
             set.showWindow(PlayerInfo.this, settings, playerInfoMusic);
@@ -151,4 +137,11 @@ public class PlayerInfo extends AppCompatActivity {
             return true;
         }
     }
+
+
+    /*
+    Stops and releases music before sending to next activity just in case
+    (also saves resources)
+     */
+    private void musicRelease() { if(playerInfoMusic.isPlaying()) { playerInfoMusic.pause(); playerInfoMusic.release(); } }
 }

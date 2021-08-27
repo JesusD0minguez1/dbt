@@ -44,6 +44,7 @@ public class RiddleScreen extends MainActivity {
         //Settings
         ImageView settings = findViewById(R.id.settingsRiddle);
         rdMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.gravity);
+        try { rdMusic.prepareAsync(); } catch (Exception prep) {prep.printStackTrace(); }
         settings.setOnClickListener(v -> {
             SettingMenu set = new SettingMenu();
             set.showWindow(RiddleScreen.this, settings, rdMusic);
@@ -183,9 +184,7 @@ public class RiddleScreen extends MainActivity {
                 btn.setText("Return");
                 group.setEnabled(false); group.setVisibility(View.INVISIBLE);
                 btn.setOnClickListener(cardClicked -> {
-                    if(rdMusic.isPlaying()) {
-                        rdMusic.stop();
-                    }
+                    if(rdMusic.isPlaying()) { rdMusic.pause(); rdMusic.release(); }
                     Intent returnT = new Intent(getApplicationContext(), PlayerInfo.class);
                     startActivity(returnT);
                 });
