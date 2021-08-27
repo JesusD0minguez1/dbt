@@ -19,9 +19,6 @@
             android:name=".MemoryGame"
             android:exported="true" />
         <activity
-            android:name=".GameOver"
-            android:exported="true" />
-        <activity
             android:name=".RiddleScreen"
             android:exported="true" />
         <activity

@@ -286,8 +286,7 @@
         android:id="@+id/returnBtnMemory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="93dp"
-        android:layout_marginEnd="93dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/agencyb"
         android:rotationX="10"
         android:shadowColor="#000000"
@@ -298,20 +297,18 @@
         android:textSize="60sp"
         android:textStyle="bold"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/card7"
+        app:layout_constraintBottom_toBottomOf="@+id/card7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/card1"
-        app:layout_constraintVertical_bias="0.176" />
+        app:layout_constraintTop_toTopOf="@+id/card4"
+        app:layout_constraintVertical_bias="0.4" />
 
     <Button
         android:id="@+id/resetAcitivityBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="93dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
         android:fontFamily="@font/agencyb"
         android:rotationX="10"
         android:shadowColor="#000000"
@@ -322,11 +319,11 @@
         android:textSize="48sp"
         android:textStyle="bold"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/card7"
+        app:layout_constraintBottom_toBottomOf="@+id/card4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/card4"
-        app:layout_constraintVertical_bias="0.298" />
+        app:layout_constraintTop_toTopOf="@+id/card1"
+        app:layout_constraintVertical_bias="0.275" />
 
     <Button
         android:id="@+id/startButtonMem"
@@ -347,7 +344,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/card1"
         app:layout_constraintEnd_toStartOf="@+id/scoreView"
-        app:layout_constraintHorizontal_bias="0.833"
+        app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toEndOf="@+id/timerView"
         app:layout_constraintTop_toBottomOf="@+id/memoryInfoText"
         app:layout_constraintVertical_bias="0.0" />

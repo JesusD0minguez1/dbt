@@ -34,7 +34,7 @@ public class MemoryGame extends AppCompatActivity {
     Integer[] cards;
     private int clicked = 1, level = 1, totalMatches = 0, firstClicked, secondClicked, thirdClicked,
     firstPosition, secondPosition, thirdPosition, prevTag = 30, circle, triangle, square, cardBack,
-    memScore, level1Score, level2Score, level3Score, totalScore = 0;
+    memScore, totalScore = 0;
     MediaPlayer memMusic;
 
 
@@ -46,7 +46,7 @@ public class MemoryGame extends AppCompatActivity {
         Intent getLevel = getIntent();
         level = getLevel.getIntExtra("level", 0);
         totalScore = getLevel.getIntExtra("prevScore", 0);
-        if (level == 0) { level = 1; }
+        if (level == 0 || level == 1) { level = 1; totalScore = 0; }
         //Declare views
         timer = findViewById(R.id.timerView); scoreView = findViewById(R.id.scoreView);
         infoTxt = findViewById(R.id.memoryInfoText); titleTxt =findViewById(R.id.titleMemGame);
@@ -82,6 +82,7 @@ public class MemoryGame extends AppCompatActivity {
             if(gameStarted == false) {
                 //Set start button invisible
                 startBtn.setVisibility(View.INVISIBLE);
+                nextLvLBtn.setEnabled(false);
                 //Set card tags so we know their positions
                 card0.setTag("0"); card1.setTag("1"); card2.setTag("2"); card3.setTag("3"); card4.setTag("4");
                 card5.setTag("5"); card6.setTag("6"); card7.setTag("7"); card8.setTag("8");
@@ -439,7 +440,7 @@ public class MemoryGame extends AppCompatActivity {
         returnBtn.setVisibility(View.VISIBLE);
         returnBtn.setOnClickListener(cardClicked -> {
             Intent playerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
-            playerInfo.putExtra("memScore", memScore);
+            playerInfo.putExtra("memScore", totalScore);
             if(memMusic.isPlaying()) { memMusic.pause(); memMusic.release(); }
             startActivity(playerInfo);
         });
@@ -466,7 +467,7 @@ public class MemoryGame extends AppCompatActivity {
             else if(memScore == 200) { titleTxt.setText("200 Points? Not too bad."); }
             else if(memScore == 300) { titleTxt.setText("300 Points, Amazing!"); }
         }
-
+        nextLvLBtn.setEnabled(true);
         if (level != 3) {
             nextLvLBtn.setVisibility(View.VISIBLE); nextLvLBtn.setOnClickListener(cardClicked -> resetGame());
         } else {
