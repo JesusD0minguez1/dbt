@@ -357,8 +357,8 @@ public class Simon extends AppCompatActivity {
         r1.setEnabled(false); r2.setEnabled(false); r3.setEnabled(false); r4.setEnabled(false);
     }
     private void enableViews() {
-        g1.setEnabled(false); g2.setEnabled(false); g3.setEnabled(false); g4.setEnabled(false);
-        r1.setEnabled(false); r2.setEnabled(false); r3.setEnabled(false); r4.setEnabled(false);
+        g1.setEnabled(true); g2.setEnabled(true); g3.setEnabled(true); g4.setEnabled(true);
+        r1.setEnabled(true); r2.setEnabled(true); r3.setEnabled(true); r4.setEnabled(true);
     }
 
 
