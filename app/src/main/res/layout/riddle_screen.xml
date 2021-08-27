@@ -68,18 +68,17 @@
         android:shadowRadius="1.6"
         android:text="riddleScore"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.727" />
+        app:layout_constraintVertical_bias="0.795" />
 
     <TextView
         android:id="@+id/riddleInfotxt"
-        android:layout_width="320dp"
+        android:layout_width="372dp"
         android:layout_height="79dp"
         android:fontFamily="@font/agencyb"
         android:rotationX="10"
@@ -90,7 +89,7 @@
         android:text="Trivia Here"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="34sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,9 +100,9 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="359dp"
-        android:layout_height="312dp"
-        android:rotationX="10"
+        android:layout_width="361dp"
+        android:layout_height="335dp"
+        android:rotationX="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +111,7 @@
         <RadioButton
             android:id="@+id/op1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="67dp"
             android:buttonTint="#FF9800"
             android:checked="false"
             android:fontFamily="@font/agencyb"
@@ -124,13 +123,13 @@
             android:text="Answer 1"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/op2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="67dp"
             android:buttonTint="#FF9800"
             android:fontFamily="@font/agencyb"
             android:rotationX="10"
@@ -141,13 +140,13 @@
             android:text="Answer 2"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/op3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="67dp"
             android:buttonTint="#FF9800"
             android:fontFamily="@font/agencyb"
             android:rotationX="10"
@@ -158,13 +157,13 @@
             android:text="Answer 3"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/op4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="67dp"
             android:buttonTint="#FF9800"
             android:fontFamily="@font/agencyb"
             android:rotationX="10"
@@ -175,13 +174,13 @@
             android:text="Answer 4"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/op5"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="67dp"
             android:buttonTint="#FF9800"
             android:fontFamily="@font/agencyb"
             android:rotationX="10"
@@ -192,15 +191,15 @@
             android:text="Answer 5"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
     </RadioGroup>
 
     <Button
         android:id="@+id/riddleCA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="253dp"
+        android:layout_height="62dp"
         android:fontFamily="@font/agencyb"
         android:onClick="checkCorrect"
         android:rotationX="10"
@@ -215,13 +214,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.834" />
+        app:layout_constraintVertical_bias="0.88" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_width="320dp"
-        android:layout_height="41dp"
+        android:layout_width="322dp"
+        android:layout_height="48dp"
         android:background="#FF9800"
         android:indeterminate="false"
         android:progressBackgroundTint="#FF9800"
@@ -234,10 +233,10 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.913" />
+        app:layout_constraintVertical_bias="0.953" />
 
     <ImageView
         android:id="@+id/settingsRiddle"

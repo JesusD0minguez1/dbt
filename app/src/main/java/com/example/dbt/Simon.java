@@ -39,14 +39,22 @@ public class Simon extends AppCompatActivity {
         setContentView(R.layout.simon);
         //grabbing green images
         g1 = findViewById(R.id.g1);
+        g1.setEnabled(false);
         g2 = findViewById(R.id.g2);
+        g2.setEnabled(false);
         g3 = findViewById(R.id.g3);
+        g3.setEnabled(false);
         g4 = findViewById(R.id.g4);
+        g4.setEnabled(false);
         //grabbing red images
         r1 = findViewById(R.id.r1);
+        r1.setEnabled(false);
         r2 = findViewById(R.id.r2);
+        r2.setEnabled(false);
         r3 = findViewById(R.id.r3);
+        r3.setEnabled(false);
         r4 = findViewById(R.id.r4);
+        r4.setEnabled(false);
         Button test = findViewById(R.id.startSimon);
         //set all the red squares to invisible
         r1.setVisibility(View.INVISIBLE);
@@ -55,25 +63,19 @@ public class Simon extends AppCompatActivity {
         r4.setVisibility(View.INVISIBLE);
         //Return Button
         returnBtnSimon = findViewById(R.id.returnBtnSimon);
-        returnBtnSimon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View cardClicked) {
-                if(simonMusic.isPlaying()) {
-                    simonMusic.stop();
-                }
-                Intent returnToPlayerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
-                startActivity(returnToPlayerInfo);
+        returnBtnSimon.setOnClickListener(cardClicked -> {
+            if(simonMusic.isPlaying()) {
+                simonMusic.stop();
             }
+            Intent returnToPlayerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
+            startActivity(returnToPlayerInfo);
         });
         //Settings
         ImageView settings = findViewById(R.id.simonSettings);
         simonMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.riddle);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SettingMenu set = new SettingMenu();
-                set.showWindow(Simon.this, settings, simonMusic);
-            }
+        settings.setOnClickListener(v -> {
+            SettingMenu set = new SettingMenu();
+            set.showWindow(Simon.this, settings, simonMusic);
         });
     }
 
@@ -81,26 +83,32 @@ public class Simon extends AppCompatActivity {
        switch(LetsGo)
        {
            case 0:
+               disableViews();
                Pattern(6,1000);
                if(NextPattern == true){ LetsGo++; }
            break;
            case 1:
+               disableViews();
                Pattern2(6,750);
                if(NextPattern == true){ LetsGo ++; }
            break;
            case 2:
+               disableViews();
                Pattern3(6,520);
                if(NextPattern == true){ LetsGo +=1; }
            break;
            case 3:
+               disableViews();
                Pattern4(7,350);
                if(NextPattern == true){ LetsGo +=1; }
            break;
            case 4:
+               disableViews();
                Pattern5(6,150);
                if(NextPattern == true){ LetsGo +=1; }
            break;
            case 5:
+               disableViews();
                if(NextPattern == true){ LetsGo = 0; }
            break;
        }
@@ -173,6 +181,7 @@ public class Simon extends AppCompatActivity {
                 }
             }
             public void onFinish() {
+                enableViews();
             }
         }.start();
 }
@@ -203,6 +212,7 @@ public class Simon extends AppCompatActivity {
                 }
             }
             public void onFinish() {
+                enableViews();
             }
         }.start();
 
@@ -233,7 +243,7 @@ public class Simon extends AppCompatActivity {
                         break;
                 }
             }
-            public void onFinish(){}
+            public void onFinish(){ enableViews(); }
         }.start();
 
     }
@@ -264,6 +274,7 @@ public class Simon extends AppCompatActivity {
                 }
             }
             public void onFinish() {
+                enableViews();
             }
         }.start();
 
@@ -295,6 +306,7 @@ public class Simon extends AppCompatActivity {
                 }
             }
             public void onFinish() {
+                enableViews();
             }
         }.start();
 
@@ -336,4 +348,18 @@ public class Simon extends AppCompatActivity {
             }
         }.start();
     }
+
+    /*
+    Enables and disables cards until they are ready to be clicked
+     */
+    private void disableViews() {
+        g1.setEnabled(false); g2.setEnabled(false); g3.setEnabled(false); g4.setEnabled(false);
+        r1.setEnabled(false); r2.setEnabled(false); r3.setEnabled(false); r4.setEnabled(false);
+    }
+    private void enableViews() {
+        g1.setEnabled(false); g2.setEnabled(false); g3.setEnabled(false); g4.setEnabled(false);
+        r1.setEnabled(false); r2.setEnabled(false); r3.setEnabled(false); r4.setEnabled(false);
+    }
+
+
 }

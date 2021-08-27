@@ -251,14 +251,14 @@ public class MemoryGame extends AppCompatActivity {
         if (firstClicked == secondClicked && firstClicked == thirdClicked && secondClicked == thirdClicked) {
             totalMatches += 1;
             hideSingleCard(firstPosition); hideSingleCard(secondPosition); hideSingleCard(thirdPosition);
-            infoTxt.setText("Correct!");
+            timer.setText("Correct!");
             setScore(true);
         }
         else {
             hideCards();
         }
         if(firstClicked != secondClicked || firstClicked != thirdClicked || secondClicked != thirdClicked) {
-            infoTxt.setText("Incorrect!");
+            timer.setText("Incorrect!");
             hideCards();
             setScore(false);
         }
@@ -411,25 +411,13 @@ public class MemoryGame extends AppCompatActivity {
     Also As advertised
     */
     private void enableCards() {
-        card0.setEnabled(true);
-        card1.setEnabled(true);
-        card2.setEnabled(true);
-        card3.setEnabled(true);
-        card4.setEnabled(true);
-        card5.setEnabled(true);
-        card6.setEnabled(true);
-        card7.setEnabled(true);
+        card0.setEnabled(true); card1.setEnabled(true); card2.setEnabled(true); card3.setEnabled(true);
+        card4.setEnabled(true); card5.setEnabled(true); card6.setEnabled(true); card7.setEnabled(true);
         card8.setEnabled(true);
     }
     private void disableCards() {
-        card0.setEnabled(false);
-        card1.setEnabled(false);
-        card2.setEnabled(false);
-        card3.setEnabled(false);
-        card4.setEnabled(false);
-        card5.setEnabled(false);
-        card6.setEnabled(false);
-        card7.setEnabled(false);
+        card0.setEnabled(false); card1.setEnabled(false); card2.setEnabled(false); card3.setEnabled(false);
+        card4.setEnabled(false); card5.setEnabled(false); card6.setEnabled(false); card7.setEnabled(false);
         card8.setEnabled(false);
     }
 
@@ -448,8 +436,8 @@ public class MemoryGame extends AppCompatActivity {
             }
 
             public void onFinish() {
-                infoTxt.setText("Good luck!");
-                timer.setText("Time's up!");
+                infoTxt.setText("");
+                timer.setText("Good Luck!");
                 hideCards();
             }
         }.start();
@@ -495,7 +483,8 @@ public class MemoryGame extends AppCompatActivity {
             Intent playerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
             playerInfo.putExtra("memScore", memScore);
             if(memMusic.isPlaying()) {
-                memMusic.stop();
+                memMusic.pause();
+                memMusic.release();
             }
             startActivity(playerInfo);
         });
@@ -513,16 +502,16 @@ public class MemoryGame extends AppCompatActivity {
             titleTxt.requestLayout();
         }
         if (memScore == 0) {
-            titleTxt.setText("0/3??? Why??");
+            titleTxt.setText("0 Points??? Why??");
         }
         else if (memScore == 100) {
-            titleTxt.setText("1/3? Try again...");
+            titleTxt.setText("100 Points? Try again...");
         }
         else if(memScore == 200) {
-            titleTxt.setText("2/3? Not too bad.");
+            titleTxt.setText("200 Points? Not too bad.");
         }
         else if(memScore == 300) {
-            titleTxt.setText("3/3 Amazing!");
+            titleTxt.setText("300 Points, Amazing!");
         }
         resetBtn.setVisibility(View.VISIBLE);
         resetBtn.setOnClickListener(cardClicked -> resetGame());

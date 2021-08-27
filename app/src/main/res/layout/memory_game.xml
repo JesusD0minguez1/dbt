@@ -276,8 +276,10 @@
         android:rotationX="10"
         app:layout_constraintBottom_toTopOf="@+id/titleMemGame"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/settings" />
 
     <Button
@@ -339,6 +341,7 @@
         android:shadowDx="10"
         android:shadowDy="10"
         android:shadowRadius="5"
+        android:soundEffectsEnabled="false"
         android:text="Start"
         android:textSize="34sp"
         android:textStyle="bold"

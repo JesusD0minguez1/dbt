@@ -28,9 +28,6 @@
             android:name=".PlayerInfo"
             android:exported="true" />
         <activity
-            android:name=".TitleScreen"
-            android:exported="true" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

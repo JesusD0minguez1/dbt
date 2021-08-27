@@ -1,15 +1,16 @@
 package com.example.dbt;
 
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
-
 import java.util.HashMap;
 
 
@@ -22,6 +23,10 @@ public class RiddleScreen extends MainActivity {
     private int nextProg = 0;
     private int trivScore = 0;
     MediaPlayer rdMusic;
+    RadioButton r1, r2, r3, r4, r5;
+    Button btn;
+    RadioGroup group;
+    TextView riddleDisplay, score;
 
 
 
@@ -29,13 +34,13 @@ public class RiddleScreen extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.riddle_screen);
-        populateRiddles();
-        populateQuestions();
         progBar = findViewById(R.id.progressBar);
+        r1 = findViewById(R.id.op1); r2 = findViewById(R.id.op2); r3 = findViewById(R.id.op3);
+        r4 = findViewById(R.id.op4); r5 = findViewById(R.id.op5);
+        group = findViewById(R.id.radioGroup);
+        btn = findViewById(R.id.riddleCA);
+        riddleDisplay = findViewById(R.id.riddleInfotxt); score = findViewById(R.id.riddleScore);
         progBar.setMax(0);
-        displayRiddles();
-        displayRiddlesOption();
-        checkCorrect();
         //Settings
         ImageView settings = findViewById(R.id.settingsRiddle);
         rdMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.gravity);
@@ -43,10 +48,15 @@ public class RiddleScreen extends MainActivity {
             SettingMenu set = new SettingMenu();
             set.showWindow(RiddleScreen.this, settings, rdMusic);
         });
+        populateRiddles();
+        populateQuestions();
+        displayRiddles();
+        displayRiddlesOption();
+        checkCorrect();
     }
 
 
-    @SuppressLint("SetTextI18n")
+
     private void populateRiddles() {
         TextView tv = findViewById(R.id.riddleScore);
         try {
@@ -85,18 +95,11 @@ public class RiddleScreen extends MainActivity {
     }
 
 
-    @SuppressLint("SetTextI18n")
+
     public void checkCorrect() {
-        Button btn = findViewById(R.id.riddleCA);
-        RadioButton r1 = findViewById(R.id.op1);
-        RadioButton r2 = findViewById(R.id.op2);
-        RadioButton r3 = findViewById(R.id.op3);
-        RadioButton r4 = findViewById(R.id.op4);
-        RadioButton r5 = findViewById(R.id.op5);
         final boolean[] isCorrect = {false};
         final int[] p = {1};
         p[0] = 0;
-
         btn.setOnClickListener(v -> {
             RadioButton cr = r1;
             switch (p[0]) {
@@ -178,6 +181,7 @@ public class RiddleScreen extends MainActivity {
             }
             if(p[0] == 10) {
                 btn.setText("Return");
+                group.setEnabled(false); group.setVisibility(View.INVISIBLE);
                 btn.setOnClickListener(cardClicked -> {
                     if(rdMusic.isPlaying()) {
                         rdMusic.stop();
@@ -191,19 +195,18 @@ public class RiddleScreen extends MainActivity {
     }
 
 
-    @SuppressLint("SetTextI18n")
+
     private void updateUserScore(boolean correct) {
-        TextView score = findViewById(R.id.riddleScore);
         try {
             if (correct) {
                 trivScore = trivScore + 5;
-                score.setText(trivScore + "");
+                score.setText("Score: " + trivScore);
 
 
             } else {
                 if (!(trivScore <= 0)) {
                     trivScore = trivScore - 5;
-                    score.setText(trivScore + "");
+                    score.setText("Score: " + trivScore);
                 }
             }
         } catch (Exception uus) {
@@ -212,15 +215,13 @@ public class RiddleScreen extends MainActivity {
     }
 
     private void displayRiddles() {
-        TextView riddleDisplay = findViewById(R.id.riddleInfotxt);
         for (int i = 0; i < riddles.size(); i++) {
             riddleDisplay.setText(riddles.get(1));
         }
     }
 
-    @SuppressLint("SetTextI18n")
+
     private void displayRiddles(int p) {
-        TextView riddleDisplay = findViewById(R.id.riddleInfotxt);
         switch (p) {
             case 1:
                 riddleDisplay.setText(riddles.get(2));
@@ -254,106 +255,54 @@ public class RiddleScreen extends MainActivity {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private void displayRiddlesOption() {
         try {
-            RadioButton r1 = findViewById(R.id.op1);
-            RadioButton r2 = findViewById(R.id.op2);
-            RadioButton r3 = findViewById(R.id.op3);
-            RadioButton r4 = findViewById(R.id.op4);
-            RadioButton r5 = findViewById(R.id.op5);
-
-            r1.setText(riddleAnswer.get(1));
-            r2.setText("Head Eraser");
-            r3.setText("Cancel Head");
-            r4.setText("Mr. Mic");
-            r5.setText("Quirk Eraser");
-
-
+            setOptionsText(riddleAnswer.get(1), "Head Eraser", "Cancel Head", "Mr. Mic", "Quirk Eraser");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    @SuppressLint("SetTextI18n")
+
     private void displayRiddlesOption(int p) {
         try {
-            RadioButton op1 = findViewById(R.id.op1);
-            RadioButton op2 = findViewById(R.id.op2);
-            RadioButton op3 = findViewById(R.id.op3);
-            RadioButton op4 = findViewById(R.id.op4);
-            RadioButton op5 = findViewById(R.id.op5);
-
             switch (p) {
                 case 1:
-                    op1.setText("July 5, 1997");
-                    op2.setText(riddleAnswer.get(2));
-                    op3.setText("Jun 23, 1996");
-                    op4.setText("November 16, 1996");
-                    op5.setText("March 1, 1997");
+                    setOptionsText("July 5, 1997", riddleAnswer.get(2), "June 23, 1996",
+                            "November 16, 1996", "March 1, 1997");
                     break;
                 case 2:
-                    op1.setText("Oof");
-                    op2.setText("UNO");
-                    op3.setText(riddleAnswer.get(3));
-                    op4.setText("FLD");
-                    op5.setText("MOMMA!");
+                    setOptionsText("Oof", "UNO", riddleAnswer.get(3),
+                            "FLD", "MOMMA");
                     break;
                 case 3:
-                    op1.setText("The Goonies");
-                    op2.setText("Texas Chainsaw Massacre");
-                    op3.setText("Star Wars: Episode VI");
-                    op4.setText("Daddy Day Camp");
-                    op5.setText(riddleAnswer.get(4));
+                    setOptionsText("The Goonies", "Texas Chainsaw Massacre", "Star Wars: Episode VI",
+                            "Daddy Day Camp", riddleAnswer.get(4));
                     break;
                 case 4:
-                    op1.setText("South Jordan");
-                    op2.setText("Sandy");
-                    op3.setText("West City Valley");
-                    op4.setText(riddleAnswer.get(5));
-                    op5.setText("Holladay");
+                    setOptionsText("South Jordan", "Sandy", "West Valley City",
+                            riddleAnswer.get(5), "Holladay");
                     break;
                 case 5:
-                    op1.setText("Dead Man's Blood");
-                    op2.setText("Borax");
-                    op3.setText("Silver Bullets");
-                    op4.setText(riddleAnswer.get(6));
-                    op5.setText("Machete");
+                    setOptionsText("A Dead Person's Blood", "Borax", "Silver Bullets",
+                            riddleAnswer.get(6), "Machete");
                     break;
                 case 6:
-                    op1.setText(riddleAnswer.get(7));
-                    op2.setText("Dogs");
-                    op3.setText("Elephants");
-                    op4.setText("Ducks");
-                    op5.setText("Heights");
+                    setOptionsText(riddleAnswer.get(7), "Dogs", "Elephants", "Ducks", "Heights");
                     break;
                 case 7:
-                    op1.setText("Tom Hiddleston");
-                    op2.setText("Tom Hanks");
-                    op3.setText(riddleAnswer.get(8));
-                    op4.setText("Clint Eastwood");
-                    op5.setText("Bruce Willis");
+                    setOptionsText("Tom Hiddleston", "Tom Hanks", riddleAnswer.get(8), "Clint Eastwood",
+                            "Bruce Willis");
                     break;
                 case 8:
-                    op1.setText(riddleAnswer.get(9));
-                    op2.setText("Marco Polo");
-                    op3.setText("Beavis and Butthead");
-                    op4.setText("Stanley and Livingstone");
-                    op5.setText("Burke and Wills");
+                    setOptionsText(riddleAnswer.get(9), "Marco Polo", "Beavis and Butthead",
+                            "Stanley and Livingstone", "Burke and Willis");
                     break;
                 case 9:
-                    op1.setText("Motion");
-                    op2.setText("Gravity");
-                    op3.setText(riddleAnswer.get(10));
-                    op4.setText("Friction");
-                    op5.setText("Tension");
+                    setOptionsText("Motion", "Gravity", riddleAnswer.get(10), "Friction", "Tension");
                     break;
                 case 10:
-                    op1.setText("");
-                    op2.setText("");
-                    op3.setText("");
-                    op4.setText("");
-                    op5.setText("");
+                    setOptionsText("", "", "", "", "");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -371,5 +320,10 @@ public class RiddleScreen extends MainActivity {
         } catch (Exception tp) {
             tp.printStackTrace();
         }
+    }
+
+
+    private void setOptionsText(String op1, String op2, String op3, String op4, String op5) {
+        r1.setText(op1); r2.setText(op2); r3.setText(op3); r4.setText(op4); r5.setText(op5);
     }
 }
