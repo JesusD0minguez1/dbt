@@ -106,15 +106,14 @@
         android:layout_width="115dp"
         android:layout_height="100dp"
         android:layout_marginStart="148dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="148dp"
+        android:layout_marginBottom="48dp"
         android:rotationX="10"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/triviaGameIcon"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/targetGameIcon"
         app:srcCompat="@drawable/high_scores"
         tools:srcCompat="@drawable/high_scores" />
 
@@ -137,16 +136,25 @@
         android:id="@+id/idiotTestGameIcon"
         android:layout_width="115dp"
         android:layout_height="100dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="89dp"
         android:rotationX="10"
-        app:layout_constraintBottom_toTopOf="@+id/highScoresIcon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/triviaGameIcon"
-        app:layout_constraintTop_toBottomOf="@+id/simonGameIcon"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/simonGameIcon" />
+
+    <ImageView
+        android:id="@+id/targetGameIcon"
+        android:layout_width="115dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="8dp"
+        android:rotationX="10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/triviaGameIcon"
+        app:srcCompat="@drawable/target_game_icon"
+        tools:srcCompat="@drawable/target_game_icon" />
 
     <EditText
         android:id="@+id/userName"

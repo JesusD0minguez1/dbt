@@ -1,3 +1,16 @@
+/*
+////////////////////////////
+MEMORY GAME -- BY: MATHEW
+----------------------------
+FUNCTIONALITY:
+1.) Player clicks start which activates onStartBtnClick()
+2.) Game shuffles then displays cards for X number of seconds before hiding them
+3.) Player needs to memorize cards and create 3 pairs of 3 matching cards to win
+4.) After the end the return button and next level button are displayed
+4.) There are 3 Levels with randomized card layouts with a decreasing timer
+////////////////////////////
+ */
+
 package com.example.dbt;
 
 
@@ -14,14 +27,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Arrays;
 import java.util.Collections;
-
-
-/*
-Functionality plan -- Mat:
-1. On the click of the start button shuffle imageIDs and then hide images so that we always start
- with a random set, then timer will start and you have to memorize the shapes
-2. After timer ends, hide images and let the games begin
- */
 
 
 public class MemoryGame extends AppCompatActivity {
@@ -47,7 +52,6 @@ public class MemoryGame extends AppCompatActivity {
         level = getLevel.getIntExtra("level", 0);
         totalScore = getLevel.getIntExtra("prevScore", 0);
         if (level == 0 || level == 1) { level = 1; totalScore = 0; }
-        //Declare views
         timer = findViewById(R.id.timerView); scoreView = findViewById(R.id.scoreView);
         infoTxt = findViewById(R.id.memoryInfoText); titleTxt =findViewById(R.id.titleMemGame);
         if (level != 1) { infoTxt.setText("Level " + level); scoreView.setText("Score: " + totalScore);
@@ -142,6 +146,7 @@ public class MemoryGame extends AppCompatActivity {
                 }
                 gameStarted= true;
                 memScore = 0;
+                if(!memMusic.isPlaying()) { memMusic.start(); }
             }
         }
         catch (Exception startBtn) { startBtn.printStackTrace(); }

@@ -24,6 +24,8 @@
         <activity
             android:name=".PlayerInfo"
             android:exported="true" />
+        <activity android:name=".TargetGame"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
