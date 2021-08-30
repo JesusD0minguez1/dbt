@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dbt">
         <activity
+<<<<<<< Updated upstream
             android:name=".GeneralGamover"
             android:exported="true" />
         <activity
@@ -29,6 +30,21 @@
             android:exported="true" />
         <activity
             android:name=".IsekaiTitle"
+=======
+            android:name=".IdiotTestGame5"
+            android:exported="true" />
+        <activity
+            android:name=".IdiotTestGame4"
+            android:exported="true" />
+        <activity
+            android:name=".IdiotTestGame3"
+            android:exported="true" />
+        <activity
+            android:name=".IdiotTestGame2"
+            android:exported="true" />
+        <activity
+            android:name=".IdiotTestGame1"
+>>>>>>> Stashed changes
             android:exported="true" />
         <activity
             android:name=".Simon"

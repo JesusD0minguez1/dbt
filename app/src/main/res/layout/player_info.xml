@@ -130,8 +130,14 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/triviaGameIcon"
         app:layout_constraintTop_toBottomOf="@+id/simonGameIcon"
+<<<<<<< Updated upstream
         app:srcCompat="@drawable/text_adv_icon_new"
         tools:srcCompat="@drawable/b_win" />
+=======
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/idiottesticon" />
+    //app:srcCompat="@drawable/text_adv_icon"
+>>>>>>> Stashed changes
 
     <EditText
         android:id="@+id/userName"
