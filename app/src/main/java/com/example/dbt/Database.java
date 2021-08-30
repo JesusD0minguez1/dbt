@@ -15,12 +15,10 @@ import androidx.annotation.RequiresApi;
 public class Database extends SQLiteOpenHelper
 {
     public Database(Context context){ super(context, DATABASE_NAME, null,1);}
-
     //Database name and Table Names
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "LeaderBoard.db";
     private static final String LEADERBOARD = "LeaderBoard";
-
     //Columns names for PlayerInformation
     private static final String LEADER_ID = "LeaderID"; //Primary key
     //column names for Type Table
@@ -45,7 +43,7 @@ public class Database extends SQLiteOpenHelper
         onCreate(db);
     }
 
-    public int addNewEntry(String userName,Enum type, int score)
+    public int addNewEntry(String userName, String type, int score)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

@@ -2,21 +2,14 @@ package com.example.dbt;
 
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 import android.view.MenuItem;
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.media.MediaPlayer;
-import android.view.View;
-import android.media.MediaActionSound;
 
 
-public class SettingMenu extends MainActivity
+public class SettingMenu extends MainActivity1
 {
 
 

@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dbt">
         <activity
+            android:name=".IsekaiGameOver"
+            android:exported="true" />
+        <activity
+            android:name=".IsekaiFirstScene"
+            android:exported="true" />
+        <activity
+            android:name=".IsekaiPlayerName"
+            android:exported="true" />
+        <activity
+            android:name=".CharacterSelection"
+            android:exported="true" />
+        <activity
+            android:name=".IsekaiTitle"
+            android:exported="true" />
+        <activity
             android:name=".Simon"
             android:exported="true" />
         <activity
@@ -19,15 +34,16 @@
             android:name=".MemoryGame"
             android:exported="true" />
         <activity
+            android:name=".GameOver"
+            android:exported="true" />
+        <activity
             android:name=".RiddleScreen"
             android:exported="true" />
         <activity
             android:name=".PlayerInfo"
             android:exported="true" />
-        <activity android:name=".TargetGame"
-            android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivity1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

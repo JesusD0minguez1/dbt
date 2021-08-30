@@ -48,16 +48,35 @@
         android:id="@+id/underLineWelcome"
         android:layout_width="200dp"
         android:layout_height="2dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="143dp"
-        android:layout_marginEnd="106dp"
-        android:layout_marginBottom="586dp"
         android:background="#ffffff"
         android:rotationX="10"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="143dp" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/gameInfoTxt"
+        android:layout_width="284dp"
+        android:layout_height="53dp"
+        android:clickable="false"
+        android:editable="false"
+        android:elegantTextHeight="true"
+        android:fontFamily="@font/agencyb"
+        android:rotationX="10"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="3.0"
+        android:text="Enter your name, then click a game!"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.21" />
 
     <ImageView
         android:id="@+id/settings1"
@@ -71,53 +90,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/settings"
-        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+        app:srcCompat="@drawable/settings" />
 
     <ImageView
         android:id="@+id/memGameIcon"
         android:layout_width="115dp"
         android:layout_height="100dp"
         android:layout_marginStart="84dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="96dp"
         android:rotationX="10"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userName"
-        app:srcCompat="@drawable/mem_game_icon_new"
-        tools:srcCompat="@drawable/mem_game_icon_new" />
+        app:layout_constraintTop_toBottomOf="@+id/gameInfoTxt"
+        app:srcCompat="@drawable/mem_game_icon" />
 
     <ImageView
         android:id="@+id/simonGameIcon"
         android:layout_width="115dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="96dp"
         android:layout_marginEnd="84dp"
         android:rotationX="10"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/memGameIcon"
-        app:layout_constraintTop_toBottomOf="@+id/userName"
-        app:srcCompat="@drawable/simon_go_icon_new"
-        tools:srcCompat="@drawable/simon_go_icon_new" />
-
-    //app:srcCompat="@drawable/high_scores"
+        app:layout_constraintTop_toBottomOf="@+id/gameInfoTxt"
+        app:srcCompat="@drawable/simon_game_icon" />
 
     <ImageView
         android:id="@+id/highScoresIcon"
         android:layout_width="115dp"
         android:layout_height="100dp"
         android:layout_marginStart="148dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="148dp"
-        android:layout_marginBottom="48dp"
         android:rotationX="10"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/targetGameIcon"
-        app:srcCompat="@drawable/high_scores_icon_new"
-        tools:srcCompat="@drawable/high_scores_icon_new" />
+        app:layout_constraintTop_toBottomOf="@+id/triviaGameIcon"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/high_scores" />
 
     <ImageView
         android:id="@+id/triviaGameIcon"
@@ -129,43 +143,31 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/memGameIcon"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/trivia_game_icon_new"
-        tools:srcCompat="@drawable/trivia_game_icon_new" />
-
-    //app:srcCompat="@drawable/text_adv_icon"
+        app:layout_constraintVertical_bias="0.015"
+        app:srcCompat="@drawable/trivia_game_icon" />
 
     <ImageView
-        android:id="@+id/idiotTestGameIcon"
+        android:id="@+id/pingPongGameIcon"
         android:layout_width="115dp"
         android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="89dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="407dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginBottom="224dp"
+        android:clickable="true"
+        android:onClick="textAdventure"
         android:rotationX="10"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/triviaGameIcon"
-        app:layout_constraintTop_toBottomOf="@+id/simonGameIcon" />
-
-    <ImageView
-        android:id="@+id/targetGameIcon"
-        android:layout_width="115dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="8dp"
-        android:rotationX="10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/triviaGameIcon"
-        app:srcCompat="@drawable/target_game_icon"
-        tools:srcCompat="@drawable/target_game_icon" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/text_adv_icon" />
 
     <EditText
         android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="61dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="61dp"
         android:ems="10"
         android:fontFamily="@font/agencyb"
         android:hint="Name Here"
@@ -183,9 +185,11 @@
         android:textColorLink="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/memGameIcon"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/underLineWelcome" />
+        app:layout_constraintTop_toBottomOf="@+id/gameInfoTxt"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

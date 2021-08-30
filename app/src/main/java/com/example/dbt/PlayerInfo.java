@@ -1,13 +1,12 @@
 package com.example.dbt;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.view.View;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -125,8 +124,36 @@ public class PlayerInfo extends AppCompatActivity {
             SettingMenu set = new SettingMenu();
             set.showWindow(PlayerInfo.this, settings, playerInfoMusic);
         });
+        //Ping Pong Game
+//        textAdvIcon = findViewById(R.id.pingPongGameIcon);
+//        textAdvIcon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View cardClicked) {
+//                try {
+//                    Intent Isekai = new Intent(getApplicationContext(), IsekaiTitle.class);
+//                    startActivity(Isekai);
+//
+//                    if(checkUserName() == true) {
+//                        sendUserName();
+//                        if(playerInfoMusic.isPlaying()) {
+//                            playerInfoMusic.stop();
+//                        }
+//                    }
+//                }
+//                catch(Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+        textAdvIcon = findViewById(R.id.pingPongGameIcon);
+
     }
 
+    public void textAdventure(View v)
+    {
+        Intent Isekai = new Intent(getApplicationContext(), IsekaiTitle.class);
+        startActivity(Isekai);
+    }
 
     /*
     Get inputted name and send to database
