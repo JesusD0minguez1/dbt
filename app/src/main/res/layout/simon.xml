@@ -41,50 +41,55 @@
         android:onClick="check"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintHorizontal_bias="0.214"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.444"
-        app:srcCompat="@drawable/green" />
+        app:layout_constraintVertical_bias="0.441"
+        app:srcCompat="@drawable/green_square" />
 
     <ImageView
         android:id="@+id/r1"
-        android:layout_width="120dp"
-        android:layout_height="110dp"
+        android:layout_width="143dp"
+        android:layout_height="121dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="268dp"
+        android:layout_marginEnd="200dp"
+        android:layout_marginBottom="342dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.239"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.451"
-        app:srcCompat="@drawable/red" />
+        app:srcCompat="@drawable/red_square" />
 
     <ImageView
         android:id="@+id/g2"
-        android:layout_width="150dp"
-        android:layout_height="120dp"
-        android:onClick="check"
+        android:layout_width="127dp"
+        android:layout_height="118dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="271dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="342dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.803"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.444"
-        app:srcCompat="@drawable/green" />
+        app:srcCompat="@drawable/orange_square" />
 
     <ImageView
         android:id="@+id/r2"
-        android:layout_width="120dp"
-        android:layout_height="110dp"
+        android:layout_width="131dp"
+        android:layout_height="119dp"
+        android:layout_marginStart="222dp"
+        android:layout_marginTop="270dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="342dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.756"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.451"
-        app:srcCompat="@drawable/red" />
+        app:srcCompat="@drawable/red_square" />
 
     <ImageView
         android:id="@+id/g3"
@@ -97,7 +102,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.653"
-        app:srcCompat="@drawable/green" />
+        app:srcCompat="@drawable/yellow_square" />
 
     <ImageView
         android:id="@+id/r3"
@@ -110,7 +115,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.645"
-        app:srcCompat="@drawable/red" />
+        app:srcCompat="@drawable/red_square" />
 
     <ImageView
         android:id="@+id/g4"
@@ -123,7 +128,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.653"
-        app:srcCompat="@drawable/green" />
+        app:srcCompat="@drawable/blue_square" />
 
     <ImageView
         android:id="@+id/r4"
@@ -136,7 +141,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.645"
-        app:srcCompat="@drawable/red" />
+        app:srcCompat="@drawable/red_square" />
 
     <TextView
         android:id="@+id/simonTitle"

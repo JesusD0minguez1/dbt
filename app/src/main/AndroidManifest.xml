@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dbt">
         <activity
+            android:name=".GeneralGamover"
+            android:exported="true" />
+        <activity
+            android:name=".SelectDifficulty"
+            android:exported="true" />
+        <activity
             android:name=".IsekaiGameOver"
             android:exported="true" />
         <activity
@@ -32,7 +38,7 @@
             android:exported="true" />
         <activity
             android:name=".MemoryGame"
-            android:exported="true"  />
+            android:exported="true" />
         <activity
             android:name=".RiddleScreen"
             android:exported="true" />
@@ -43,10 +49,11 @@
             android:name=".TargetGame"
             android:exported="true" />
         <activity
-            android:name=".MainActivity1"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

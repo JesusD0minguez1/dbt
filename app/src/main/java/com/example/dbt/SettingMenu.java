@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.media.MediaPlayer;
 
 
-public class SettingMenu extends MainActivity1
+public class SettingMenu extends MainActivity
 {
 
 
@@ -60,10 +60,7 @@ public class SettingMenu extends MainActivity1
     }
 
 
-    public void quitApp(Activity activity){
-        activity.finish();
-        System.exit(0);
-    }
+    public void quitApp(Activity activity){ finishAffinity(); }
 
 
 }

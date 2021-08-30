@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class HighScores extends MainActivity1 {
+public class HighScores extends MainActivity {
 
 
     Button returnBtn;
@@ -20,8 +20,6 @@ public class HighScores extends MainActivity1 {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.high_scores);
-
-        database.addNewEntry("Jesus","Memory Game",100);
 
         //Set views
         score1 = findViewById(R.id.score1);

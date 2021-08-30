@@ -1,7 +1,6 @@
 package com.example.dbt;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class Simon extends AppCompatActivity {
@@ -30,6 +28,10 @@ public class Simon extends AppCompatActivity {
     Button returnBtnSimon;
     MediaPlayer simonMusic;
 
+    Intent easy = getIntent();
+    Intent medium = getIntent();
+    Intent hard = getIntent();
+    Status status = new Status();
     int score = 0;
     static boolean NextPattern = false;
     static int LetsGo = 0;
@@ -37,6 +39,11 @@ public class Simon extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.simon);
+
+        easy.getAction();
+        medium.getAction();
+        hard.getAction();
+
         //grabbing green images
         g1 = findViewById(R.id.g1);
         g1.setEnabled(false);
@@ -83,32 +90,46 @@ public class Simon extends AppCompatActivity {
        {
            case 0:
                disableViews();
-               Pattern(6,1000);
+               if(easy.equals(true)){ Pattern(6,1000);}
+               if(medium.equals(true)){ Pattern2(6,500); }
+               if(hard.equals(true)){ Pattern3(6,100); }
                if(NextPattern == true){ LetsGo++; }
            break;
            case 1:
                disableViews();
-               Pattern2(6,750);
+               if(easy.equals(true)) { Pattern2(6,1000); }
+               if(medium.equals(true)){ Pattern3(6,500); }
+               if(hard.equals(true)){ Pattern4(6,100); }
                if(NextPattern == true){ LetsGo ++; }
            break;
            case 2:
                disableViews();
-               Pattern3(6,520);
+               if(easy.equals(true)) { Pattern3(6,1000); }
+               if(medium.equals(true)){ Pattern4(6,500); }
+               if(hard.equals(true)){ Pattern5(6,100); }
                if(NextPattern == true){ LetsGo +=1; }
            break;
            case 3:
                disableViews();
-               Pattern4(7,350);
+               if(easy.equals(true)) { Pattern4(7,1000); }
+               if(medium.equals(true)){ Pattern5(7,500); }
+               if(hard.equals(true)){ Pattern(7,100); }
                if(NextPattern == true){ LetsGo +=1; }
            break;
            case 4:
                disableViews();
-               Pattern5(6,150);
+               if(easy.equals(true)) { Pattern5(6,1000); }
+               if(medium.equals(true)){ Pattern(6,500); }
+               if(hard.equals(true)){ Pattern2(6,100); }
                if(NextPattern == true){ LetsGo +=1; }
            break;
            case 5:
                disableViews();
-               if(NextPattern == true){ LetsGo = 0; }
+               if(NextPattern == true)
+               {
+                   Intent easy = new Intent(getApplicationContext(), Simon.class);
+                   startActivity(easy);
+               }
            break;
        }
    }
@@ -312,18 +333,18 @@ public class Simon extends AppCompatActivity {
     }
     public void displaySimonScore(int score) {
         TextView scoreDisplay = findViewById(R.id.simonScore);
-        String scoreBeingSet = String.valueOf(score);
+        String scoreBeingSet = String.valueOf(status.getSimonScore());
         scoreDisplay.setText("Score: " + scoreBeingSet);
     }
     public void checkCorrectConditional(){
-        score += 100;
+        status.setSimonScore(score += 100);
         UsersAnswers.clear();
         CorrectAnswers.clear();
         NextPattern = true;
-        displaySimonScore(score);
+        displaySimonScore(status.getSimonScore());
     }
     public void checkWrongConditional() {
-        score = score - 100;
+        status.setSimonScore(score -= 100);
         UsersAnswers.clear();
         displaySimonScore(score);
     }
@@ -359,6 +380,5 @@ public class Simon extends AppCompatActivity {
         g1.setEnabled(true); g2.setEnabled(true); g3.setEnabled(true); g4.setEnabled(true);
         r1.setEnabled(true); r2.setEnabled(true); r3.setEnabled(true); r4.setEnabled(true);
     }
-
 
 }
