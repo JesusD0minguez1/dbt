@@ -81,7 +81,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userName"
         app:srcCompat="@drawable/mem_game_icon_new"
-        tools:srcCompat="@drawable/memory" />
+        tools:srcCompat="@drawable/mem_game_icon_new" />
 
     <ImageView
         android:id="@+id/simonGameIcon"
@@ -94,7 +94,7 @@
         app:layout_constraintHorizontal_bias="0.983"
         app:layout_constraintStart_toEndOf="@+id/memGameIcon"
         app:layout_constraintTop_toBottomOf="@+id/userName"
-        app:srcCompat="@drawable/SimonDumbFace3" />
+        app:srcCompat="@drawable/simon_go_icon_new" />
 
     <ImageView
         android:id="@+id/targetGameIcon"
@@ -116,7 +116,7 @@
         android:rotationX="10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/memGameIcon"
-        app:srcCompat="@drawable/TrivaUI" />
+        app:srcCompat="@drawable/trivia_game_icon_new" />
 
     <ImageView
         android:id="@+id/textAdvIcon"
@@ -131,7 +131,7 @@
         app:layout_constraintStart_toEndOf="@+id/triviaGameIcon"
         app:layout_constraintTop_toBottomOf="@+id/simonGameIcon"
         app:srcCompat="@drawable/text_adv_icon_new"
-        tools:srcCompat="@drawable/b_win" />
+        tools:srcCompat="@drawable/text_adv_icon_new" />
 
     <EditText
         android:id="@+id/userName"
