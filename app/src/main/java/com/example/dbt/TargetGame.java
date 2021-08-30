@@ -36,9 +36,9 @@ public class TargetGame extends MainActivity {
     private Button startBtn, returnBtn;
     private MediaPlayer targetMusic;
     private Random rng = new Random();
-    boolean gameIsGoing, cardIsDisplaying;
-    private int redTarget, greenTarget, targetScore;
-    private ArrayList<Integer> times = new ArrayList<Integer>(Arrays.asList(2, 4, 6, 8));
+    boolean gameIsGoing, cardIsDisplaying, targetIsRed;
+    private int redTarget, greenTarget, targetScore, prevPosition = 0, secondCountDownTime = 3;
+    private ArrayList<Integer> times = new ArrayList<Integer>(Arrays.asList(3, 6, 9, 12, 15, 18, 21, 24, 27));
 
 
     @Override
@@ -82,7 +82,7 @@ public class TargetGame extends MainActivity {
             position9.setVisibility(View.INVISIBLE);
             gameIsGoing = true;
             if(!targetMusic.isPlaying()) { targetMusic.start(); }
-            mainCountdown(10);
+            mainCountdown(30);
             pickRandomPosition();
 
         }
@@ -122,119 +122,125 @@ public class TargetGame extends MainActivity {
     Picks random position and sets visible with random target
     */
     private void pickRandomPosition() {
-        int rand = 0;
-        while (rand == 0) { rand = (rng.nextInt(10) - 1); }
-        boolean toDisplay = false;
-        switch (rand) {
-            case 1:
-                cardIsDisplaying = true;
-                toDisplay = randomTarget();
-                position1.setEnabled(true);
-                secondCountdown(2, position1, toDisplay);
-                boolean finalToDisplay1 = toDisplay;
-                position1.setOnClickListener(cardClicked -> {
-                    onTargetClick(finalToDisplay1);
-                    position1.setVisibility(View.INVISIBLE);
-                    cardIsDisplaying = false;
-                });
-                break;
-            case 2:
-                cardIsDisplaying = true;
-                toDisplay = randomTarget();
-                position2.setEnabled(true);
-                secondCountdown(2, position2, toDisplay);
-                boolean finalToDisplay2 = toDisplay;
-                position2.setOnClickListener(cardClicked -> {
-                    onTargetClick(finalToDisplay2);
-                    position2.setVisibility(View.INVISIBLE);
-                    cardIsDisplaying = false;
-                });
-                break;
-            case 3:
-                cardIsDisplaying = true;
-                toDisplay = randomTarget();
-                position3.setEnabled(true);
-                secondCountdown(2, position3, toDisplay);
-                boolean finalToDisplay3 = toDisplay;
-                position3.setOnClickListener(cardClicked -> {
-                    onTargetClick(finalToDisplay3);
-                    position3.setVisibility(View.INVISIBLE);
-                    cardIsDisplaying = false;
-                });
-                break;
-            case 4:
-                cardIsDisplaying = true;
-                toDisplay = randomTarget();
-                position4.setEnabled(true);
-                secondCountdown(2, position4, toDisplay);
-                boolean finalToDisplay4 = toDisplay;
-                position4.setOnClickListener(cardClicked -> {
-                    onTargetClick(finalToDisplay4);
-                    position4.setVisibility(View.INVISIBLE);
-                    cardIsDisplaying = false;
-                });
-                break;
-            case 5:
-                cardIsDisplaying = true;
-                toDisplay = randomTarget();
-                position5.setEnabled(true);
-                secondCountdown(2, position5, toDisplay);
-                boolean finalToDisplay5 = toDisplay;
-                position6.setOnClickListener(cardClicked -> {
-                    onTargetClick(finalToDisplay5);
-                    position5.setVisibility(View.INVISIBLE);
-                    cardIsDisplaying = false;
-                });
-                break;
-            case 6:
-                cardIsDisplaying = true;
-                toDisplay = randomTarget();
-                position6.setEnabled(true);
-                secondCountdown(2, position6, toDisplay);
-                boolean finalToDisplay6 = toDisplay;
-                position6.setOnClickListener(cardClicked -> {
-                    onTargetClick(finalToDisplay6);
-                    position6.setVisibility(View.INVISIBLE);
-                    cardIsDisplaying = false;
-                });
-                break;
-            case 7:
-                cardIsDisplaying = true;
-                toDisplay = randomTarget();
-                position7.setEnabled(true);
-                secondCountdown(2, position7, toDisplay);
-                boolean finalToDisplay7 = toDisplay;
-                position7.setOnClickListener(cardClicked -> {
-                    onTargetClick(finalToDisplay7);
-                    position7.setVisibility(View.INVISIBLE);
-                    cardIsDisplaying = false;
-                });
-                break;
-            case 8:
-                cardIsDisplaying = true;
-                toDisplay = randomTarget();
-                position8.setEnabled(true);
-                secondCountdown(2, position3, toDisplay);
-                boolean finalToDisplay8 = toDisplay;
-                position8.setOnClickListener(cardClicked -> {
-                    onTargetClick(finalToDisplay8);
-                    position8.setVisibility(View.INVISIBLE);
-                    cardIsDisplaying = false;
-                });
-                break;
-            case 9:
-                cardIsDisplaying = true;
-                toDisplay = randomTarget();
-                position9.setEnabled(true);
-                secondCountdown(2, position9, toDisplay);
-                boolean finalToDisplay9 = toDisplay;
-                position9.setOnClickListener(cardClicked -> {
-                    onTargetClick(finalToDisplay9);
-                    position9.setVisibility(View.INVISIBLE);
-                    cardIsDisplaying = false;
-                });
-                break;
+        int rand = prevPosition;
+        boolean readyToDisplay = false;
+        while (rand == prevPosition || rand == 0) { rand = (rng.nextInt(10) - 1); }
+        if(rand != prevPosition && rand != 0) { readyToDisplay = true; }
+        boolean toDisplay;
+        if(readyToDisplay == true) {
+            prevPosition = rand;
+            switch (rand) {
+                case 1:
+                    cardIsDisplaying = true;
+                    toDisplay = randomTarget();
+                    position1.setEnabled(true);
+                    secondCountdown(secondCountDownTime, position1, toDisplay);
+                    boolean finalToDisplay1 = toDisplay;
+                    position1.setOnClickListener(cardClicked -> {
+                        onTargetClick(finalToDisplay1);
+                        position1.setVisibility(View.INVISIBLE);
+                        cardIsDisplaying = false;
+                    });
+                    break;
+                case 2:
+                    cardIsDisplaying = true;
+                    toDisplay = randomTarget();
+                    position2.setEnabled(true);
+                    secondCountdown(secondCountDownTime, position2, toDisplay);
+                    boolean finalToDisplay2 = toDisplay;
+                    position2.setOnClickListener(cardClicked -> {
+                        onTargetClick(finalToDisplay2);
+                        position2.setVisibility(View.INVISIBLE);
+                        cardIsDisplaying = false;
+                    });
+                    break;
+                case 3:
+                    cardIsDisplaying = true;
+                    toDisplay = randomTarget();
+                    position3.setEnabled(true);
+                    secondCountdown(secondCountDownTime, position3, toDisplay);
+                    boolean finalToDisplay3 = toDisplay;
+                    position3.setOnClickListener(cardClicked -> {
+                        onTargetClick(finalToDisplay3);
+                        position3.setVisibility(View.INVISIBLE);
+                        cardIsDisplaying = false;
+                    });
+                    break;
+                case 4:
+                    cardIsDisplaying = true;
+                    toDisplay = randomTarget();
+                    position4.setEnabled(true);
+                    secondCountdown(secondCountDownTime, position4, toDisplay);
+                    boolean finalToDisplay4 = toDisplay;
+                    position4.setOnClickListener(cardClicked -> {
+                        onTargetClick(finalToDisplay4);
+                        position4.setVisibility(View.INVISIBLE);
+                        cardIsDisplaying = false;
+                    });
+                    break;
+                case 5:
+                    cardIsDisplaying = true;
+                    toDisplay = randomTarget();
+                    position5.setEnabled(true);
+                    secondCountdown(secondCountDownTime, position5, toDisplay);
+                    boolean finalToDisplay5 = toDisplay;
+                    position5.setOnClickListener(cardClicked -> {
+                        onTargetClick(finalToDisplay5);
+                        position5.setVisibility(View.INVISIBLE);
+                        cardIsDisplaying = false;
+                    });
+                    break;
+                case 6:
+                    cardIsDisplaying = true;
+                    toDisplay = randomTarget();
+                    position6.setEnabled(true);
+                    secondCountdown(secondCountDownTime, position6, toDisplay);
+                    boolean finalToDisplay6 = toDisplay;
+                    position6.setOnClickListener(cardClicked -> {
+                        onTargetClick(finalToDisplay6);
+                        position6.setVisibility(View.INVISIBLE);
+                        cardIsDisplaying = false;
+                    });
+                    break;
+                case 7:
+                    cardIsDisplaying = true;
+                    toDisplay = randomTarget();
+                    position7.setEnabled(true);
+                    secondCountdown(secondCountDownTime, position7, toDisplay);
+                    boolean finalToDisplay7 = toDisplay;
+                    position7.setOnClickListener(cardClicked -> {
+                        onTargetClick(finalToDisplay7);
+                        position7.setVisibility(View.INVISIBLE);
+                        cardIsDisplaying = false;
+                    });
+                    break;
+                case 8:
+                    cardIsDisplaying = true;
+                    toDisplay = randomTarget();
+                    position8.setEnabled(true);
+                    secondCountdown(secondCountDownTime, position3, toDisplay);
+                    boolean finalToDisplay8 = toDisplay;
+                    position8.setOnClickListener(cardClicked -> {
+                        onTargetClick(finalToDisplay8);
+                        position8.setVisibility(View.INVISIBLE);
+                        cardIsDisplaying = false;
+                    });
+                    break;
+                case 9:
+                    cardIsDisplaying = true;
+                    toDisplay = randomTarget();
+                    position9.setEnabled(true);
+                    secondCountdown(secondCountDownTime, position9, toDisplay);
+                    boolean finalToDisplay9 = toDisplay;
+                    position9.setOnClickListener(cardClicked -> {
+                        onTargetClick(finalToDisplay9);
+                        position9.setVisibility(View.INVISIBLE);
+                        cardIsDisplaying = false;
+                    });
+                    break;
+            }
         }
+
     }
 
 
@@ -254,6 +260,8 @@ public class TargetGame extends MainActivity {
     }
 
 
+
+
     /*
     Countdown(s) courtesy of Joey:
     -Sets gameIsGoing to true on start and then false on end;
@@ -269,9 +277,10 @@ public class TargetGame extends MainActivity {
     }
     public void secondCountdown(int time, ImageView position, boolean drawableToDisplay) {
         int milli = time * 1000;
+
         position.setVisibility(View.VISIBLE);
-        if (drawableToDisplay) { position.setImageResource(R.drawable.good_target); }
-        else { position.setImageResource(R.drawable.bad_target); }
+        if (drawableToDisplay) { position.setImageResource(R.drawable.good_target); targetIsRed = false; }
+        else { position.setImageResource(R.drawable.bad_target); targetIsRed = true; }
         new CountDownTimer(milli, 1000) {
             public void onTick(long millisUntilFinished) { }
             public void onFinish() {
