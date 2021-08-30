@@ -23,11 +23,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-public class TargetGame extends MainActivity {
+public class TargetGame extends AppCompatActivity {
 
 
     private TextView timerView, scoreView, infoTxt;

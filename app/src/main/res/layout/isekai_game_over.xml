@@ -104,12 +104,12 @@
         app:layout_constraintVertical_bias="0.785" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/returnBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/diaryofan8bitmage_"
         android:onClick="exitClick"
-        android:text="Exit"
+        android:text="Return"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView4"
         app:layout_constraintHorizontal_bias="0.501"

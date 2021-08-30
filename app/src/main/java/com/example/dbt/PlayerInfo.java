@@ -6,15 +6,14 @@ import android.view.View;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 public class PlayerInfo extends AppCompatActivity {
 
 
-    private ImageView memGameIcon, triviaGameIcon, simonGameIcon, highScoresIcon, idiotTestIcon,
-    targetGameIcon;
+    private ImageView memGameIcon, triviaGameIcon, simonGameIcon, highScoresIcon,
+    targetGameIcon, txtAdvIcon;
     private EditText userName;
     MediaPlayer playerInfoMusic;
 
@@ -77,29 +76,13 @@ public class PlayerInfo extends AppCompatActivity {
             }
         });
         //High Scores Screen
-        highScoresIcon = findViewById(R.id.highScoresIcon);
+        highScoresIcon = findViewById(R.id.targetGameIcon);
         highScoresIcon.setOnClickListener(cardClicked -> {
             try {
                 if(checkUserName() == true) {
                     sendUserName(); musicRelease();
                     Intent highScores= new Intent(getApplicationContext(), HighScores.class);
                     startActivity(highScores);
-                }
-            }
-            catch(Exception e) {
-                e.printStackTrace();
-            }
-        });
-        //Idiot Test Icon
-        idiotTestIcon = findViewById(R.id.idiotTestGameIcon);
-        idiotTestIcon.setOnClickListener(cardClicked -> {
-            try {
-                if(checkUserName() == true) {
-                    sendUserName(); musicRelease();
-                    /*
-                    Intent simonGame = new Intent(getApplicationContext(), HighScores.class);
-                    startActivity(simonGame);
-                     */
                 }
             }
             catch(Exception e) {
@@ -125,34 +108,13 @@ public class PlayerInfo extends AppCompatActivity {
             set.showWindow(PlayerInfo.this, settings, playerInfoMusic);
         });
         //Ping Pong Game
-//        textAdvIcon = findViewById(R.id.pingPongGameIcon);
-//        textAdvIcon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View cardClicked) {
-//                try {
-//                    Intent Isekai = new Intent(getApplicationContext(), IsekaiTitle.class);
-//                    startActivity(Isekai);
-//
-//                    if(checkUserName() == true) {
-//                        sendUserName();
-//                        if(playerInfoMusic.isPlaying()) {
-//                            playerInfoMusic.stop();
-//                        }
-//                    }
-//                }
-//                catch(Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-        textAdvIcon = findViewById(R.id.pingPongGameIcon);
-
-    }
-
-    public void textAdventure(View v)
-    {
-        Intent Isekai = new Intent(getApplicationContext(), IsekaiTitle.class);
-        startActivity(Isekai);
+        txtAdvIcon = findViewById(R.id.textAdvIcon);
+        txtAdvIcon.setOnClickListener((View.OnClickListener) cardClicked -> {
+          try {
+              Intent Isekai = new Intent(getApplicationContext(), IsekaiTitle.class);
+              sendUserName(); musicRelease();
+              startActivity(Isekai);
+          } catch(Exception e) { e.printStackTrace(); } });
     }
 
     /*

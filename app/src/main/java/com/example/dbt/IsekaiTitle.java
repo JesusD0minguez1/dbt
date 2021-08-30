@@ -1,6 +1,8 @@
 package com.example.dbt;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
@@ -20,7 +22,12 @@ public class IsekaiTitle extends AppCompatActivity {
         backgroundmusic.start();
 
 
-        start = findViewById(R.id.button);
+        start = findViewById(R.id.startBtn);
         backgroundmusic.setLooping(true);
+
+        //Start game
+        start.setOnClickListener(cardClicked -> {
+            try { Intent charSelect= new Intent(getApplicationContext(), CharacterSelection.class); startActivity(charSelect); }
+            catch (Exception e) { e.printStackTrace(); } });
     }
 }

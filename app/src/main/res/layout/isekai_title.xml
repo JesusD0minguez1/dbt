@@ -102,11 +102,10 @@
         app:layout_constraintVertical_bias="0.179" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/startBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/diaryofan8bitmage_"
-        android:onClick="onclickW"
         android:text="Start"
         android:textColor="#101010"
         app:layout_constraintBottom_toBottomOf="parent"

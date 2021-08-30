@@ -32,10 +32,7 @@
             android:exported="true" />
         <activity
             android:name=".MemoryGame"
-            android:exported="true" />
-        <activity
-            android:name=".GameOver"
-            android:exported="true" />
+            android:exported="true"  />
         <activity
             android:name=".RiddleScreen"
             android:exported="true" />
@@ -43,11 +40,13 @@
             android:name=".PlayerInfo"
             android:exported="true" />
         <activity
+            android:name=".TargetGame"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

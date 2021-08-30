@@ -15,7 +15,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 
 
-public class RiddleScreen extends MainActivity {
+public class RiddleScreen extends MainActivity1 {
 
 
     final private HashMap<Integer, String> riddles = new HashMap<>(10);
