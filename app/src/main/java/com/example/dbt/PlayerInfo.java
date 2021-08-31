@@ -85,8 +85,32 @@ public class PlayerInfo extends AppCompatActivity {
                     startActivity(highScores);
                 }
             }
+<<<<<<< Updated upstream
             catch(Exception e) {
                 e.printStackTrace();
+=======
+        });
+        //Idiot Test Game
+        textAdvIcon = findViewById(R.id.idiotTestGameIcon);
+        textAdvIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View cardClicked) {
+                try {
+                    if(checkUserName() == true) {
+                        sendUserName();
+                        if(playerInfoMusic.isPlaying()) {
+                            playerInfoMusic.stop();
+                        }
+
+                        Intent idiotGame = new Intent(getApplicationContext(), IdiotTestGame1.class);
+                        startActivity(idiotGame);
+
+                    }
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+>>>>>>> Stashed changes
             }
         });
         //Target Game Icon
