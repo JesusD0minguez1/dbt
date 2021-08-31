@@ -8,9 +8,12 @@ public class Status
     private static int IsekaiScore = 0;
     private static int DumbScore = 0;
 
-    public static int getSimonScore() {
-        return SimonScore;
-    }
+    static boolean isItEasy = false;
+    static boolean isItMedium = false;
+    static boolean isItHard = false;
+
+
+    public static int getSimonScore() { return SimonScore; }
 
     public static void setSimonScore(int simonScore) {
         SimonScore = simonScore;

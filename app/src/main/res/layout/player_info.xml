@@ -69,7 +69,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/settings" />
+        app:srcCompat="@drawable/settings"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/memGameIcon"
@@ -81,7 +82,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userName"
         app:srcCompat="@drawable/mem_game_icon_new"
-        tools:srcCompat="@drawable/memory" />
+        tools:srcCompat="@drawable/mem_game_icon_new" />
 
     <ImageView
         android:id="@+id/simonGameIcon"
@@ -89,12 +90,13 @@
         android:layout_height="100dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="60dp"
+        android:clickable="true"
         android:rotationX="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.983"
         app:layout_constraintStart_toEndOf="@+id/memGameIcon"
         app:layout_constraintTop_toBottomOf="@+id/userName"
-        app:srcCompat="@drawable/SimonDumbFace3" />
+        app:srcCompat="@drawable/simon_go_icon_new" />
 
     <ImageView
         android:id="@+id/targetGameIcon"
@@ -116,7 +118,7 @@
         android:rotationX="10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/memGameIcon"
-        app:srcCompat="@drawable/TrivaUI" />
+        app:srcCompat="@drawable/trivia_game_icon_new" />
 
     <ImageView
         android:id="@+id/textAdvIcon"
@@ -132,12 +134,16 @@
         app:layout_constraintTop_toBottomOf="@+id/simonGameIcon"
 <<<<<<< Updated upstream
         app:srcCompat="@drawable/text_adv_icon_new"
+<<<<<<< HEAD
         tools:srcCompat="@drawable/b_win" />
 =======
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/idiottesticon" />
     //app:srcCompat="@drawable/text_adv_icon"
 >>>>>>> Stashed changes
+=======
+        tools:srcCompat="@drawable/text_adv_icon_new" />
+>>>>>>> 3f904abb973dc8b89fec7dbd1060f7de949d6732
 
     <EditText
         android:id="@+id/userName"

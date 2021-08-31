@@ -70,6 +70,8 @@
         android:layout_marginTop="271dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="342dp"
+        android:clickable="true"
+        android:onClick="check"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -215,5 +217,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/g3"
         app:layout_constraintVertical_bias="0.465" />
+
+    <ImageView
+        android:id="@+id/evilSimon"
+        android:layout_width="531dp"
+        android:layout_height="453dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.582"
+        app:srcCompat="@drawable/simon_evil_face" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

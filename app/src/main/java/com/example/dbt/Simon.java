@@ -25,8 +25,11 @@ public class Simon extends AppCompatActivity {
     ImageView r2;
     ImageView r3;
     ImageView r4;
+    ImageView badSimon;
     Button returnBtnSimon;
     MediaPlayer simonMusic;
+    MediaPlayer badSimonMusic;
+
 
     Intent easy = getIntent();
     Intent medium = getIntent();
@@ -35,14 +38,11 @@ public class Simon extends AppCompatActivity {
     int score = 0;
     static boolean NextPattern = false;
     static int LetsGo = 0;
+    SettingMenu mp3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.simon);
-
-        easy.getAction();
-        medium.getAction();
-        hard.getAction();
 
         //grabbing green images
         g1 = findViewById(R.id.g1);
@@ -62,6 +62,7 @@ public class Simon extends AppCompatActivity {
         r3.setEnabled(false);
         r4 = findViewById(R.id.r4);
         r4.setEnabled(false);
+        badSimon = findViewById(R.id.evilSimon);
         Button test = findViewById(R.id.startSimon);
         //set all the red squares to invisible
         r1.setVisibility(View.INVISIBLE);
@@ -90,43 +91,46 @@ public class Simon extends AppCompatActivity {
        {
            case 0:
                disableViews();
-               if(easy.equals(true)){ Pattern(6,1000);}
-               if(medium.equals(true)){ Pattern2(6,500); }
-               if(hard.equals(true)){ Pattern3(6,100); }
+               if(status.isItEasy == true){ Pattern(6,1000);}
+               if(status.isItMedium == true){ Pattern2(6,500); }
+               if(status.isItHard == true){ Pattern3(6,100); }
                if(NextPattern == true){ LetsGo++; }
            break;
            case 1:
                disableViews();
-               if(easy.equals(true)) { Pattern2(6,1000); }
-               if(medium.equals(true)){ Pattern3(6,500); }
-               if(hard.equals(true)){ Pattern4(6,100); }
+               if(status.isItEasy == true) { Pattern2(6,1000); }
+               if(status.isItMedium == true){ Pattern3(6,500); }
+               if(status.isItHard == true){ Pattern4(6,100); }
                if(NextPattern == true){ LetsGo ++; }
            break;
            case 2:
                disableViews();
-               if(easy.equals(true)) { Pattern3(6,1000); }
-               if(medium.equals(true)){ Pattern4(6,500); }
-               if(hard.equals(true)){ Pattern5(6,100); }
+               if(status.isItEasy == true) { Pattern3(6,1000); }
+               if(status.isItMedium == true){ Pattern4(6,500); }
+               if(status.isItHard == true){ Pattern5(6,100); }
                if(NextPattern == true){ LetsGo +=1; }
            break;
            case 3:
                disableViews();
-               if(easy.equals(true)) { Pattern4(7,1000); }
-               if(medium.equals(true)){ Pattern5(7,500); }
-               if(hard.equals(true)){ Pattern(7,100); }
+               if(status.isItEasy == true) { Pattern4(7,1000); }
+               if(status.isItMedium == true){ Pattern5(7,500); }
+               if(status.isItHard == true){ Pattern(7,100); }
                if(NextPattern == true){ LetsGo +=1; }
            break;
            case 4:
                disableViews();
-               if(easy.equals(true)) { Pattern5(6,1000); }
-               if(medium.equals(true)){ Pattern(6,500); }
-               if(hard.equals(true)){ Pattern2(6,100); }
+               if(status.isItEasy == true) { Pattern5(6,1000); }
+               if(status.isItMedium == true){ Pattern(6,500); }
+               if(status.isItHard == true){ Pattern2(6,100); }
                if(NextPattern == true){ LetsGo +=1; }
            break;
            case 5:
                disableViews();
                if(NextPattern == true)
                {
+                   status.isItEasy = false;
+                   status.isItMedium = false;
+                   status.isItHard = false;
                    Intent easy = new Intent(getApplicationContext(), Simon.class);
                    startActivity(easy);
                }
@@ -137,7 +141,7 @@ public class Simon extends AppCompatActivity {
        switch (v.getId())
        {
            case R.id.g1:
-               patternSet(g1,r1,2);
+               patternSet(g1,r1,3);
                UsersAnswers.add(1);
                if(UsersAnswers.size() == CorrectAnswers.size())
                {
@@ -146,7 +150,7 @@ public class Simon extends AppCompatActivity {
                }
            break;
            case R.id.g2:
-               patternSet(g2,r2,2);
+               patternSet(g2,r2,3);
                UsersAnswers.add(2);
                if(UsersAnswers.size() == CorrectAnswers.size())
                {
@@ -155,7 +159,7 @@ public class Simon extends AppCompatActivity {
                }
                break;
            case R.id.g3:
-               patternSet(g3,r3,2);
+               patternSet(g3,r3,3);
                UsersAnswers.add(3);
 
                if(UsersAnswers.size() == CorrectAnswers.size())
@@ -165,7 +169,7 @@ public class Simon extends AppCompatActivity {
                }
                break;
            case R.id.g4:
-               patternSet(g4,r4,2);
+               patternSet(g4,r4,3);
                UsersAnswers.add(4);
                if(UsersAnswers.size() == CorrectAnswers.size())
                {
@@ -347,6 +351,7 @@ public class Simon extends AppCompatActivity {
         status.setSimonScore(score -= 100);
         UsersAnswers.clear();
         displaySimonScore(score);
+        badSimon(5);
     }
     public void patternSet(ImageView g, ImageView r,int time) {
         g.setVisibility(View.INVISIBLE);
@@ -379,6 +384,31 @@ public class Simon extends AppCompatActivity {
     private void enableViews() {
         g1.setEnabled(true); g2.setEnabled(true); g3.setEnabled(true); g4.setEnabled(true);
         r1.setEnabled(true); r2.setEnabled(true); r3.setEnabled(true); r4.setEnabled(true);
+    }
+
+    private void badSimon(int time)
+    {
+        int milli = time * 1000;
+        final int[] p = {0};
+        int t;
+        new CountDownTimer(milli, 500) {
+            public void onTick(long millisUntilFinished) {
+                p[0] = p[0] + 1;
+                switch (p[0]) {
+                    case 1:
+                        badSimon.setVisibility(View.VISIBLE);
+                    break;
+                    case 2:
+                        badSimon.setVisibility(View.VISIBLE);
+                    break;
+                    case 3:
+                        badSimon.setVisibility(View.INVISIBLE);
+                    break;
+                }
+            }
+            public void onFinish() {
+            }
+        }.start();
     }
 
 }
