@@ -131,19 +131,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/triviaGameIcon"
-        app:layout_constraintTop_toBottomOf="@+id/simonGameIcon"
-<<<<<<< Updated upstream
-        app:srcCompat="@drawable/text_adv_icon_new"
-<<<<<<< HEAD
-        tools:srcCompat="@drawable/b_win" />
-=======
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/idiottesticon" />
-    //app:srcCompat="@drawable/text_adv_icon"
->>>>>>> Stashed changes
-=======
-        tools:srcCompat="@drawable/text_adv_icon_new" />
->>>>>>> 3f904abb973dc8b89fec7dbd1060f7de949d6732
+        app:layout_constraintTop_toBottomOf="@+id/simonGameIcon" />
 
     <EditText
         android:id="@+id/userName"
