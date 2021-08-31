@@ -67,8 +67,8 @@ public class PlayerInfo extends AppCompatActivity {
             try {
                 if(checkUserName() == true) {
                     sendUserName(); musicRelease();
-                    Intent simonGame = new Intent(getApplicationContext(), Simon.class);
-                    startActivity(simonGame);
+                    Intent SelectDiff = new Intent(getApplicationContext(), SelectDifficulty.class);
+                    startActivity(SelectDiff);
                 }
             }
             catch(Exception e) {
