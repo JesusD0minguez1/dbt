@@ -3,6 +3,7 @@ package com.example.dbt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,7 @@ public class IsekaiPlayerName extends AppCompatActivity {
     int c2Id;
     int c3Id;
     int c4Id;
+    MediaPlayer backgroundmusic2;
 
 
     @Override
@@ -60,6 +62,13 @@ public class IsekaiPlayerName extends AppCompatActivity {
         }
 
 
+        ImageView IsekaiPlayerNameSetting = findViewById(R.id.IsekaiPlayerNameSettings);
+        backgroundmusic2 = MediaPlayer.create(this.getApplicationContext(), R.raw.maintheme_david_renda);
+        try { backgroundmusic2.prepareAsync(); } catch (Exception prep) {prep.printStackTrace(); }
+        IsekaiPlayerNameSetting.setOnClickListener(a -> {
+            SettingMenu set = new SettingMenu();
+            set.showWindow(IsekaiPlayerName.this, IsekaiPlayerNameSetting, backgroundmusic2);
+        });
     }
 
     public void NoGame(View v){
