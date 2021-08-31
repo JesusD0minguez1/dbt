@@ -38,7 +38,6 @@ public class GeneralGamover extends AppCompatActivity {
         String dumbScore = String.valueOf(status.getDumbScore());
         String targetScore = String.valueOf(status.getTargetScore());
 
-
         String GmOverTxt = "Your final score is ";
         String simonTxt = "Congratulations in completing Simon in order to reward here is a picture of Good Simon";
         if(status.simonEnd == true)

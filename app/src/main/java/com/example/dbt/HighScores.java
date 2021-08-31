@@ -7,15 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 
 public class HighScores extends MainActivity {
 
 
     Button returnBtn;
     TextView score1, score2, score3;
-
-    static Database database;
-
+    Database database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +43,11 @@ public class HighScores extends MainActivity {
     /*
     Will retrieve stored scores from database and fill them into text views
     */
-    private void retrieveScores() {
-        //TODO: Retrieve scores from database and fill into these methods
-        setScore1("TODO:Score", "TODO:UserName");
-        setScore2("TODO:Score", "TODO:UserName");
+    private void retrieveScores()
+    {
+        ArrayList<Status> records =  database.readData();
+        setScore1(records.get(0).score, records.get(0).uname);
+        setScore2(records.sc, "TODO:UserName");
         setScore3("TODO:Score", "TODO:UserName");
     }
 

@@ -22,8 +22,8 @@ public class Credits extends AppCompatActivity {
         String jesustxt = "1) Product Owner/Scrum Master/ Developer Jesus";
         String mattxt = "2) Product Owner/ Scrum Master /Developer/ Groom Matthew";
         String erictxt = "3) Eric";
-        String moisestxt = "4) Product Owner Moises";
-        String joeytxt = "5) Scrumbag Joey";
+        String moisestxt = "4) Product Owner/ Scrum Master/ Developer Moises";
+        String joeytxt = "5) Disgraced Product Owner/ Scrumbag / Developer Joey";
 
         Jesus.setText(jesustxt);
         Mat.setText(mattxt);

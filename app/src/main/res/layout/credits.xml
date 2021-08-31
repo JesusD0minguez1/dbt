@@ -114,6 +114,7 @@
         android:shadowRadius="1.5"
         android:textAlignment="center"
         android:textColor="#FFEB3B"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,6 +135,7 @@
         android:shadowRadius="1.5"
         android:textAlignment="center"
         android:textColor="#FFEB3B"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -146,10 +148,6 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginTop="614dp"
-        android:layout_marginEnd="159dp"
-        android:layout_marginBottom="69dp"
         android:fontFamily="@font/agencyb"
         android:onClick="backToTitle"
         android:rotationX="10"
@@ -163,6 +161,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.898" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

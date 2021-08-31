@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
+import java.util.ArrayList;
+
 public class Database extends SQLiteOpenHelper
 {
     public Database(Context context){ super(context, DATABASE_NAME, null,1);}
@@ -25,7 +27,6 @@ public class Database extends SQLiteOpenHelper
     private static final String User_Name = "Username";
     private static final String SCORE = "Score";
     private static final String GAME_NAME = "Name of Game";
-
     @Override
     //creates the user database
     public void onCreate(SQLiteDatabase db) {
@@ -57,8 +58,9 @@ public class Database extends SQLiteOpenHelper
         return (int)id;
     }
 
-    public Cursor readData()
+    public ArrayList<Status> readData()
     {
+        ArrayList<Status> records = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         String qString = ("SELECT * FROM " + LEADERBOARD + " order by score ");
         Cursor cursor = db.rawQuery(qString, null);
@@ -67,10 +69,13 @@ public class Database extends SQLiteOpenHelper
             String userName = cursor.getString(1);
             String typeGame = cursor.getString(2);
             int scrScore = cursor.getInt(3);
+            String score = String.valueOf(scrScore);
+            Status status = new Status(userName,typeGame,score);
+            records.add(status);
         }
         db.close();
         cursor.close();
-        return cursor;
+        return records;
     }
 
 }
