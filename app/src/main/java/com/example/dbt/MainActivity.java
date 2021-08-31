@@ -9,7 +9,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,5 +21,11 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent action1 = new Intent(getApplicationContext(), PlayerInfo.class);
         startActivity(action1);
+    }
+
+    public void toCredits(View v)
+    {
+        Intent credits = new Intent(getApplicationContext(), Credits.class);
+        startActivity(credits);
     }
 }

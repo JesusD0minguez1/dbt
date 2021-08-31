@@ -14,10 +14,9 @@ public class PlayerInfo extends AppCompatActivity {
 
     private ImageView memGameIcon, triviaGameIcon, simonGameIcon, highScoresIcon,
     targetGameIcon, txtAdvIcon;
-    private EditText userName;
+    EditText userName;
     MediaPlayer playerInfoMusic;
-
-
+    Status status;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -29,10 +28,9 @@ public class PlayerInfo extends AppCompatActivity {
         Intent getScore = getIntent();
         int memScore = getScore.getIntExtra("memScore", 0);
         System.out.println("HERE -- " + memScore);
-
+        userName = findViewById(R.id.playerName);
 
         //set view for username
-        userName = findViewById(R.id.userName);
         //Memory Game
         memGameIcon = findViewById(R.id.memGameIcon);
         memGameIcon.setOnClickListener(cardClicked -> {
@@ -145,7 +143,8 @@ public class PlayerInfo extends AppCompatActivity {
     Get inputted name and send to database
     */
     private void sendUserName() {
-        //TODO: send user name to database
+       String playerUserName = String.valueOf(userName.getText());
+       status.setPlayerName(playerUserName);
     }
 
 

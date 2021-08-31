@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".GeneralGamover">
 
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/immers_bg" />
+
     <TextView
         android:id="@+id/gameOvertxt"
         android:layout_width="wrap_content"
@@ -14,13 +24,15 @@
         android:layout_marginTop="114dp"
         android:layout_marginEnd="177dp"
         android:layout_marginBottom="598dp"
-        android:text="TextView"
+        android:text="Game Over"
+        android:textColor="#FFEB3B"
+        android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.911" />
 
     <Button
         android:id="@+id/selectDiffbtn"
@@ -32,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.638" />
+        app:layout_constraintVertical_bias="0.67" />
 
     <Button
         android:id="@+id/gmQuitbtn"
@@ -51,8 +63,8 @@
         android:id="@+id/gmLeaderbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="gmLeaderbd"
-        android:text="View Leader Board"
+        android:onClick="saveToLdbd"
+        android:text="Save Score"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,14 +72,42 @@
         app:layout_constraintVertical_bias="0.74" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/displayGmOverScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:textColor="#FFEB3B"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.318" />
+        app:layout_constraintVertical_bias="0.276" />
+
+    <TextView
+        android:id="@+id/Congrats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFEB3B"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.326" />
+
+    <ImageView
+        android:id="@+id/goodSimon"
+        android:layout_width="222dp"
+        android:layout_height="188dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.473"
+        app:srcCompat="@drawable/goodsimon" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

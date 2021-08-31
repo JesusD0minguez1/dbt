@@ -131,8 +131,10 @@ public class Simon extends AppCompatActivity {
                    status.isItEasy = false;
                    status.isItMedium = false;
                    status.isItHard = false;
-                   Intent easy = new Intent(getApplicationContext(), Simon.class);
-                   startActivity(easy);
+                   status.simonEnd = true;
+                   status.fromSimonGO = true;
+                   Intent toGameOver = new Intent(getApplicationContext(), GeneralGamover.class);
+                   startActivity(toGameOver);
                }
            break;
        }
@@ -187,19 +189,19 @@ public class Simon extends AppCompatActivity {
                 p[0] = p[0] + 1;
                 switch (p[0]) {
                     case 2:
-                        patternSet(g1,r1,1);
+                        patternSet(g1,r1,3);
                         CorrectAnswers.add(1);
                     break;
                     case 3:
-                        patternSet(g2,r2,1);
+                        patternSet(g2,r2,3);
                         CorrectAnswers.add(2);
                     break;
                     case 4:
-                        patternSet(g3,r3,1);
+                        patternSet(g3,r3,3);
                         CorrectAnswers.add(3);
                     break;
                     case 5:
-                        patternSet(g4,r4,1);
+                        patternSet(g4,r4,3);
                         CorrectAnswers.add(4);
                     break;
                 }
@@ -218,19 +220,19 @@ public class Simon extends AppCompatActivity {
                 p[0] = p[0] + 1;
                 switch (p[0]) {
                     case 2:
-                        patternSet(g2,r2,1);
+                        patternSet(g2,r2,3);
                         CorrectAnswers.add(2);
                     break;
                     case 3:
-                        patternSet(g4,r4,1);
+                        patternSet(g4,r4,3);
                         CorrectAnswers.add(4);
                     break;
                     case 4:
-                        patternSet(g1,r1,1);
+                        patternSet(g1,r1,3);
                         CorrectAnswers.add(1);
                     break;
                     case 5:
-                        patternSet(g3,r3,1);
+                        patternSet(g3,r3,3);
                         CorrectAnswers.add(3);
                     break;
                 }
@@ -250,20 +252,20 @@ public class Simon extends AppCompatActivity {
                 p[0] = p[0] + 1;
                 switch (p[0]) {
                     case 2:
-                        patternSet(g4,r4,1);
-                        CorrectAnswers.add(2);
-                        break;
-                    case 3:
-                        patternSet(g3,r3,1);
+                        patternSet(g4,r4,3);
                         CorrectAnswers.add(4);
                         break;
+                    case 3:
+                        patternSet(g3,r3,3);
+                        CorrectAnswers.add(3);
+                        break;
                     case 4:
-                        patternSet(g2,r2,1);
-                        CorrectAnswers.add(1);
+                        patternSet(g2,r2,3);
+                        CorrectAnswers.add(2);
                         break;
                     case 5:
-                        patternSet(g1,r1,1);
-                        CorrectAnswers.add(3);
+                        patternSet(g1,r1,3);
+                        CorrectAnswers.add(1);
                         break;
                 }
             }
@@ -280,20 +282,20 @@ public class Simon extends AppCompatActivity {
                 p[0] = p[0] + 1;
                 switch (p[0]) {
                     case 2:
-                        patternSet(g2,r2,1);
+                        patternSet(g2,r2,3);
                         CorrectAnswers.add(2);
                         break;
                     case 3:
-                        patternSet(g3,r3,1);
-                        CorrectAnswers.add(4);
+                        patternSet(g3,r3,3);
+                        CorrectAnswers.add(3);
                         break;
                     case 4:
-                        patternSet(g1,r1,1);
+                        patternSet(g1,r1,3);
                         CorrectAnswers.add(1);
                         break;
                     case 5:
-                        patternSet(g4,r4,1);
-                        CorrectAnswers.add(3);
+                        patternSet(g4,r4,3);
+                        CorrectAnswers.add(4);
                         break;
                 }
             }
@@ -312,19 +314,19 @@ public class Simon extends AppCompatActivity {
                 p[0] = p[0] + 1;
                 switch (p[0]) {
                     case 2:
-                        patternSet(g1,r1,1);
-                        CorrectAnswers.add(2);
+                        patternSet(g1,r1,3);
+                        CorrectAnswers.add(1);
                         break;
                     case 3:
-                        patternSet(g4,r4,1);
+                        patternSet(g4,r4,3);
                         CorrectAnswers.add(4);
                         break;
                     case 4:
-                        patternSet(g2,r2,1);
-                        CorrectAnswers.add(1);
+                        patternSet(g2,r2,3);
+                        CorrectAnswers.add(2);
                         break;
                     case 5:
-                        patternSet(g3,r3,1);
+                        patternSet(g3,r3,3);
                         CorrectAnswers.add(3);
                         break;
                 }
@@ -359,7 +361,7 @@ public class Simon extends AppCompatActivity {
         int milli = time * 1000;
         final int[] p = {0};
         int t;
-        new CountDownTimer(milli, 100) {
+        new CountDownTimer(milli, 500) {
             public void onTick(long millisUntilFinished) {
                 p[0] = p[0] + 1;
                 switch (p[0]) {
