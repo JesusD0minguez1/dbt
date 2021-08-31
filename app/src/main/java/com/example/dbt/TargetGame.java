@@ -6,7 +6,7 @@ FUNCTIONALITY:
 1.) Player clicks start which activates onStartClick()
 2.) Game picks random positions and booleans to decide which target and where to display it
 3.) Player needs to click green targets to get points
-4.) Gamme finishes and return button is displayed after the mainCountdown() method finishes
+4.) Game finishes and return button is displayed after the mainCountdown() method finishes
 ////////////////////////////
  */
 
@@ -18,16 +18,12 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
+
 
 public class TargetGame extends AppCompatActivity {
 
@@ -40,15 +36,12 @@ public class TargetGame extends AppCompatActivity {
     private Random rng = new Random();
     boolean gameIsGoing, cardIsDisplaying, targetIsRed;
     private int redTarget, greenTarget, targetScore, prevPosition = 0, secondCountDownTime = 3;
-    private ArrayList<Integer> times = new ArrayList<Integer>(Arrays.asList(3, 6, 9, 12, 15, 18, 21, 24, 27));
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.target_game);
-
-
         timerView = findViewById(R.id.tTimerView); scoreView = findViewById(R.id.tScoreView);
         infoTxt = findViewById(R.id.targetInfoTxt); startBtn = findViewById(R.id.startButtonTarg);
         returnBtn = findViewById(R.id.returnBtnTarget);
@@ -59,7 +52,6 @@ public class TargetGame extends AppCompatActivity {
         position9 = findViewById(R.id.position9);
         greenTarget = R.drawable.good_target; redTarget = R.drawable.bad_target;
         returnBtn.setVisibility(View.INVISIBLE);
-
         //Settings Menu && Music
         settings = findViewById(R.id.settingsTarg);
         targetMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.break_the_targets);
@@ -86,7 +78,6 @@ public class TargetGame extends AppCompatActivity {
             if(!targetMusic.isPlaying()) { targetMusic.start(); }
             mainCountdown(30);
             pickRandomPosition();
-
         }
         catch(Exception start) { start.printStackTrace(); }
     }
@@ -124,125 +115,42 @@ public class TargetGame extends AppCompatActivity {
     Picks random position and sets visible with random target
     */
     private void pickRandomPosition() {
-        int rand = prevPosition;
-        boolean readyToDisplay = false;
-        while (rand == prevPosition || rand == 0) { rand = (rng.nextInt(10) - 1); }
+        int rand = prevPosition; boolean readyToDisplay = false;
+        while (rand == prevPosition || rand == 0) { rand = (rng.nextInt(8) + 1); }
         if(rand != prevPosition && rand != 0) { readyToDisplay = true; }
-        boolean toDisplay;
-        if(readyToDisplay == true) {
+        boolean toDisplay = randomTarget();
+        if(readyToDisplay) {
             prevPosition = rand;
             switch (rand) {
                 case 1:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position1.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position1, toDisplay);
-                    boolean finalToDisplay1 = toDisplay;
-                    position1.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay1);
-                        position1.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position1, toDisplay);
                     break;
                 case 2:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position2.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position2, toDisplay);
-                    boolean finalToDisplay2 = toDisplay;
-                    position2.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay2);
-                        position2.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position2, toDisplay);
                     break;
                 case 3:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position3.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position3, toDisplay);
-                    boolean finalToDisplay3 = toDisplay;
-                    position3.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay3);
-                        position3.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position3, toDisplay);
                     break;
                 case 4:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position4.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position4, toDisplay);
-                    boolean finalToDisplay4 = toDisplay;
-                    position4.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay4);
-                        position4.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position4, toDisplay);
                     break;
                 case 5:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position5.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position5, toDisplay);
-                    boolean finalToDisplay5 = toDisplay;
-                    position5.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay5);
-                        position5.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position5, toDisplay);
                     break;
                 case 6:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position6.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position6, toDisplay);
-                    boolean finalToDisplay6 = toDisplay;
-                    position6.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay6);
-                        position6.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position6, toDisplay);
                     break;
                 case 7:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position7.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position7, toDisplay);
-                    boolean finalToDisplay7 = toDisplay;
-                    position7.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay7);
-                        position7.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position7, toDisplay);
                     break;
                 case 8:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position8.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position3, toDisplay);
-                    boolean finalToDisplay8 = toDisplay;
-                    position8.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay8);
-                        position8.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position8, toDisplay);
                     break;
                 case 9:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position9.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position9, toDisplay);
-                    boolean finalToDisplay9 = toDisplay;
-                    position9.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay9);
-                        position9.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position9, toDisplay);
                     break;
             }
         }
-
     }
 
 
@@ -262,6 +170,20 @@ public class TargetGame extends AppCompatActivity {
     }
 
 
+    /*
+    Activates one position for play
+    */
+    private void activatePosition(ImageView position, boolean targetToPlay) {
+        cardIsDisplaying = true;
+        position.setEnabled(true);
+        secondCountdown(secondCountDownTime, position, targetToPlay);
+        boolean finalToDisplay9 = targetToPlay;
+        position.setOnClickListener(cardClicked -> {
+            onTargetClick(finalToDisplay9);
+            position.setVisibility(View.INVISIBLE);
+            cardIsDisplaying = false;
+        });
+    }
 
 
     /*
@@ -277,9 +199,16 @@ public class TargetGame extends AppCompatActivity {
             }
             public void onFinish() {  endGame(); } }.start();
     }
-    public void secondCountdown(int time, ImageView position, boolean drawableToDisplay) {
-        int milli = time * 1000;
 
+
+    /*
+    Displays the correct drawable at the correct position until time limit is hit or it is clicked
+    */
+    public void secondCountdown(int time, ImageView position, boolean drawableToDisplay) {
+        if (drawableToDisplay) { position.setImageResource(R.drawable.good_target); targetIsRed = false; }
+        else { position.setImageResource(R.drawable.bad_target); targetIsRed = true; }
+        int milli = time * 1000;
+        if (targetIsRed) { milli = milli - 1000; }
         position.setVisibility(View.VISIBLE);
         if (drawableToDisplay) { position.setImageResource(R.drawable.good_target); targetIsRed = false; }
         else { position.setImageResource(R.drawable.bad_target); targetIsRed = true; }
@@ -293,8 +222,8 @@ public class TargetGame extends AppCompatActivity {
 
 
     /*
-Ends the game and displays the next button
-*/
+    Ends the game and displays the next button
+    */
     private void endGame() {
         disableAllPositions();
         gameIsGoing = false;

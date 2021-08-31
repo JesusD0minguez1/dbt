@@ -60,7 +60,11 @@ public class SettingMenu extends MainActivity
     }
 
 
-    public void quitApp(Activity activity){ finishAffinity(); }
+    public void quitApp(Activity activity){
+        //There was a reason it was like thiiis
+        activity.finish();
+        System.exit(0);
+    }
 
 
 }

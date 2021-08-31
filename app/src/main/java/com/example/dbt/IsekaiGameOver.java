@@ -34,10 +34,12 @@ public class IsekaiGameOver extends AppCompatActivity {
         Intent action2 = new Intent(getApplicationContext(),IsekaiTitle.class);
         startActivity(action2);
         backgroundmusic3.stop();
+        backgroundmusic3.release();
     }
 
     public void exitClick(View v){
         backgroundmusic3.stop();
+        backgroundmusic3.release();
         Intent playerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
         startActivity(playerInfo);
     }

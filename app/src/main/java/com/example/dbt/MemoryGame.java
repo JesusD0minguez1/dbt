@@ -486,6 +486,7 @@ public class MemoryGame extends AppCompatActivity {
     Resets everything to initial state for replay
      */
     private void resetGame() {
+        memMusic.stop();
         Intent intent = getIntent();
         if (level == 3) { level = 1;}
         else { level++; }
