@@ -13,7 +13,7 @@ public class PlayerInfo extends AppCompatActivity {
 
 
     private ImageView memGameIcon, triviaGameIcon, simonGameIcon, highScoresIcon,
-    targetGameIcon, txtAdvIcon;
+    targetGameIcon, txtAdvIcon, idotTestIcon;
     EditText userName;
     MediaPlayer playerInfoMusic;
     Status status;
@@ -28,7 +28,7 @@ public class PlayerInfo extends AppCompatActivity {
         Intent getScore = getIntent();
         int memScore = getScore.getIntExtra("memScore", 0);
         System.out.println("HERE -- " + memScore);
-        userName = findViewById(R.id.playerName);
+        userName = findViewById(R.id.userName);
 
         //set view for username
         //Memory Game
@@ -41,10 +41,7 @@ public class PlayerInfo extends AppCompatActivity {
                     startActivity(memGame);
                 }
             }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+            catch (Exception e) { e.printStackTrace(); } });
         //Trivia Game
         triviaGameIcon = findViewById(R.id.triviaGameIcon);
         triviaGameIcon.setOnClickListener(cardClicked -> {
@@ -55,10 +52,7 @@ public class PlayerInfo extends AppCompatActivity {
                     startActivity(triviaGame);
                 }
             }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+            catch (Exception e) { e.printStackTrace(); } });
         //Simon Game
         simonGameIcon = findViewById(R.id.simonGameIcon);
         simonGameIcon.setOnClickListener(cardClicked -> {
@@ -69,10 +63,7 @@ public class PlayerInfo extends AppCompatActivity {
                     startActivity(SelectDiff);
                 }
             }
-            catch(Exception e) {
-                e.printStackTrace();
-            }
-        });
+            catch(Exception e) { e.printStackTrace(); } });
         //High Scores Screen
         highScoresIcon = findViewById(R.id.targetGameIcon);
         highScoresIcon.setOnClickListener(cardClicked -> {
@@ -83,14 +74,10 @@ public class PlayerInfo extends AppCompatActivity {
                     startActivity(highScores);
                 }
             }
-<<<<<<< Updated upstream
-            catch(Exception e) {
-                e.printStackTrace();
-=======
-        });
+            catch(Exception e) { e.printStackTrace(); } });
         //Idiot Test Game
-        textAdvIcon = findViewById(R.id.idiotTestGameIcon);
-        textAdvIcon.setOnClickListener(new View.OnClickListener() {
+        idotTestIcon = findViewById(R.id.idiotTestIcon);
+        idotTestIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View cardClicked) {
                 try {
@@ -105,12 +92,7 @@ public class PlayerInfo extends AppCompatActivity {
 
                     }
                 }
-                catch(Exception e) {
-                    e.printStackTrace();
-                }
->>>>>>> Stashed changes
-            }
-        });
+                catch(Exception e) { e.printStackTrace(); } }});
         //Target Game Icon
         targetGameIcon = findViewById(R.id.targetGameIcon);
         targetGameIcon.setOnClickListener(cardClicked -> {
@@ -129,7 +111,7 @@ public class PlayerInfo extends AppCompatActivity {
             SettingMenu set = new SettingMenu();
             set.showWindow(PlayerInfo.this, settings, playerInfoMusic);
         });
-        //Ping Pong Game
+        //Text ADV Game
         txtAdvIcon = findViewById(R.id.textAdvIcon);
         txtAdvIcon.setOnClickListener((View.OnClickListener) cardClicked -> {
           try {

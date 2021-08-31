@@ -32,7 +32,8 @@
             android:exported="true" />
         <activity
             android:name=".IsekaiTitle"
-=======
+            android:exported="true" />
+        <activity
             android:name=".IdiotTestGame5"
             android:exported="true" />
         <activity
@@ -46,7 +47,6 @@
             android:exported="true" />
         <activity
             android:name=".IdiotTestGame1"
->>>>>>> Stashed changes
             android:exported="true" />
         <activity
             android:name=".Simon"
