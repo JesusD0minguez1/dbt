@@ -118,6 +118,7 @@ public class TargetGame extends AppCompatActivity {
         int rand = prevPosition; boolean readyToDisplay = false;
         while (rand == prevPosition || rand == 0) { rand = (rng.nextInt(8) + 1); }
         if(rand != prevPosition && rand != 0) { readyToDisplay = true; }
+<<<<<<< Updated upstream
         boolean toDisplay = randomTarget();
         if(readyToDisplay) {
             prevPosition = rand;
@@ -148,6 +149,37 @@ public class TargetGame extends AppCompatActivity {
                     break;
                 case 9:
                     activatePosition(position9, toDisplay);
+=======
+        if(readyToDisplay == true) {
+            prevPosition = rand;
+            switch (rand) {
+                case 1:
+                    activatePosition(position1);
+                    break;
+                case 2:
+                    activatePosition(position2);
+                    break;
+                case 3:
+                    activatePosition(position3);
+                    break;
+                case 4:
+                    activatePosition(position4);
+                    break;
+                case 5:
+                    activatePosition(position5);
+                    break;
+                case 6:
+                    activatePosition(position6);
+                    break;
+                case 7:
+                    activatePosition(position7);
+                    break;
+                case 8:
+                    activatePosition(position8);
+                    break;
+                case 9:
+                    activatePosition(position9);
+>>>>>>> Stashed changes
                     break;
             }
         }
@@ -171,6 +203,7 @@ public class TargetGame extends AppCompatActivity {
 
 
     /*
+<<<<<<< Updated upstream
     Activates one position for play
     */
     private void activatePosition(ImageView position, boolean targetToPlay) {
@@ -180,6 +213,18 @@ public class TargetGame extends AppCompatActivity {
         boolean finalToDisplay9 = targetToPlay;
         position.setOnClickListener(cardClicked -> {
             onTargetClick(finalToDisplay9);
+=======
+    Activates one Position
+    */
+    private void activatePosition(ImageView position) {
+        boolean toDisplay = randomTarget();
+        cardIsDisplaying = true;
+        position.setEnabled(true);
+        secondCountdown(secondCountDownTime, position, toDisplay);
+        boolean finalToDisplay = toDisplay;
+        position.setOnClickListener(cardClicked -> {
+            onTargetClick(finalToDisplay);
+>>>>>>> Stashed changes
             position.setVisibility(View.INVISIBLE);
             cardIsDisplaying = false;
         });

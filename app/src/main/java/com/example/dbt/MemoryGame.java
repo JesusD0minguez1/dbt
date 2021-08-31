@@ -146,7 +146,7 @@ public class MemoryGame extends AppCompatActivity {
                 }
                 gameStarted= true;
                 memScore = 0;
-                if(!memMusic.isPlaying()) { memMusic.start(); }
+                if(!memMusic.isPlaying() && level == 1) { memMusic.start(); }
             }
         }
         catch (Exception startBtn) { startBtn.printStackTrace(); }

@@ -3,6 +3,7 @@ package com.example.dbt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -65,7 +66,6 @@ public class IsekaiPlayerName extends AppCompatActivity {
     public void NoGame(View v){
         Intent action2 = new Intent(getApplicationContext(),IsekaiTitle.class);
         startActivity(action2);
-
     }
 
     public void GotoGAME(View v){
