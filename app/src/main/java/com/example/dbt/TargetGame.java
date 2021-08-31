@@ -128,117 +128,35 @@ public class TargetGame extends AppCompatActivity {
         boolean readyToDisplay = false;
         while (rand == prevPosition || rand == 0) { rand = (rng.nextInt(10) - 1); }
         if(rand != prevPosition && rand != 0) { readyToDisplay = true; }
-        boolean toDisplay;
         if(readyToDisplay == true) {
             prevPosition = rand;
             switch (rand) {
                 case 1:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position1.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position1, toDisplay);
-                    boolean finalToDisplay1 = toDisplay;
-                    position1.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay1);
-                        position1.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position1);
                     break;
                 case 2:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position2.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position2, toDisplay);
-                    boolean finalToDisplay2 = toDisplay;
-                    position2.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay2);
-                        position2.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position2);
                     break;
                 case 3:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position3.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position3, toDisplay);
-                    boolean finalToDisplay3 = toDisplay;
-                    position3.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay3);
-                        position3.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position3);
                     break;
                 case 4:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position4.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position4, toDisplay);
-                    boolean finalToDisplay4 = toDisplay;
-                    position4.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay4);
-                        position4.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position4);
                     break;
                 case 5:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position5.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position5, toDisplay);
-                    boolean finalToDisplay5 = toDisplay;
-                    position5.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay5);
-                        position5.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position5);
                     break;
                 case 6:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position6.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position6, toDisplay);
-                    boolean finalToDisplay6 = toDisplay;
-                    position6.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay6);
-                        position6.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position6);
                     break;
                 case 7:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position7.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position7, toDisplay);
-                    boolean finalToDisplay7 = toDisplay;
-                    position7.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay7);
-                        position7.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position7);
                     break;
                 case 8:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position8.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position3, toDisplay);
-                    boolean finalToDisplay8 = toDisplay;
-                    position8.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay8);
-                        position8.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position8);
                     break;
                 case 9:
-                    cardIsDisplaying = true;
-                    toDisplay = randomTarget();
-                    position9.setEnabled(true);
-                    secondCountdown(secondCountDownTime, position9, toDisplay);
-                    boolean finalToDisplay9 = toDisplay;
-                    position9.setOnClickListener(cardClicked -> {
-                        onTargetClick(finalToDisplay9);
-                        position9.setVisibility(View.INVISIBLE);
-                        cardIsDisplaying = false;
-                    });
+                    activatePosition(position9);
                     break;
             }
         }
@@ -262,6 +180,21 @@ public class TargetGame extends AppCompatActivity {
     }
 
 
+    /*
+    activates one position
+    */
+    private void activatePosition(ImageView position) {
+        cardIsDisplaying = true;
+        boolean toDisplay = randomTarget();
+        position.setEnabled(true);
+        secondCountdown(secondCountDownTime, position, toDisplay);
+        boolean finalToDisplay = toDisplay;
+        position.setOnClickListener(cardClicked -> {
+            onTargetClick(finalToDisplay);
+            position.setVisibility(View.INVISIBLE);
+            cardIsDisplaying = false;
+        });
+    }
 
 
     /*
