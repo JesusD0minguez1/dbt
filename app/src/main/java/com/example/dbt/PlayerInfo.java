@@ -28,51 +28,43 @@ public class PlayerInfo extends AppCompatActivity {
         Intent getScore = getIntent();
         int memScore = getScore.getIntExtra("memScore", 0);
         System.out.println("HERE -- " + memScore);
-        userName = findViewById(R.id.userName);
 
         //set view for username
         //Memory Game
         memGameIcon = findViewById(R.id.memGameIcon);
         memGameIcon.setOnClickListener(cardClicked -> {
             try {
-                if(checkUserName() == true) {
-                    sendUserName(); musicRelease();
-                    Intent memGame = new Intent(getApplicationContext(), MemoryGame.class);
-                    startActivity(memGame);
+                musicRelease();
+                Intent memGame = new Intent(getApplicationContext(), MemoryGame.class);
+                startActivity(memGame);
                 }
-            }
             catch (Exception e) { e.printStackTrace(); } });
         //Trivia Game
         triviaGameIcon = findViewById(R.id.triviaGameIcon);
         triviaGameIcon.setOnClickListener(cardClicked -> {
             try {
-                if(checkUserName() == true) {
-                    sendUserName(); musicRelease();
-                    Intent triviaGame = new Intent(getApplicationContext(), RiddleScreen.class);
-                    startActivity(triviaGame);
+                musicRelease();
+                Intent triviaGame = new Intent(getApplicationContext(), RiddleScreen.class);
+                startActivity(triviaGame);
                 }
-            }
             catch (Exception e) { e.printStackTrace(); } });
         //Simon Game
         simonGameIcon = findViewById(R.id.simonGameIcon);
         simonGameIcon.setOnClickListener(cardClicked -> {
             try {
-                if(checkUserName() == true) {
-                    sendUserName(); musicRelease();
+                    musicRelease();
                     Intent SelectDiff = new Intent(getApplicationContext(), SelectDifficulty.class);
                     startActivity(SelectDiff);
-                }
             }
             catch(Exception e) { e.printStackTrace(); } });
         //High Scores Screen
         highScoresIcon = findViewById(R.id.targetGameIcon);
         highScoresIcon.setOnClickListener(cardClicked -> {
             try {
-                if(checkUserName() == true) {
-                    sendUserName(); musicRelease();
-                    Intent highScores= new Intent(getApplicationContext(), HighScores.class);
-                    startActivity(highScores);
-                }
+                musicRelease();
+                Intent highScores= new Intent(getApplicationContext(), HighScores.class);
+                startActivity(highScores);
+
             }
             catch(Exception e) { e.printStackTrace(); } });
         //Idiot Test Game
@@ -81,27 +73,20 @@ public class PlayerInfo extends AppCompatActivity {
             @Override
             public void onClick(View cardClicked) {
                 try {
-                    if(checkUserName() == true) {
-                        sendUserName();
-                        if(playerInfoMusic.isPlaying()) {
-                            playerInfoMusic.stop();
-                        }
-
+                        musicRelease();
                         Intent idiotGame = new Intent(getApplicationContext(), IdiotTestGame1.class);
                         startActivity(idiotGame);
 
                     }
-                }
                 catch(Exception e) { e.printStackTrace(); } }});
         //Target Game Icon
         targetGameIcon = findViewById(R.id.targetGameIcon);
         targetGameIcon.setOnClickListener(cardClicked -> {
             try {
-                if(checkUserName() == true) {
-                    sendUserName(); musicRelease();
+                    musicRelease();
                     Intent targetGame = new Intent(getApplicationContext(), TargetGame.class);
                     startActivity(targetGame);
-                } }
+                }
             catch(Exception e) { e.printStackTrace(); } });
         //Settings
         ImageView settings = findViewById(R.id.settings1);
@@ -117,7 +102,7 @@ public class PlayerInfo extends AppCompatActivity {
         txtAdvIcon.setOnClickListener((View.OnClickListener) cardClicked -> {
           try {
               Intent Isekai = new Intent(getApplicationContext(), IsekaiTitle.class);
-              sendUserName(); musicRelease();
+              musicRelease();
               startActivity(Isekai);
           } catch(Exception e) { e.printStackTrace(); } });
 

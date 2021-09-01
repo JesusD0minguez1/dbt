@@ -24,7 +24,7 @@ public class GeneralGamover extends AppCompatActivity {
         Button gmQuit = findViewById(R.id.gmQuitbtn);
         displayText = findViewById(R.id.displayGmOverScore);
         congrats = findViewById(R.id.Congrats);
-        gdSimon = findViewById(R.id.goodSimon);
+        gdSimon = findViewById(R.id.goodSimon11);
         status.game();
     }
 

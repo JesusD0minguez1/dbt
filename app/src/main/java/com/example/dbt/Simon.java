@@ -41,7 +41,6 @@ public class Simon extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.simon);
         simonmsg = findViewById(R.id.simonMsg);
-
         //grabbing green images
         g1 = findViewById(R.id.g1);
         g1.setEnabled(false);
