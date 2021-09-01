@@ -22,7 +22,6 @@ public class GeneralGamover extends AppCompatActivity {
         setContentView(R.layout.general_gamover);
         Button gmSelect = findViewById(R.id.selectDiffbtn);
         Button gmQuit = findViewById(R.id.gmQuitbtn);
-        Button gmLeader = findViewById(R.id.gmLeaderbtn);
         displayText = findViewById(R.id.displayGmOverScore);
         congrats = findViewById(R.id.Congrats);
         gdSimon = findViewById(R.id.goodSimon);
@@ -40,17 +39,39 @@ public class GeneralGamover extends AppCompatActivity {
 
         String GmOverTxt = "Your final score is ";
         String simonTxt = "Congratulations in completing Simon in order to reward here is a picture of Good Simon";
-        if(status.simonEnd == true)
+        if(Status.simonEnd == true)
         {
             displayText.setText(GmOverTxt + simonScore);
             congrats.setText(simonTxt);
             gdSimon.setVisibility(View.VISIBLE);
+            setBackEnds();
         }
-        if(status.memoryEnd == true) { displayText.setText(GmOverTxt + memoryScore); }
-        if(status.triviaEnd == true) { displayText.setText(GmOverTxt + triviaScore); }
-        if(status.isekaiEnd == true) { displayText.setText(GmOverTxt + isekaiScore); }
-        if(status.targetEnd == true) { displayText.setText(GmOverTxt + targetScore); }
-        if(status.dumbEnd == true) { displayText.setText(GmOverTxt + dumbScore); }
+        if(Status.memoryEnd == true)
+        {
+            displayText.setText(GmOverTxt + memoryScore);
+            setBackEnds();
+        }
+        if(Status.triviaEnd == true)
+        {
+            displayText.setText(GmOverTxt + triviaScore);
+            setBackEnds();
+        }
+
+        if(Status.isekaiEnd == true)
+        {
+            displayText.setText(GmOverTxt + isekaiScore);
+            setBackEnds();
+        }
+        if(Status.targetEnd == true)
+        {
+            displayText.setText(GmOverTxt + targetScore);
+            setBackEnds();
+        }
+        if(Status.dumbEnd == true)
+        {
+            displayText.setText(GmOverTxt + dumbScore);
+            setBackEnds();
+        }
     }
     public void gmSelectDiff(View v)
     {
@@ -64,34 +85,53 @@ public class GeneralGamover extends AppCompatActivity {
         {
             type = status.typeOfGame.get(1);
             database.addNewEntry(status.getPlayerName(),type,status.getSimonScore());
-            status.fromSimonGO = false;
+            setFromEndBack();
         }
         if(status.fromMemory)
         {
             type = status.typeOfGame.get(2);
             database.addNewEntry(status.getPlayerName(),type,status.getMemoryScore());
-            status.fromMemory = false;
+            setFromEndBack();
         }
         if(status.fromTargetGame)
         {
             type = status.typeOfGame.get(3);
             database.addNewEntry(status.getPlayerName(),type,status.getTargetScore());
-            status.fromTargetGame = false;
+            setFromEndBack();
         }
         if(status.fromIsekai)
         {
             type = status.typeOfGame.get(4);
             database.addNewEntry(status.getPlayerName(),type,status.getIsekaiScore());
-            status.fromIsekai = false;
+            setFromEndBack();
         }
         if(status.fromTrivia)
         {
             type = status.typeOfGame.get(5);
             database.addNewEntry(status.getPlayerName(),type,status.getTriviaScore());
-            status.fromIsekai = false;
+            setFromEndBack();
         }
         congrats.setText("YOU HAVE SUCCESSFULLY SAVED THE RECORD");
     }
 
     public void closeApp (View v){ finishAffinity(); }
+    private void setBackEnds()
+    {
+        Status.targetEnd = false;
+        Status.triviaEnd = false;
+        Status.isekaiEnd = false;
+        Status.memoryEnd = false;
+        Status.dumbEnd = false;
+        Status.simonEnd = false;
+    }
+
+    private void setFromEndBack()
+    {
+        Status.fromIsekai = false;
+        Status.fromMemory = false;
+        Status.fromTrivia = false;
+        Status.fromTargetGame = false;
+        Status.fromDumb = false;
+        Status.fromSimonGO = false;
+    }
 }

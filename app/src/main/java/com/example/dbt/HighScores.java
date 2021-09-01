@@ -25,6 +25,8 @@ public class HighScores extends MainActivity {
         score1 = findViewById(R.id.score1);
         score2 = findViewById(R.id.score2);
         score3 = findViewById(R.id.score3);
+        //SetHighScoreTXT();
+
         returnBtn = findViewById(R.id.returnBtnHighScores);
         //Set return btn listener onCreate
         returnBtn.setOnClickListener(new View.OnClickListener() {
@@ -35,7 +37,6 @@ public class HighScores extends MainActivity {
             }
         });
         //Retrieve scores
-        retrieveScores();
     }
 
 
@@ -43,32 +44,18 @@ public class HighScores extends MainActivity {
     /*
     Will retrieve stored scores from database and fill them into text views
     */
-    private void retrieveScores()
-    {
-        ArrayList<Status> records =  database.readData();
-        setScore1(records.get(0).score, records.get(0).uname);
-        setScore2(records.get(1).score, records.get(1).uname);
-        setScore3(records.get(2).score, records.get(2).uname);
-    }
 
 
 
     /*
     Sets the three score views with inputted information given != null
     */
-    private void setScore1(String newScore, String userName) {
-        if(newScore != null && userName != null) {
-            score1.setText("1. " + userName + " - " + newScore);
-        }
+    /*public void SetHighScoreTXT() {
+        ArrayList<Status> records = database.readData();
+        score1.setText("1. " + records.get(0).uname + " - " + "Game: "+ records.get(0).tog + "Score: " + records.get(0).score);
+        score2.setText("2. " + records.get(1).uname + " - " + "Game: "+ records.get(1).tog  + "Score: " + records.get(1).score);
+        score1.setText("3. " + records.get(2).uname + " - " + "Game: "+ records.get(2).tog + "Score: " + records.get(2).score);
+
     }
-    private void setScore2(String newScore, String userName) {
-        if(newScore != null && userName != null) {
-            score2.setText("2. " + userName + " - " + newScore);
-        }
-    }
-    private void setScore3(String newScore, String userName) {
-        if(newScore != null && userName != null) {
-            score3.setText("3. " + userName + " - " + newScore);
-        }
-    }
+*/
 }

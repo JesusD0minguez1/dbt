@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import java.util.ArrayList;
 
@@ -28,21 +29,18 @@ public class Simon extends AppCompatActivity {
     ImageView badSimon;
     Button returnBtnSimon;
     MediaPlayer simonMusic;
-    MediaPlayer badSimonMusic;
+    TextView simonmsg;
 
-
-    Intent easy = getIntent();
-    Intent medium = getIntent();
-    Intent hard = getIntent();
     Status status = new Status();
     int score = 0;
     static boolean NextPattern = false;
     static int LetsGo = 0;
-    SettingMenu mp3;
+    Button startSimon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.simon);
+        simonmsg = findViewById(R.id.simonMsg);
 
         //grabbing green images
         g1 = findViewById(R.id.g1);
@@ -63,7 +61,7 @@ public class Simon extends AppCompatActivity {
         r4 = findViewById(R.id.r4);
         r4.setEnabled(false);
         badSimon = findViewById(R.id.evilSimon);
-        Button test = findViewById(R.id.startSimon);
+         startSimon = findViewById(R.id.startSimon);
         //set all the red squares to invisible
         r1.setVisibility(View.INVISIBLE);
         r2.setVisibility(View.INVISIBLE);
@@ -72,6 +70,11 @@ public class Simon extends AppCompatActivity {
         //Return Button
         returnBtnSimon = findViewById(R.id.returnBtnSimon);
         returnBtnSimon.setOnClickListener(cardClicked -> {
+            LetsGo = 0;
+            NextPattern = false;
+            Status.isItEasy = false;
+            Status.isItMedium = false;
+            Status.isItHard =false;
             if(simonMusic.isPlaying()) { simonMusic.pause(); simonMusic.release(); }
             Intent returnToPlayerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
             startActivity(returnToPlayerInfo);
@@ -87,52 +90,67 @@ public class Simon extends AppCompatActivity {
     }
 
     public void SimonGo(View v){
+       simonmsg.setText("");
+       int CorrectAnswersSize = CorrectAnswers.size();
        switch(LetsGo)
        {
            case 0:
                disableViews();
-               if(status.isItEasy == true){ Pattern(6,1000);}
-               if(status.isItMedium == true){ Pattern2(6,500); }
-               if(status.isItHard == true){ Pattern3(6,100); }
-               if(NextPattern == true){ LetsGo++; }
+               if(Status.isItEasy == true){ Pattern(6,1000);}
+               if(Status.isItMedium == true){ Pattern2(6,500); }
+               if(Status.isItHard == true){ Pattern3(6,100); }
+               if(NextPattern == true){ LetsGo+=1; NextPattern = false;}
+               if(LetsGo == 0 && NextPattern == false){ LetsGo = 0;}
+               System.out.println(CorrectAnswersSize);
+               startSimon.setEnabled(false);
            break;
            case 1:
                disableViews();
-               if(status.isItEasy == true) { Pattern2(6,1000); }
-               if(status.isItMedium == true){ Pattern3(6,500); }
-               if(status.isItHard == true){ Pattern4(6,100); }
-               if(NextPattern == true){ LetsGo ++; }
-           break;
+               if(Status.isItEasy == true) { Pattern2(6,1000); }
+               if(Status.isItMedium == true){ Pattern3(6,500); }
+               if(Status.isItHard == true){ Pattern4(6,100); }
+               if(NextPattern == true){ LetsGo +=1; NextPattern = false;}
+               if(LetsGo == 1 && NextPattern == false){ LetsGo = 1;}
+               startSimon.setEnabled(false);
+               break;
            case 2:
                disableViews();
-               if(status.isItEasy == true) { Pattern3(6,1000); }
-               if(status.isItMedium == true){ Pattern4(6,500); }
-               if(status.isItHard == true){ Pattern5(6,100); }
-               if(NextPattern == true){ LetsGo +=1; }
-           break;
+               if(Status.isItEasy == true) { Pattern3(6,1000); }
+               if(Status.isItMedium == true){ Pattern4(6,500); }
+               if(Status.isItHard == true){ Pattern5(6,100); }
+               if(NextPattern == true){ LetsGo +=1; NextPattern = false;}
+               if(LetsGo == 2 && NextPattern == false){ LetsGo = 2;}
+               startSimon.setEnabled(false);
+               break;
            case 3:
                disableViews();
-               if(status.isItEasy == true) { Pattern4(7,1000); }
-               if(status.isItMedium == true){ Pattern5(7,500); }
-               if(status.isItHard == true){ Pattern(7,100); }
-               if(NextPattern == true){ LetsGo +=1; }
-           break;
+               if(Status.isItEasy == true) { Pattern4(7,1000); }
+               if(Status.isItMedium == true){ Pattern5(7,500); }
+               if(Status.isItHard == true){ Pattern(7,100); }
+               if(NextPattern == true){ LetsGo +=1;NextPattern = false; startSimon.setEnabled(true);}
+               if(LetsGo == 3 && NextPattern == false){ LetsGo = 3;}
+               startSimon.setEnabled(false);
+
+               break;
            case 4:
                disableViews();
-               if(status.isItEasy == true) { Pattern5(6,1000); }
-               if(status.isItMedium == true){ Pattern(6,500); }
-               if(status.isItHard == true){ Pattern2(6,100); }
-               if(NextPattern == true){ LetsGo +=1; }
-           break;
+               if(Status.isItEasy == true) { Pattern5(6,1000); }
+               if(Status.isItMedium == true){ Pattern(6,500); }
+               if(Status.isItHard == true){ Pattern2(6,100); }
+               if(NextPattern == true){ LetsGo +=1;NextPattern = false; }
+               if(LetsGo == 4 && NextPattern == false){ LetsGo = 4;}
+               startSimon.setEnabled(false);
+
+               break;
            case 5:
                disableViews();
                if(NextPattern == true)
                {
-                   status.isItEasy = false;
-                   status.isItMedium = false;
-                   status.isItHard = false;
-                   status.simonEnd = true;
-                   status.fromSimonGO = true;
+                   Status.isItEasy = false;
+                   Status.isItMedium = false;
+                   Status.isItHard = false;
+                   Status.simonEnd = true;
+                   Status.fromSimonGO = true;
                    Intent toGameOver = new Intent(getApplicationContext(), GeneralGamover.class);
                    startActivity(toGameOver);
                }
@@ -189,19 +207,19 @@ public class Simon extends AppCompatActivity {
                 p[0] = p[0] + 1;
                 switch (p[0]) {
                     case 2:
-                        patternSet(g1,r1,3);
+                        patternSet(g1,r1,2);
                         CorrectAnswers.add(1);
                     break;
                     case 3:
-                        patternSet(g2,r2,3);
+                        patternSet(g2,r2,2);
                         CorrectAnswers.add(2);
                     break;
                     case 4:
-                        patternSet(g3,r3,3);
+                        patternSet(g3,r3,2);
                         CorrectAnswers.add(3);
                     break;
                     case 5:
-                        patternSet(g4,r4,3);
+                        patternSet(g4,r4,2);
                         CorrectAnswers.add(4);
                     break;
                 }
@@ -341,19 +359,24 @@ public class Simon extends AppCompatActivity {
         TextView scoreDisplay = findViewById(R.id.simonScore);
         String scoreBeingSet = String.valueOf(status.getSimonScore());
         scoreDisplay.setText("Score: " + scoreBeingSet);
+        simonmsg.setText("Congratulations You got the Pattern Correct Click Lets go To get next pattern");
     }
     public void checkCorrectConditional(){
         status.setSimonScore(score += 100);
         UsersAnswers.clear();
         CorrectAnswers.clear();
         NextPattern = true;
+        startSimon.setEnabled(true);
         displaySimonScore(status.getSimonScore());
     }
     public void checkWrongConditional() {
         status.setSimonScore(score -= 100);
         UsersAnswers.clear();
         displaySimonScore(score);
-        badSimon(5);
+        badSimon(10);
+        simonmsg.setText("Oh NO!! You got the Pattern Wrong Simon didn't like that Click Lets Go to see pattern again");
+        ShowPatternAgainWrong();
+
     }
     public void patternSet(ImageView g, ImageView r,int time) {
         g.setVisibility(View.INVISIBLE);
@@ -388,8 +411,7 @@ public class Simon extends AppCompatActivity {
         r1.setEnabled(true); r2.setEnabled(true); r3.setEnabled(true); r4.setEnabled(true);
     }
 
-    private void badSimon(int time)
-    {
+    private void badSimon(int time) {
         int milli = time * 1000;
         final int[] p = {0};
         int t;
@@ -411,6 +433,41 @@ public class Simon extends AppCompatActivity {
             public void onFinish() {
             }
         }.start();
+    }
+
+    private void ShowPatternAgainWrong()
+    {
+        switch(LetsGo)
+        {
+            case 0:
+                if(Status.isItEasy){ Pattern(6,1000); }
+                if(Status.isItMedium){ Pattern2(6,500); }
+                if(Status.isItHard){ Pattern3(6,100); }
+
+                break;
+            case 1:
+                if(Status.isItEasy){ Pattern2(6,1000); }
+                if(Status.isItMedium){ Pattern3(6,500);  }
+                if(Status.isItHard){ Pattern4(6,100);  }
+
+                break;
+            case 2:
+                if(Status.isItEasy){ Pattern3(6,1000); }
+                if(Status.isItMedium){ Pattern4(6,500);  }
+                if(Status.isItHard){ Pattern5(6,100);  }
+
+                break;
+            case 3:
+                if(Status.isItEasy){ Pattern4(7,1000); }
+                if(Status.isItMedium){ Pattern5(7,500);  }
+                if(Status.isItHard){ Pattern(7,100); }
+                break;
+            case 4:
+                if(Status.isItEasy){ Pattern5(6,1000); }
+                if(Status.isItMedium){ Pattern(6,500); }
+                if(Status.isItHard){ Pattern2(6,100);  }
+            break;
+        }
     }
 
 }

@@ -62,7 +62,7 @@ public class Database extends SQLiteOpenHelper
     {
         ArrayList<Status> records = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
-        String qString = ("SELECT * FROM " + LEADERBOARD + " order by score ");
+        String qString = ("SELECT * FROM " + LEADERBOARD + " order by Username ");
         Cursor cursor = db.rawQuery(qString, null);
         while(cursor.moveToFirst())
         {

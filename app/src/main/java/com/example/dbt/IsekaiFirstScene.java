@@ -20,7 +20,7 @@ public class IsekaiFirstScene extends AppCompatActivity {
     int c3Id;
     int c4Id;
     String playerName;
-
+    Status status = new Status();
     private ImageView viewEDice;
     private ImageView viewCDice;
     private ImageView background;
@@ -39,6 +39,7 @@ public class IsekaiFirstScene extends AppCompatActivity {
     int battleCounter = 0;
     int battleEnds = 0;
     int attackBonus = 0;
+    static int IsekScore;
     MediaPlayer backgroundmusic2;
 
 
@@ -258,7 +259,7 @@ public class IsekaiFirstScene extends AppCompatActivity {
             enemyHP = 12;
             cHPTxt.setText("Your HP is " + characterHP);
             eHPTxt.setText("Enemies HP is " + enemyHP);
-
+            IsekScore += characterHP;
         }
         else if(battleCounter == 1) {
             eImage.setVisibility(View.VISIBLE);
@@ -277,6 +278,7 @@ public class IsekaiFirstScene extends AppCompatActivity {
 
             cHPTxt.setText("Your HP is " + characterHP);
             eHPTxt.setText("Enemies HP is " + enemyHP);
+            IsekScore += characterHP;
 
         }
         else if(battleCounter == 2){
@@ -296,12 +298,12 @@ public class IsekaiFirstScene extends AppCompatActivity {
 
             cHPTxt.setText("Your HP is " + characterHP);
             eHPTxt.setText("Enemies HP is " + enemyHP);
+            IsekScore += characterHP;
         }
         else if(battleCounter == 3){
             eImage.setVisibility(View.VISIBLE);
             Button next = (Button) findViewById(R.id.nextB);
             next.setVisibility(View.INVISIBLE);
-
 
             characterHP = 35;
             enemyHP = 27;
@@ -314,7 +316,7 @@ public class IsekaiFirstScene extends AppCompatActivity {
 
             cHPTxt.setText("Your HP is " + characterHP);
             eHPTxt.setText("Enemies HP is " + enemyHP);
-
+            IsekScore += characterHP;
         }
         else if(battleCounter == 4){
             eImage.setVisibility(View.VISIBLE);
@@ -333,7 +335,7 @@ public class IsekaiFirstScene extends AppCompatActivity {
 
             cHPTxt.setText("Your HP is " + characterHP);
             eHPTxt.setText("Enemies HP is " + enemyHP);
-
+            IsekScore += characterHP;
         }
         else if(battleCounter == 5){
             eImage.setVisibility(View.VISIBLE);
@@ -353,6 +355,8 @@ public class IsekaiFirstScene extends AppCompatActivity {
 
             cHPTxt.setText("Your HP is " + characterHP);
             eHPTxt.setText("Enemies HP is " + enemyHP);
+            IsekScore += characterHP;
+            status.setIsekaiScore(IsekScore);
         }
     }
 

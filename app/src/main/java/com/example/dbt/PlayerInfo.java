@@ -13,7 +13,7 @@ public class PlayerInfo extends AppCompatActivity {
 
 
     private ImageView memGameIcon, triviaGameIcon, simonGameIcon, highScoresIcon,
-    targetGameIcon, txtAdvIcon, idotTestIcon;
+    targetGameIcon, txtAdvIcon, idotTestIcon, HighScorestxt;
     EditText userName;
     MediaPlayer playerInfoMusic;
     Status status;
@@ -120,6 +120,9 @@ public class PlayerInfo extends AppCompatActivity {
               sendUserName(); musicRelease();
               startActivity(Isekai);
           } catch(Exception e) { e.printStackTrace(); } });
+
+
+
     }
 
     /*
@@ -144,10 +147,21 @@ public class PlayerInfo extends AppCompatActivity {
         }
     }
 
+    private Boolean isThereHighScore()
+    {
+        try {
+            Intent toLDBD = new Intent(getApplicationContext(), HighScores.class);
+            sendUserName(); musicRelease();
+            startActivity(toLDBD);
+            return true;
+        } catch(Exception e) { return false;}
+    }
 
     /*
     Stops and releases music before sending to next activity just in case
     (also saves resources)
      */
     private void musicRelease() { if(playerInfoMusic.isPlaying()) { playerInfoMusic.pause(); playerInfoMusic.release(); } }
+
+
 }
