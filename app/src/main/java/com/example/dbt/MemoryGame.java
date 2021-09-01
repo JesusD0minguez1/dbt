@@ -146,7 +146,12 @@ public class MemoryGame extends AppCompatActivity {
                 }
                 gameStarted= true;
                 memScore = 0;
-                if(!memMusic.isPlaying() && level == 1) { memMusic.start(); }
+                if (level == 3) { memMusic.seekTo(0); }
+                if(level == 1) {
+                    memMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.krabs_rave);
+                    try { memMusic.prepareAsync(); } catch (Exception prep) {prep.printStackTrace(); }
+                    memMusic.start();
+                }
             }
         }
         catch (Exception startBtn) { startBtn.printStackTrace(); }
@@ -442,13 +447,6 @@ public class MemoryGame extends AppCompatActivity {
         card0.setAlpha(0.50f); card1.setAlpha(0.50f); card2.setAlpha(0.50f); card3.setAlpha(0.50f);
         card4.setAlpha(0.50f); card5.setAlpha(0.50f); card6.setAlpha(0.50f); card7.setAlpha(0.50f);
         card8.setAlpha(0.50f);
-        returnBtn.setVisibility(View.VISIBLE);
-        returnBtn.setOnClickListener(cardClicked -> {
-            Intent playerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
-            playerInfo.putExtra("memScore", totalScore);
-            if(memMusic.isPlaying()) { memMusic.pause(); memMusic.release(); }
-            startActivity(playerInfo);
-        });
         timer.setText(""); infoTxt.setText("");
         if (scoreView.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) scoreView.getLayoutParams();
@@ -474,10 +472,18 @@ public class MemoryGame extends AppCompatActivity {
         }
         nextLvLBtn.setEnabled(true);
         if (level != 3) {
+            if (level == 2) { memMusic.pause(); memMusic.setVolume(0, 0); }
             nextLvLBtn.setVisibility(View.VISIBLE); nextLvLBtn.setOnClickListener(cardClicked -> resetGame());
         } else {
-            nextLvLBtn.setVisibility(View.VISIBLE); nextLvLBtn.setOnClickListener(cardClicked -> resetGame());
-            nextLvLBtn.setText("Reset");
+            nextLvLBtn.setVisibility(View.INVISIBLE); //nextLvLBtn.setOnClickListener(cardClicked -> resetGame());
+            //nextLvLBtn.setText("Reset");
+            returnBtn.setVisibility(View.VISIBLE);
+            if (level == 3) { memMusic.pause(); memMusic.setVolume(0, 0); }
+            returnBtn.setOnClickListener(cardClicked -> {
+                Intent playerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
+                playerInfo.putExtra("memScore", totalScore);
+                startActivity(playerInfo);
+            });
         }
     }
 
@@ -487,7 +493,7 @@ public class MemoryGame extends AppCompatActivity {
      */
     private void resetGame() {
         Intent intent = getIntent();
-        if (level == 3) { level = 1;}
+        if (level == 3) { level = 1; }
         else { level++; }
         intent.putExtra("level", level);
         intent.putExtra("prevScore", (memScore + totalScore));
