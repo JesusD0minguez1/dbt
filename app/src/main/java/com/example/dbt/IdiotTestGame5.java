@@ -40,7 +40,7 @@ public class IdiotTestGame5 extends AppCompatActivity {
         }
     }
 
-    public void RightAnswer(View v)
+    public void RightAnswer5(View v)
     {
         IdiotTestGame1.scoreForDT++;
         cancel();
@@ -50,7 +50,7 @@ public class IdiotTestGame5 extends AppCompatActivity {
         Status.dumbEnd=true;
         Status.setDumbScore(IdiotTestGame1.scoreForDT);
     }
-    public void WrongAnswer4(View v)
+    public void WrongAnswer5(View v)
     {
         cancel();
         Intent intent=new Intent(this,GeneralGamover.class);

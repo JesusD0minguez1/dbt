@@ -23,9 +23,11 @@
         android:layout_height="91dp"
         android:layout_marginStart="28dp"
         android:layout_marginBottom="230dp"
+        android:onClick="WrongAnswer5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/jjglass2" />
+        app:srcCompat="@drawable/jjglass2"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/kk"
@@ -33,9 +35,11 @@
         android:layout_height="95dp"
         android:layout_marginStart="107dp"
         android:layout_marginBottom="227dp"
+        android:onClick="WrongAnswer5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/kkglass2" />
+        app:srcCompat="@drawable/kkglass2"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/ll"
@@ -43,9 +47,11 @@
         android:layout_height="93dp"
         android:layout_marginEnd="123dp"
         android:layout_marginBottom="227dp"
+        android:onClick="RightAnswer5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/llglass2" />
+        app:srcCompat="@drawable/llglass2"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/mm"
@@ -53,9 +59,11 @@
         android:layout_height="78dp"
         android:layout_marginTop="358dp"
         android:layout_marginEnd="38dp"
+        android:onClick="WrongAnswer5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mmglass2" />
+        app:srcCompat="@drawable/mmglass2"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/timer5"
