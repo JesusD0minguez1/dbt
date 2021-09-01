@@ -47,8 +47,8 @@ public class HighScores extends MainActivity {
     {
         ArrayList<Status> records =  database.readData();
         setScore1(records.get(0).score, records.get(0).uname);
-        setScore2(records.sc, "TODO:UserName");
-        setScore3("TODO:Score", "TODO:UserName");
+        setScore2(records.get(1).score, records.get(1).uname);
+        setScore3(records.get(2).score, records.get(2).uname);
     }
 
 

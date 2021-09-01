@@ -48,10 +48,10 @@ public class IsekaiFirstScene extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.isekai_first_scene);
 
-        backgroundmusic2 = MediaPlayer.create(this,R.raw.maintheme_david_renda);
+       /* backgroundmusic2 = MediaPlayer.create(this,R.raw.maintheme_david_renda);
         backgroundmusic2.setLooping(true);
         backgroundmusic2.start();
-
+*/
         Intent action4 = getIntent();
 
         c1Id = action4.getIntExtra("c1", R.drawable.b);
@@ -73,9 +73,6 @@ public class IsekaiFirstScene extends AppCompatActivity {
         viewEDice.setVisibility(View.INVISIBLE);
         viewCDice.setVisibility(View.INVISIBLE);
 
-
-
-
         scenario.setText("Player must click their dice on the left to roll random damage to the enemy. \n Once your turn is done, click the CONTINUE button for the enemy's turn. \n Then, after their turn is done, it is your's again. \n HP is viewed under each dice. \n If your health goes below 0, you lose \n You win the battle if enemy's HP goes to 0 \nClick on next then press on your dice to attack!");
         background.setImageResource(R.drawable.sceneone);
         eImage.setImageResource(R.drawable.goblin);
@@ -86,6 +83,14 @@ public class IsekaiFirstScene extends AppCompatActivity {
 //        eHPTxt.setText("Enemies HP is " + enemyHP);
         eHPTxt.setVisibility(View.INVISIBLE);
         cHPTxt.setVisibility(View.INVISIBLE);
+
+        ImageView IskaiFirstSceneSettings = findViewById(R.id.firstSceneSettings);
+        backgroundmusic2 = MediaPlayer.create(this.getApplicationContext(), R.raw.maintheme_david_renda);
+        try { backgroundmusic2.prepareAsync(); } catch (Exception prep) {prep.printStackTrace(); }
+        IskaiFirstSceneSettings.setOnClickListener(v -> {
+            SettingMenu set = new SettingMenu();
+            set.showWindow(IsekaiFirstScene.this, IskaiFirstSceneSettings, backgroundmusic2);
+        });
     }
 
     public void cClick(View v) {
