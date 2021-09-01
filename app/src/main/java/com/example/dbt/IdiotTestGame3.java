@@ -59,7 +59,7 @@ public class IdiotTestGame3 extends AppCompatActivity {
 
     public void RightAnswer3(View v)
     {
-
+        IdiotTestGame1.scoreForDT++;
         cancel();
         Intent intent=new Intent(this,IdiotTestGame4.class);
         startActivity(intent);

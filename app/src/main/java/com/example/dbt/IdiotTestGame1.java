@@ -20,6 +20,8 @@ public class IdiotTestGame1 extends AppCompatActivity {
 
     CountDownTimer countDownTimer;
 
+    static int scoreForDT=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +38,7 @@ public class IdiotTestGame1 extends AppCompatActivity {
 
     public void RightAnswer(View v)
     {
-
+        scoreForDT++;
         cancel();
         Intent intent=new Intent(this,IdiotTestGame2.class);
         startActivity(intent);
