@@ -163,14 +163,21 @@ public class RiddleScreen extends MainActivity {
                 btn.setText("Return");
                 group.setEnabled(false);
                 group.setVisibility(View.INVISIBLE);
+                Status.setTriviaScore(trivScore);
                 btn.setOnClickListener(cardClicked -> {
-                    if (rdMusic.isPlaying()) {
-                        rdMusic.pause();
-                        rdMusic.release();
+                    try {
+                        if (rdMusic.isPlaying()) {
+                            rdMusic.pause();
+                            rdMusic.release();
+                        }
+                        Intent returnT = new Intent(getApplicationContext(), GeneralGamover.class);
+                        startActivity(returnT);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    Intent returnT = new Intent(getApplicationContext(), PlayerInfo.class);
-                    startActivity(returnT);
                 });
+                Status.fromTrivia = true;
+                Status.triviaEnd = true;
             }
             trackProgress(nextProg);
         });
