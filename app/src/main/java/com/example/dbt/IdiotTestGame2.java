@@ -18,6 +18,8 @@ public class IdiotTestGame2 extends AppCompatActivity {
 
     TextView timer;
 
+    CountDownTimer countDownTimer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,17 +36,23 @@ public class IdiotTestGame2 extends AppCompatActivity {
 
     public void RightAnswer2(View v)
     {
+        Status.setDumbScore(2);
+        cancel();
         Intent intent=new Intent(this,IdiotTestGame3.class);
         startActivity(intent);
     }
 
     public void WrongAnswer2(View v)
     {
-        Intent intent=new Intent(this,PlayerInfo.class);
+        Intent intent=new Intent(this,IdiotTestGame3.class);
         startActivity(intent);
     }
 
-
+    public final void cancel(){
+        if(countDownTimer!=null){
+            countDownTimer.cancel();
+        }
+    }
 
     public void countdown(int time)
     {

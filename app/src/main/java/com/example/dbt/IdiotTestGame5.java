@@ -18,23 +18,40 @@ public class IdiotTestGame5 extends AppCompatActivity {
 
     TextView timer;
 
+    CountDownTimer countDownTimer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_idiot_test_game5);
 
-        p1=findViewById(R.id.letterO);
-        p2=findViewById(R.id.letterO);
-        p3=findViewById(R.id.letterO);
-        p4=findViewById(R.id.letterO);
+        p1=findViewById(R.id.jj);
+        p2=findViewById(R.id.kk);
+        p3=findViewById(R.id.ll);
+        p4=findViewById(R.id.mm);
 
         timer=findViewById(R.id.timer5);
-        //countdown(10);
+        countdown(10);
+    }
+
+    public final void cancel(){
+        if(countDownTimer!=null){
+            countDownTimer.cancel();
+        }
     }
 
     public void RightAnswer(View v)
     {
-        Intent intent=new Intent(this,IdiotTestGame2.class);
+        Status.setDumbScore(5);
+        cancel();
+        Intent intent=new Intent(this,GeneralGamover.class);
+        startActivity(intent);
+        Status.fromDumb=true;
+        Status.dumbEnd=true;
+    }
+    public void WrongAnswer4(View v)
+    {
+        Intent intent=new Intent(this,GeneralGamover.class);
         startActivity(intent);
     }
 
@@ -50,7 +67,7 @@ public class IdiotTestGame5 extends AppCompatActivity {
 
             public void onFinish() {
                 timer.setText("Time's up!");
-                Intent intent=new Intent(getApplicationContext(),IdiotTestGame2.class);
+                Intent intent=new Intent(getApplicationContext(),GeneralGamover.class);
                 startActivity(intent);
             }
         }.start();
