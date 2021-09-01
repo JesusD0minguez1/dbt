@@ -107,6 +107,7 @@ public class PlayerInfo extends AppCompatActivity {
         ImageView settings = findViewById(R.id.settings1);
         playerInfoMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.one_heroes_journey);
         try { playerInfoMusic.prepareAsync(); } catch (Exception prep) {prep.printStackTrace(); }
+        playerInfoMusic.start();
         settings.setOnClickListener(v -> {
             SettingMenu set = new SettingMenu();
             set.showWindow(PlayerInfo.this, settings, playerInfoMusic);
