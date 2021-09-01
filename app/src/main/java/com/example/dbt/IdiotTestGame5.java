@@ -61,7 +61,7 @@ public class IdiotTestGame5 extends AppCompatActivity {
     {
         int milli = time * 1000;
 
-        new CountDownTimer(milli, 1000) {
+        countDownTimer=new CountDownTimer(milli, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timer.setText("Timer: " + (millisUntilFinished / 1000));
@@ -71,6 +71,7 @@ public class IdiotTestGame5 extends AppCompatActivity {
                 timer.setText("Time's up!");
                 Intent intent=new Intent(getApplicationContext(),GeneralGamover.class);
                 startActivity(intent);
+                cancel();
             }
         }.start();
     }
