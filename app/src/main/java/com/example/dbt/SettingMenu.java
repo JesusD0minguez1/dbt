@@ -29,11 +29,6 @@ public class SettingMenu extends MainActivity
                     audioChange1(mp);
                     return true;
                 }
-                else if(item.getTitle().equals("Main Menu"))
-                {
-                    quitApp(activity);
-                    return true;
-                }
                 else {
                     return false;
                 }
@@ -58,12 +53,4 @@ public class SettingMenu extends MainActivity
             music.printStackTrace();
         }
     }
-
-
-    public void quitApp(Activity activity){
-        activity.finish();
-        System.exit(0);
-    }
-
-
 }

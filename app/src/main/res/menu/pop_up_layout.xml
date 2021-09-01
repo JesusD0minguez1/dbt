@@ -4,11 +4,4 @@
     <item
         android:id="@+id/OnOff"
         android:title="Music On/Off" />
-    <item
-        android:id = "@+id/Quit"
-        android:title = "Main Menu"/>
-    <item
-        android:id = "@+id/Data"
-        android:title = "Data"/>
-
 </menu>
