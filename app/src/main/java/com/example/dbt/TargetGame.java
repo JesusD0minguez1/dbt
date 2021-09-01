@@ -39,7 +39,7 @@ public class TargetGame extends AppCompatActivity {
     private MediaPlayer targetMusic;
     private Random rng = new Random();
     boolean gameIsGoing, cardIsDisplaying, targetIsRed;
-    private int redTarget, greenTarget, targetScore, prevPosition = 0, secondCountDownTime = 3;
+    private int redTarget, greenTarget, targetScore, prevPosition = 0, secondCountDownTime = 3, timesRed = 0;
     private ArrayList<Integer> times = new ArrayList<Integer>(Arrays.asList(3, 6, 9, 12, 15, 18, 21, 24, 27));
 
 
@@ -186,6 +186,8 @@ public class TargetGame extends AppCompatActivity {
     private void activatePosition(ImageView position) {
         cardIsDisplaying = true;
         boolean toDisplay = randomTarget();
+        if (toDisplay == false) { timesRed++; }
+        toDisplay = antiBored(toDisplay);
         position.setEnabled(true);
         secondCountdown(secondCountDownTime, position, toDisplay);
         boolean finalToDisplay = toDisplay;
@@ -239,5 +241,11 @@ Ends the game and displays the next button
             startActivity(playerInfo);
         });
         timerView.setText(""); infoTxt.setText("Game Over!");
+    }
+
+
+    private boolean antiBored(boolean returnT) {
+        if (timesRed == 2) { timesRed = 0;return true; }
+        else { return returnT; }
     }
 }

@@ -148,8 +148,6 @@ public class MemoryGame extends AppCompatActivity {
                 memScore = 0;
                 if (level == 3) { memMusic.seekTo(0); }
                 if(level == 1) {
-                    memMusic = MediaPlayer.create(this.getApplicationContext(), R.raw.krabs_rave);
-                    try { memMusic.prepareAsync(); } catch (Exception prep) {prep.printStackTrace(); }
                     memMusic.start();
                 }
             }
@@ -472,14 +470,13 @@ public class MemoryGame extends AppCompatActivity {
         }
         nextLvLBtn.setEnabled(true);
         if (level != 3) {
-            if (level == 2) { memMusic.pause(); memMusic.setVolume(0, 0); }
             nextLvLBtn.setVisibility(View.VISIBLE); nextLvLBtn.setOnClickListener(cardClicked -> resetGame());
         } else {
             nextLvLBtn.setVisibility(View.INVISIBLE); //nextLvLBtn.setOnClickListener(cardClicked -> resetGame());
             //nextLvLBtn.setText("Reset");
             returnBtn.setVisibility(View.VISIBLE);
-            if (level == 3) { memMusic.pause(); memMusic.setVolume(0, 0); }
             returnBtn.setOnClickListener(cardClicked -> {
+                if (level == 3) { memMusic.stop(); }
                 Intent playerInfo = new Intent(getApplicationContext(), PlayerInfo.class);
                 playerInfo.putExtra("memScore", totalScore);
                 startActivity(playerInfo);
