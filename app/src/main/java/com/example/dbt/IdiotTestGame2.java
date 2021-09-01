@@ -36,7 +36,7 @@ public class IdiotTestGame2 extends AppCompatActivity {
 
     public void RightAnswer2(View v)
     {
-        Status.setDumbScore(2);
+
         cancel();
         Intent intent=new Intent(this,IdiotTestGame3.class);
         startActivity(intent);
@@ -44,6 +44,7 @@ public class IdiotTestGame2 extends AppCompatActivity {
 
     public void WrongAnswer2(View v)
     {
+        cancel();
         Intent intent=new Intent(this,IdiotTestGame3.class);
         startActivity(intent);
     }

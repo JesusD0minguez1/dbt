@@ -42,7 +42,7 @@ public class IdiotTestGame5 extends AppCompatActivity {
 
     public void RightAnswer(View v)
     {
-        Status.setDumbScore(5);
+        
         cancel();
         Intent intent=new Intent(this,GeneralGamover.class);
         startActivity(intent);
@@ -51,6 +51,7 @@ public class IdiotTestGame5 extends AppCompatActivity {
     }
     public void WrongAnswer4(View v)
     {
+        cancel();
         Intent intent=new Intent(this,GeneralGamover.class);
         startActivity(intent);
     }

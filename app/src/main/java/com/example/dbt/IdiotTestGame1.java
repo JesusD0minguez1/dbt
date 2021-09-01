@@ -31,12 +31,12 @@ public class IdiotTestGame1 extends AppCompatActivity {
         p4=findViewById(R.id.karate);
 
         timer=findViewById(R.id.timer);
-        countdown(10);
+        countdown(12);
     }
 
     public void RightAnswer(View v)
     {
-        Status.setDumbScore(1);
+
         cancel();
         Intent intent=new Intent(this,IdiotTestGame2.class);
         startActivity(intent);
@@ -46,6 +46,7 @@ public class IdiotTestGame1 extends AppCompatActivity {
     {
         Intent intent=new Intent(this,IdiotTestGame2.class);
         startActivity(intent);
+        cancel();
     }
 
     public final void cancel(){
